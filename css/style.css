@@ -1,0 +1,71 @@
+body {
+	font-family: 'Brawler', serif;
+}
+
+h1 {
+	text-align: center;
+	color: #666666 !important;
+}
+
+h4 {
+	color: white;
+	position: relative;
+    top: -5px;
+	margin: 0px 10px 0px 43px;
+}
+
+h5, h6 {
+	color: #666666 !important;
+	text-align: center;
+}
+
+p, h2, h3 {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+a:hover, a:active{
+	color: white;
+	background-color: white;
+}
+
+.jumbotron {
+	position: relative;
+    background: #000 url("../img/map_sf_1915_20percent.jpg") center center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.navbar-brand>img {
+   max-height: 225%;
+   height: 225%;
+   width: auto;
+   margin-top: -13;
+}
+
+.navbar-brand {
+	padding: 0 15px 0 5px;
+	height: 22px;
+}
+
+.btn-lg {
+	background-color: #666666;
+	border-color: #636363;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.container-fluid {
+	background-color: #1a2f40;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+.inline {
+	display: -webkit-inline-box;
+}
