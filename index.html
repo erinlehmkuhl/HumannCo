@@ -7,7 +7,7 @@
 <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet' type='text/css'>
 <link rel="icon" href="img/favicon.ico">
 <title>Humann Company</title>
-<link href="css/bootstrap.css" rel="stylesheet">
+<!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
 <link href="css/style.css" rel="stylesheet">
 
 <!-- HTML5 shim for IE8 support of HTML5 elements and media queries -->
@@ -16,60 +16,56 @@
 <![endif]-->
 </head>
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#"><img src="img/logo.png" alt="humann company logo"></a>
-			<ul class="inline">
-				<li class="inline"><h4>HUMANN COMPANY, INC.</h4></li><!-- <span><h6>ENGINEERING - SURVEYING</h6></span> -->
-			</ul>	
-		</div>
-
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav navbar-right">
-				<ul class="nav navbar-nav">
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Engineering</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">Surveying</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">Staking</a></li>
-						</ul>
-					</li>
-				</ul>
-				<li class="active"><a href="#">About Us<span class="sr-only">(current)</span></a></li>
+	<div id="contentContainer">
+		<nav class="navbar">
+			<!-- <ul class="left"> -->
+				<a class="left" href="#"><img src="img/logo.png" alt="humann company logo"></a>
+				<h3 class="left">HUMANN COMPANY, INC.</h3>
+			<!-- </ul> end float left -->
+			<ul class="right">
+				<li class="dropdown">
+					<a href="#">Services</a>
+				<!-- <ul class="dropdown-menu">
+						<li><a href="#">Engineering</a></li>
+						<li><a href="#">Surveying</a></li>
+						<li><a href="#">Staking</a></li>
+					</ul> -->
+				</li>
+				<li><a href="#">About Us</a></li>
 				<li><a href="#">FAQ</a></li>
 				<li><a href="#">Contact</a></li>
-			</ul>
-		</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>
-	<h5>Serving the Bay Area for Over 40 Years</h5>
-	<div class="jumbotron">
-		<h1>Request a Quote</h1>
-		<p><a class="btn btn-primary btn-lg" href="#" role="button">Contact Us</a></p>
-	</div>
-	<div class="row">
-		<div class="col-sm-4">
-			<h2>Construction Staking</h2>
-			<p>Simple boundary surveys for property line fences, additions and landscape improvements, to the design of major subdivisions, grading and drainage plans for single family homes, and the processing of various land use permits.</p>
+			</ul> <!-- end float right -->
+		</nav>
+		<p id="subtitle">Serving The Bay Area For More Than 40 Years</p>
+		<div id="cycler">
+			<img class="rotating-item" src="img/jumbo/mtD_sepia.jpg" alt="Mount Diablo">
+			<img class="rotating-item" src="img/jumbo/mtD_bw.jpg" alt="Mount Diablo">
+			<img class="rotating-item" src="img/jumbo/mtD_color.jpg" alt="Mount Diablo">
+		</div> <!-- end of image cycler -->
+		<div class="imagePlaceHolder">
+			<img src="img/jumbo/mtD_sepia.jpg" alt="Mount Diablo"><!-- hidden after inital page load -->
 		</div>
-		<div class="col-sm-4">
-			<h2>Land Surveying</h2>
-			<p>Independent surveying associated with industrial work, precise horizontal and vertical alignment, boundary and topographic work and expert witness services.</p>
+		<div class="blurbContainer">
+			<div class="frontPageBlurb">
+				<h2>Construction Staking</h2>
+				<p>Simple boundary surveys for property line fences, additions and landscape improvements, to the design of major subdivisions, grading and drainage plans for single family homes, and the processing of various land use permits.</p>
+			</div>
+			<div class="frontPageBlurb">
+				<h2>Land Surveying</h2>
+				<p>Independent surveying associated with industrial work, precise horizontal and vertical alignment, boundary and topographic work and expert witness services.</p>
+			</div>
+			<div class="frontPageBlurb">
+				<h2>Civil Engineering</h2>
+				<p>As Civil Engineers and Land Surveyors, we are diverse in many practices of land development including hydrology and hydraulic work, grading paving and drainage, street design and all other types of public works projects.</p>
+			</div>
+		</div> <!-- end of description -->
+		<div id="whoWeAre">
+			<p>The Humann Company provides Civil Engineering, Surveying and Land Planning services throughout the San Francisco Bay Area and has been in business for more than 40 years.</p>
 		</div>
-		<div class="col-sm-4">
-			<h2>Civil Engineering</h2>
-			<p>As Civil Engineers and Land Surveyors, we are diverse in many practices of land development including hydrology and hydraulic work, grading paving and drainage, street design and all other types of public works projects.</p>
-		</div>
-	</div>
+	</div> <!-- end of page content -->
 </body>
     <script type="text/javascript">
-      ['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/app.js'].forEach(function(src) {
+      ['js/jquery-1.11.3.min.js', 'js/app.js'].forEach(function(src) {
         var script = document.createElement('script');
         script.src = src;
         script.async = false;
