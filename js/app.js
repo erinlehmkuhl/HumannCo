@@ -15,7 +15,7 @@ var cycleImages = function(){
 		var currentItem = 0;
 
 		//show first item
-		$('.rotating-item').eq(currentItem).fadeIn(initialFadeIn);
+		$('.rotating-item').eq(currentItem).show();
 
 		//loop through the items		
 		var infiniteLoop = setInterval(function(){
@@ -31,4 +31,12 @@ var cycleImages = function(){
 		}, itemInterval);	
 	};
 cycleImages();
-	
+
+
+//jumbotron gray box set size on load and winodw resize
+$(document).ready(function() {
+  $('#jumbotron-text-box').css('height', $('.rotating-item').height());
+});
+$(window).resize(function() {
+	$('#jumbotron-text-box').css('height', $('.rotating-item').height());
+})

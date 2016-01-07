@@ -2,49 +2,17 @@ body {
 	font-family: 'Brawler', serif;
 }
 
-.navbar {
-	background-color: #003b5d;
-	display: inline-block;
-	width: 100%;
-}
-
-.navbar a, ul, li {
-	display: inline-block;
-	padding: 0px 10px 0px 10px;
-}
-
-.navbar img {
-	max-height: 50px;
-}
-
-.left {
-	float: left;
-	margin: 0;
-}
-
-.right {
-	float: right;
-}
-
-#contentContainer {
-	overflow: hidden;
-}
-
-a{
-	color: white;
-	text-decoration: none;
-}
-
 h3 {
 	color: white;
-	margin: 0 0 0 0;
-	margin-bottom: -14px;
-    line-height: 53px;
 }
 
-#subtitle {
-	font-size: 11px;
-	text-align: center;
+#header-navbar-collapse, .navbar-header {
+	background-color: #1a2936;
+}
+
+.navbar-brand img {
+	height: 50px;
+	margin-top: -15px;
 }
 
 #cycler {
@@ -58,30 +26,7 @@ h3 {
 	position: absolute;
 }
 
-.imagePlaceHolder {
-	width: 100%;
-	height: auto;
-	display: hidden;
-}
-
-.blurbContainer{
-	position: relative;
-	display: flex;	
-	justify-content: space-between;
-}
-
-.frontPageBlurb {
-	max-width: 30%;
-	margin: 15px;
-}
-
-#whoWeAre{
-	border-style: solid;
-	border-color: black;
-	border-width: 2px;
-	border-radius: 7px;
-}
-
-#whoWeAre p {
-	margin: 4px;
+#jumbotron-text-box {
+	background-color: #3b3939;
+	border-right:solid 15px white;
 }
