@@ -1,9 +1,47 @@
-body {
-	font-family: 'Brawler', serif;
+/** {
+	border: solid 1px red;
+}*/
+
+.navbar {
+	border-color: white;
+	margin-bottom: -1px;
 }
 
-h3 {
+body {
+	/*font-family: 'Brawler', serif;*/
+	/*font-family: Helvetica;*/
+	font-family: Georgia;
+}
+
+button {
+	font-family: Helvetica;
+}
+
+p {
+	font-size: 1.2em;
+}
+
+.add-padding-left {
+	padding-left: 15px;
+}
+
+.kill-padding-left {
+	margin-left: -15px;
+}
+
+#jumbotron-text-box h3 {
+	line-height: 1.5em;
+	font-size: 2.5em;
 	color: white;
+}
+ .thumb-description {
+ 	font-size: 12px;
+ }
+
+#header-title {
+	color: white;
+	font-size: 17px;
+	padding-left: 0px;
 }
 
 #header-navbar-collapse, .navbar-header {
@@ -19,9 +57,10 @@ h3 {
 	position: relative;
 	width: 100%;
 	height: auto;
+	background-image: url("img/BobDesk_sepia.jpg");
 }
 
-.rotating-item {
+.rotating-item, #img-placeholder {
 	display: none;
 	position: absolute;
 }
@@ -29,4 +68,23 @@ h3 {
 #jumbotron-text-box {
 	background-color: #3b3939;
 	border-right:solid 15px white;
+}
+
+.kill-padding-right {
+	padding-right: 0px;
+	border-right: 0px;
+}
+
+.sidebar, .sidebar-nub {
+	color: white;
+	background-color: #375773;
+	border-style: none;
+	/*padding: 1em 0 1em 0;*/
+	margin: 0.5em 0 0.5em 0;
+	width: 79%;
+	font-size: 2em;
+}
+
+.sidebar-nub {
+	width: 19%;
 }

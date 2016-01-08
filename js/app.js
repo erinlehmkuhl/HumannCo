@@ -3,7 +3,7 @@ var cycleImages = function(){
 		var initialFadeIn = 0;
 		
 		//interval between items (in milliseconds)
-		var itemInterval = 10000;
+		var itemInterval = 5000;
 		
 		//cross-fade time (in milliseconds)
 		var fadeTime = itemInterval/2;
@@ -15,7 +15,7 @@ var cycleImages = function(){
 		var currentItem = 0;
 
 		//show first item
-		$('.rotating-item').eq(currentItem).show();
+		$('#img-placeholder').show();
 
 		//loop through the items		
 		var infiniteLoop = setInterval(function(){
