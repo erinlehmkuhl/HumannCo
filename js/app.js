@@ -3,7 +3,7 @@ var cycleImages = function(){
 		var initialFadeIn = 0;
 		
 		//interval between items (in milliseconds)
-		var itemInterval = 5000;
+		var itemInterval = 8000;
 		
 		//cross-fade time (in milliseconds)
 		var fadeTime = itemInterval/2;
@@ -39,4 +39,4 @@ $(document).ready(function() {
 });
 $(window).resize(function() {
 	$('#jumbotron-text-box').css('height', $('.rotating-item').height());
-})
+});
