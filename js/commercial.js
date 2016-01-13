@@ -10,24 +10,23 @@ var mapMarkers = {
 		{"name": "Concord Naval Weapon Station", "center": {"lat": 38.010403, "lng": -121.982449}},
 		{"name": "Alcatraz Island", "center": {"lat": 37.827257, "lng": -122.422945}}
 
-	]//,
-	// "mapSchools": [
-	// 	{"name": "Contra Costa County Office of Education", "center": {"lat": 37.935035, "lng": -122.069851}},
-	// 	{"name": "Santa Clara Unified School District", "center": {"lat": 37.357310, "lng": -121.995466}},
-	// 	{"name": "Stanley Middle School", "center": {"lat": 37.887376, "lng": -122.113522}}
-	// ],
-	// "mapChurches": [
-	// 	{"name": "St. Andrew Catholic Church", "center": {"lat": 37.676661, "lng": -122.473898}},
-	// 	{"name": "Guru Granth Sahib Foundation", "center": {"lat": 37.679680, "lng": -122.065493}},
-	// 	{"name": "St. Mina Coptic Church", "center": {"lat": 37.970601, "lng": -122.012505}}
-	// ]
+	],
+	"mapSchools": [
+		{"name": "Contra Costa County Office of Education", "center": {"lat": 37.935035, "lng": -122.069851}},
+		{"name": "Santa Clara Unified School District", "center": {"lat": 37.357310, "lng": -121.995466}},
+		{"name": "Stanley Middle School", "center": {"lat": 37.887376, "lng": -122.113522}}
+	],
+	"mapChurches": [
+		{"name": "St. Andrew Catholic Church", "center": {"lat": 37.676661, "lng": -122.473898}},
+		{"name": "Guru Granth Sahib Foundation", "center": {"lat": 37.679680, "lng": -122.065493}},
+		{"name": "St. Mina Coptic Church", "center": {"lat": 37.970601, "lng": -122.012505}}
+	]
 };
 
 var mapData = {
 	"options": {
 	    "center": {"lat": 37.75, "lng": -122.34},
 	    "zoom": 10,
-	    // "mapTypeId": google.maps.MapTypeId.STREET,//google is not defined yet so this fails
 	}
 }
 
@@ -64,6 +63,7 @@ var initMap = function() {
 			var lat = mapMarkers[this.cat[i]][j].center.lat;
 			var lng =  mapMarkers[this.cat[i]][j].center.lng;
 
+			//add markers
 			var marker = new google.maps.Marker({
 				position: center,
 				map: map,
@@ -84,7 +84,7 @@ var initMap = function() {
 					content: this.title
 	  			});
 
-	  			infowindow.open(map, this);
+	  			infowindow.open(this.map, this);
 				});
 			
 			bounds.extend(new google.maps.LatLng(lat, lng));
