@@ -1,5 +1,6 @@
 var pageAbout= function() {
 
+//TO DO: change photos in jumbotron 
 
 	var aboutBlurb = 
 	"Founded in 1967 by the late Robert C. Humann, the company has invaluable experience " +
