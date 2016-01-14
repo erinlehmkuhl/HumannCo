@@ -7,7 +7,7 @@
 	<!-- <link href='https://fonts.googleapis.com/css?family=Brawler' rel='stylesheet' type='text/css'> -->
 	<link rel="icon" href="img/favicon.ico">
 	<title>Humann Company</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link href= "css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
 
 	<!-- HTML5 shim for IE8 support of HTML5 elements and media queries -->
@@ -77,138 +77,55 @@
 			</div>
 			<div class="row vertical-spacer-5"></div>
 			
-
-
+			<!-- START PUBLIC WORKS -->
 			<div class="row">
-				<div class="col-sm-8">
+				<div class="col-sm-8" id="publicWorksHeader"> <!--append thumbnails here-->
 					<h4>PUBLIC WORKS</h4>
-					<!-- ###### thumbnails ###### -->
-					<div class="col-sm-4">
-						<div class="thumbnail">
-							<img src="img/HumanCoImages/pastProjects/chabot.jpg" alt="Chabot Space and Science">
-							<div class="caption">
-								<h3>Chabot Space and Science Center</h3>
-								<p class="thumb-description">Aerial survey and contruction staking</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="thumbnail">
-							<img src="img/HumanCoImages/pastProjects/navalWeapons.jpg" alt="Concord Naval Weapons Depot">
-							<div class="caption">
-								<h3>Naval Weapons Station</h3>
-								<p class="thumb-description">Aerial survey and contruction staking</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="thumbnail">
-							<img src="img/HumanCoImages/pastProjects/alcatraz.jpg" alt="Alcatraz Island">
-							<div class="caption">
-								<h3>Alcatraz Island</h3>
-								<p class="thumb-description">Aerial survey and contruction staking</p>
-							</div>
-						</div>
-					</div>
-				</div> <!--end of col-sm-8-->
-				<map class="col-sm-4 mapThumbnails" id="mapPublicWorks"></map>
-			</div><!--end of main row-->
-			<div class="row">
-				<button>show more</button>
+				</div> 
+				<map class="col-sm-4 mapThumbnails" id="mapPublicWorks"></map><!--append map here-->
 			</div>
-<!-- END OF PUBLIC WORKS -->
+			<div class="row">
+				<button  id="publicWorks" onClick="moreButton(this.id)" type="button" data-toggle="collapse" data-target="#publicWorksShowMore">show more</button>
+				<div id="publicWorksShowMore" class="collapse"></div> <!--toggles for page expansion-->
+			</div>
+			<!-- END OF PUBLIC WORKS -->
 			<hr>
 			<div class="row">
-				<div class="col-sm-8">
+				<div class="col-sm-8" id="schoolsHeader"><!--append thumbnails here-->
 					<h4>SCHOOLS</h4>
-					<!-- ###### thumbnails ###### -->
-					<div class="col-sm-4">
-						<div class="thumbnail">
-							<img src="img/HumanCoImages/pastProjects/chabot.jpg" alt="Chabot Space and Science">
-							<div class="caption">
-								<h3>Chabot Space and Science Center</h3>
-								<p class="thumb-description">Aerial survey and contruction staking</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="thumbnail">
-							<img src="img/HumanCoImages/pastProjects/navalWeapons.jpg" alt="Concord Naval Weapons Depot">
-							<div class="caption">
-								<h3>Naval Weapons Station</h3>
-								<p class="thumb-description">Aerial survey and contruction staking</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="thumbnail">
-							<img src="img/HumanCoImages/pastProjects/alcatraz.jpg" alt="Alcatraz Island">
-							<div class="caption">
-								<h3>Alcatraz Island</h3>
-								<p class="thumb-description">Aerial survey and contruction staking</p>
-							</div>
-						</div>
-					</div>
-				</div> <!--end of col-sm-8-->
-				<map class="col-sm-4 mapThumbnails" id="mapSchools"></map>
-			</div><!--end of main row-->
-			<div class="row">
-				<button>show more</button>
+				</div> 
+				<map class="col-sm-4 mapThumbnails" id="mapSchools"></map><!--append map here-->
 			</div>
-<!-- END OF SCHOOLS -->
+			<div class="row">
+				<button  id="school" onClick="moreButton(this.id)" type="button" data-toggle="collapse" data-target="#schoolsShowMore">show more</button>
+				<div id="schoolsShowMore" class="collapse"></div> <!--toggles for page expansion-->
+			</div>
+			<!-- END OF SCHOOLS -->
 			<hr>
 			<div class="row">
-				<div class="col-sm-8">
+				<div class="col-sm-8" id="churchesHeader"><!--append thumbnails here-->
 					<h4>CHURCHES</h4>
-					<!-- ###### thumbnails ###### -->
-					<div class="col-sm-4">
-						<div class="thumbnail">
-							<img src="img/HumanCoImages/pastProjects/chabot.jpg" alt="Chabot Space and Science">
-							<div class="caption">
-								<h3>Chabot Space and Science Center</h3>
-								<p class="thumb-description">Aerial survey and contruction staking</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="thumbnail">
-							<img src="img/HumanCoImages/pastProjects/navalWeapons.jpg" alt="Concord Naval Weapons Depot">
-							<div class="caption">
-								<h3>Naval Weapons Station</h3>
-								<p class="thumb-description">Aerial survey and contruction staking</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="thumbnail">
-							<img src="img/HumanCoImages/pastProjects/alcatraz.jpg" alt="Alcatraz Island">
-							<div class="caption">
-								<h3>Alcatraz Island</h3>
-								<p class="thumb-description">Aerial survey and contruction staking</p>
-							</div>
-						</div>
-					</div>
-				</div> <!--end of col-sm-8-->
-				<map class="col-sm-4 mapThumbnails" id="mapChurches"></map>
-			</div><!--end of main row-->
-			<div class="row">
-				<button>show more</button>
+				</div> 
+				<map class="col-sm-4 mapThumbnails" id="mapChurches"></map><!--append map here-->
 			</div>
+			<div class="row">
+				<button id="church" onClick="moreButton(this.id)" type="button" data-toggle="collapse" data-target="#churchesShowMore">show more</button>
+				<div id="churchesShowMore" class="collapse">
+				</div> <!--toggles for page expansion-->
+			</div>
+			<!-- END OF CHURCHES -->
 
 		</div> <!-- end content container-fluid-->
 	
 
-
-
 	<!-- end of page content -->
 	</body>
 	<script type="text/javascript">
-      ['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/commercial.js', 'js/app.js', 'js/about.js', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAucewqqCJbfuv9rN-85riB-u0BgnFrjiM&callback=initMap'].forEach(function(src) {
+      ['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/commercial.js', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAucewqqCJbfuv9rN-85riB-u0BgnFrjiM&callback=initPage'].forEach(function(src) {
         var script = document.createElement('script');
         script.src = src;
         script.async = false;
         document.head.appendChild(script);
       });
       </script>
-      <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAucewqqCJbfuv9rN-85riB-u0BgnFrjiM&callback=initMap"></script>-->
 </html>
