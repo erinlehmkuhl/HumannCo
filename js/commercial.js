@@ -217,42 +217,43 @@ var makeThumbnail = function(attachmentPointList, numPerHeading, clickInfo) {
 		}
 	}
 };
-var moreButton = function(clicked_id) {//id of button (section heading) being sent from DOM when clicked
-	//var j = numInShowcase; //so the first three don't repeat - used in makeThumbnail()
 
+var moreButton = function(clicked_id) {//id of button (section heading) being sent from DOM when clicked
 	var attachmentPointList = ["publicWorksShowMore", "schoolsShowMore", "churchesShowMore"];
 	var numPerHeading = Math.min(mapMarkers.publicWorks.length, mapMarkers.schools.length, mapMarkers.churches.length);
 	var clickTrue = true;
-
+	
 	//force attachmentPointList to work like an array
-	if (attachmentPointList[0].indexOf(clicked_id) > -1) {
+
+	if (attachmentPointList[0].indexOf(clicked_id) > -1) {//if what is clicked has 'publicWorks' in it
 		attachmentPointList = ["publicWorksShowMore", null, null];
 		if ($("#publicWorks").text() == "show more") {
+			makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
 			$("#publicWorks").text("show less");
 		} else {
 			$("#publicWorks").text('show more');
+			$("#publicWorksShowMore").children().remove();
 		}
-	} else if (attachmentPointList[1].indexOf(clicked_id) > -1) {
+	} else if (attachmentPointList[1].indexOf(clicked_id) > -1) {//if what is clicked has 'school' in it
 		attachmentPointList = [null, "schoolsShowMore", null];
 		if ($("#school").text() == "show more") {
+			makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
 			$("#school").text("show less");
 		} else {
 			$("#school").text('show more');
+			$("#schoolsShowMore").children().remove();
 		}
-	} else if (attachmentPointList[2].indexOf(clicked_id) > -1) {
+	} else if (attachmentPointList[2].indexOf(clicked_id) > -1) {//if what is clicked has 'church' in it
 		attachmentPointList = [null, null, "churchesShowMore"];
 		if ($("#church").text() == "show more") {
+			makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
 			$("#church").text("show less");
+// doesn't work because it doesnt see that there is more window to traverse
+			// var curHeight = $(window).scrollTop();
+			// window.scroll(0, curHeight+15);
 		} else {
 			$("#church").text('show more');
+			$("#churchesShowMore").children().remove();
 		}
 	}
-
-
-	
-	makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
-	//TODO: if church button- scroll to bottom
-	//TODO: make see more button only create one set of thumbnails.
 };
-
-

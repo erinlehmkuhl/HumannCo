@@ -9,3 +9,18 @@ var nav = content.querySelector('nav');
 var insertNavbarHere = document.getElementById("insertNavbarHere");
 
 insertNavbarHere.appendChild(nav.cloneNode(true));
+
+
+
+var scrollToPublicWorks = function() {
+	alert("need to write a scroll function")
+};
+
+var scrollToSchools = function() {
+	alert("need to write a scroll function")
+};
+
+var scrollToChurches = function() {
+	alert("need to write a scroll function")
+};
+
