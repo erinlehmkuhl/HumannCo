@@ -7,12 +7,12 @@ var mapMarkers = {
 	"publicWorks": [
 		{"name": "Kensington Fire Station", 
 		"center": {"lat": 37.908644, "lng": -122.278051}, 
-		"img": "img/HumanCoImages/pastProjects/chabot.jpg",
+		"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "Lafayette Chamber of Commerce", 
 		"center": {"lat": 37.890238, "lng": -122.121103}, 
-		"img": "img/HumanCoImages/pastProjects/chabot.jpg",
+		"img": "img/HumanCoImages/pastProjects/alcatraz.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "Chabot Space and Science Center", 
@@ -22,45 +22,55 @@ var mapMarkers = {
 		
 		{"name": "Concord Naval Weapon Station", 
 		"center": {"lat": 38.010403, "lng": -121.982449}, 
-		"img": "img/HumanCoImages/pastProjects/chabot.jpg",
+		"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "Alcatraz Island", 
 		"center": {"lat": 37.827257, "lng": -122.422945}, 
-		"img": "img/HumanCoImages/pastProjects/chabot.jpg",
+		"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
 		"blurb": "description of work done at this site"}
 
 	],
 	"schools": [
 		{"name": "Contra Costa County Office of Education", 
 		"center": {"lat": 37.935035, "lng": -122.069851}, 
-		"img": "img/HumanCoImages/pastProjects/chabot.jpg",
+		"img": "img/HumanCoImages/pastProjects/stanley.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "Santa Clara Unified School District", 
 		"center": {"lat": 37.357310, "lng": -121.995466}, 
-		"img": "img/HumanCoImages/pastProjects/chabot.jpg",
+		"img": "img/HumanCoImages/pastProjects/santaClara.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "Stanley Middle School", 
 		"center": {"lat": 37.887376, "lng": -122.113522}, 
-		"img": "img/HumanCoImages/pastProjects/chabot.jpg",
+		"img": "img/HumanCoImages/pastProjects/stanley.jpg",
+		"blurb": "description of work done at this site"},
+
+		{"name": "Happy Valley School", 
+		"center": {"lat": 37.904952, "lng": -122.142410}, 
+		"img": "img/HumanCoImages/pastProjects/happyValley.jpg",
 		"blurb": "description of work done at this site"}
 	],
 	"churches": [
 		{"name": "St. Andrew Catholic Church", 
 		"center": {"lat": 37.676661, "lng": -122.473898}, 
-		"img": "img/HumanCoImages/pastProjects/chabot.jpg",
+		"img": "img/HumanCoImages/pastProjects/stAndrews.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "Guru Granth Sahib Foundation", 
 		"center": {"lat": 37.679680, "lng": -122.065493}, 
-		"img": "img/HumanCoImages/pastProjects/chabot.jpg",
+		"img": "img/HumanCoImages/pastProjects/guruGranth.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "St. Mina Coptic Church", 
 		"center": {"lat": 37.970601, "lng": -122.012505}, 
-		"img": "img/HumanCoImages/pastProjects/chabot.jpg",
+		"img": "img/HumanCoImages/pastProjects/LOPC.jpg",
+		"blurb": "description of work done at this site"},
+
+		{"name": "St John Vianney Catholic Church", 
+		"center": {"lat": 37.919448, "lng": -122.043034}, 
+		"img": "img/HumanCoImages/pastProjects/stAndrews.jpg",
 		"blurb": "description of work done at this site"}
 	]
 };
@@ -153,9 +163,17 @@ var getCategories = function() {
 
 //attachmentPointList: array of 3 jquery #id objects. use null to skip a section. order: publicWorks, School, Church
 //numPerHeading: integer will do (number of thumbnails per section)
-var makeThumbnail = function(attachmentPointList, numPerHeading) {
+//clickInfo: send "true" if this function was called from a click
+var makeThumbnail = function(attachmentPointList, numPerHeading, clickInfo) {
+
+
 	for (var i = 0; i < attachmentPointList.length; i++) {//# of section headings
-		for (var j = 0; j < numPerHeading; j++) {//# of thumbnails per section
+		if (clickInfo) {
+			var j = initSettings.numInShowcase;//used to stop the repeating when 'more' button is pushed
+		}else{
+			var j = 0;
+		}
+		for (j; j < numPerHeading; j++) {//# of thumbnails per section
 			//create elements for generic thumbnail
 			var divTop = document.createElement("DIV");
 			divTop.classList.add("col-sm-4");
@@ -200,21 +218,41 @@ var makeThumbnail = function(attachmentPointList, numPerHeading) {
 	}
 };
 var moreButton = function(clicked_id) {//id of button (section heading) being sent from DOM when clicked
+	//var j = numInShowcase; //so the first three don't repeat - used in makeThumbnail()
+
 	var attachmentPointList = ["publicWorksShowMore", "schoolsShowMore", "churchesShowMore"];
 	var numPerHeading = Math.min(mapMarkers.publicWorks.length, mapMarkers.schools.length, mapMarkers.churches.length);
+	var clickTrue = true;
 
+	//force attachmentPointList to work like an array
 	if (attachmentPointList[0].indexOf(clicked_id) > -1) {
 		attachmentPointList = ["publicWorksShowMore", null, null];
+		if ($("#publicWorks").text() == "show more") {
+			$("#publicWorks").text("show less");
+		} else {
+			$("#publicWorks").text('show more');
+		}
 	} else if (attachmentPointList[1].indexOf(clicked_id) > -1) {
 		attachmentPointList = [null, "schoolsShowMore", null];
+		if ($("#school").text() == "show more") {
+			$("#school").text("show less");
+		} else {
+			$("#school").text('show more');
+		}
 	} else if (attachmentPointList[2].indexOf(clicked_id) > -1) {
 		attachmentPointList = [null, null, "churchesShowMore"];
+		if ($("#church").text() == "show more") {
+			$("#church").text("show less");
+		} else {
+			$("#church").text('show more');
+		}
 	}
 
+
 	
-	makeThumbnail(attachmentPointList, numPerHeading);
-	//TODO: toggle button showMore / showLess
-	//TODO: eliminate first three of JSON so we dont repeat
+	makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
 	//TODO: if church button- scroll to bottom
+	//TODO: make see more button only create one set of thumbnails.
 };
+
 

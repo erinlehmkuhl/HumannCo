@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<link rel="import" href="navbar.html">
+	</head>
+	<body>
+		<!-- ###### navbar inserted here from navbar.js & navbar.html ###### -->
+		<div id="insertNavbarHere"></div>
+
+		<!-- ###### jumbotron ###### -->
+		<div id="mainPageStart" class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-5 cycler">
+					<img class="img-responsive" id="img-placeholder" src="img/BobDesk_sepia.jpg" alt="Surveyor at work">
+					<img class="rotating-item img-responsive" src="img/BobDesk_sepia.jpg" alt="Surveyor at work in sepia">
+					<img class="rotating-item img-responsive" src="img/BobDesk_bw.jpg" alt="Surveyor at work in black and white">
+					<img class="rotating-item img-responsive" src="img/BobDesk_color.jpg" alt="Surveyor at work in color">
+					
+				</div>
+				<div class="hidden-xs col-sm-7" id="jumbotron-text-box">
+					<h3>serving the bay area<br>for over<br>forty years</h3>
+				</div>
+			</div> 
+
+			<!-- ###### content ###### -->
+			<div id="contentArea" class="row">
+				<h3 id="contentHeader" class="add-padding-left">ABOUT US</h3>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<p id="contentText" class="add-padding-left">Founded in 1967 by the late Robert C. Humann, the company has invaluable experience with a wide range of projects and has enjoyed a reputation of uncompromising service. The Firm is supported by a staff of highly trained and professionally licensed professionals who make use of an array of state-of-the art equipment and technology. Each job is treated with respect and commitment set forth by the founder many years ago.</p>
+					
+					<hr>
+					<!-- ###### thumbnails ###### -->
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-sm-2'>
+					<img style='width: 100px' src='img/HumanCoImages/headshots/frank.jpg' alt='Rick Humann' class='img-circle'>	
+					<h4>Rick Humann</h4>
+				</div>
+				<div class='col-sm-4'>
+					<p>This person is so great at coming to work and doing stuff. They also are super good at hearts, but not as good as Izzat.</p>
+				</div>
+				<div class='col-sm-2'>
+					<img style='width: 100px' src='img/HumanCoImages/headshots/dean.jpg' alt='Izzat Nashashibi' class='img-circle'>	
+					<h4>Izzat Nashashibi</h4>
+				</div>
+				<div class='col-sm-4'>
+					<p>This person is so great at coming to work and doing stuff. They also are super good at hearts, but not as good as Izzat.</p>
+				</div>
+			</div>
+			<hr>
+			<div class='row'>
+				<div class='col-sm-2'>
+					<img style='width: 100px' src='img/HumanCoImages/headshots/sammy.jpg' alt='May Munar' class='img-circle'>	
+					<h4>May Munar</h4>
+				</div>
+				<div class='col-sm-4'>
+					<p>This person is so great at coming to work and doing stuff. They also are super good at hearts, but not as good as Izzat.</p>
+				</div>
+				<div class='col-sm-2'>
+					<img style='width: 100px' src='img/HumanCoImages/headshots/peter.jpg' alt='Another Guy' class='img-circle'>	
+					<h4>Another Guy</h4>
+				</div>
+				<div class='col-sm-4'>
+					<p>This person is so great at coming to work and doing stuff. They also are super good at hearts, but not as good as Izzat.</p>
+				</div>
+			</div>
+
+		</div>
+
+
+	<!-- end of page content -->
+	</body>
+
+
+	<script type="text/javascript">
+      ['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/jumbotron.js', 'js/importNavbar.js'].forEach(function(src) {
+        var script = document.createElement('script');
+        script.src = src;
+        script.async = false;
+        document.head.appendChild(script);
+      });
+    </script>
+</html>
