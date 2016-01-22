@@ -226,30 +226,30 @@ addEventListener('click', function (ev) {
 	var clicked_id;
 	var moreButtonPushed = false;
 
-	// for (var i = 0; i < attachmentPointList; i++) {
+	//format the incoming information so it can be compared to the attachmentPointList
+    if (ev.target.classList.contains("portfolioButtons")) {
+		//log what button pushed it -- so you know where to attach the thumbnails
+        clicked_id = ev.target.text;
+        clicked_id = clicked_id.split(" ").join("");
+        clicked_id = clicked_id.toLowerCase();
 
-	    if (ev.target.classList.contains("portfolioButtons")) {
-			//log what button pushed it -- so you know where to attach the thumbnails
-	        clicked_id = ev.target.text;
-	        clicked_id = clicked_id.split(" ").join("");
-	        clicked_id = clicked_id.toLowerCase();
+	} else if (ev.target.classList.contains("moreButtons")){
+		clicked_id = ev.target.id;
+		clicked_id = clicked_id.toLowerCase();
+		moreButtonPushed = true;
+	}
 
-		} else if (ev.target.classList.contains("moreButtons")){
-			clicked_id = ev.target.id;
-			clicked_id = clicked_id.toLowerCase();
-			moreButtonPushed = true;
-		}
-
+	//cycle through each heading to find which one got clicked
+	//for (var i = 0; i < attachmentPointList; i++) {
 		//if what is clicked has 'publicWorks' in it
 		if (attachmentPointList[0].toLowerCase().indexOf(clicked_id) > -1) {
 			//make an array with the button name and two nulls to feed to makeThumbnail()
-			attachmentPointList = ["publicWorksShowMore", null, null];
+			attachmentPointList = [attachmentPointList[0], null, null];
 			//re-direct to page and scroll to bookmark
 			window.location.assign("commercial.html#publicWorksHeader");
 
 			//***IF the MORE button says MORE***
 			if ($("#publicWorks").text() == "show more") {
-				alert("button says show more");
 				//load thumbnails
 				makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
 				$("#publicWorks").text("show less");
@@ -262,7 +262,6 @@ addEventListener('click', function (ev) {
 
 			//***ELSE the MORE button says LESS***
 			} else if ($("#publicWorks").text() == "show less"){
-				alert("button says show less");
 				//change the button to say 'show more'
 				$("#publicWorks").text("show more");
 				//clear everything below
@@ -275,7 +274,7 @@ addEventListener('click', function (ev) {
 				}
 			}
 		}
-	// }
+	//}
 });
 	
 
