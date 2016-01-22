@@ -163,13 +163,13 @@ var getCategories = function() {
 
 //attachmentPointList: array of 3 jquery #id objects. use null to skip a section. order: publicWorks, School, Church
 //numPerHeading: integer will do (number of thumbnails per section)
-//clickInfo: send "true" if this function was called from a click
+//clickInfo: send "true" if this function was called from a click (instead of initial page load)
 var makeThumbnail = function(attachmentPointList, numPerHeading, clickInfo) {
-
-
 	for (var i = 0; i < attachmentPointList.length; i++) {//# of section headings
 		if (clickInfo) {
-			var j = initSettings.numInShowcase;//used to stop the repeating when 'more' button is pushed
+			//if thumbnails are created through button pushing, don't re-create the first three thumbnails 
+			//because they already exist. start the cycle beyond 0. use numInShowcase
+			var j = initSettings.numInShowcase;
 		}else{
 			var j = 0;
 		}
@@ -218,42 +218,156 @@ var makeThumbnail = function(attachmentPointList, numPerHeading, clickInfo) {
 	}
 };
 
-var moreButton = function(clicked_id) {//id of button (section heading) being sent from DOM when clicked
+addEventListener('click', function (ev) {
+    //variables to pass to makeThumbnail()
 	var attachmentPointList = ["publicWorksShowMore", "schoolsShowMore", "churchesShowMore"];
 	var numPerHeading = Math.min(mapMarkers.publicWorks.length, mapMarkers.schools.length, mapMarkers.churches.length);
 	var clickTrue = true;
-	
-	//force attachmentPointList to work like an array
+	var clicked_id;
+	var moreButtonPushed = false;
 
-	if (attachmentPointList[0].indexOf(clicked_id) > -1) {//if what is clicked has 'publicWorks' in it
-		attachmentPointList = ["publicWorksShowMore", null, null];
-		if ($("#publicWorks").text() == "show more") {
-			makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
-			$("#publicWorks").text("show less");
-		} else {
-			$("#publicWorks").text('show more');
-			$("#publicWorksShowMore").children().remove();
+	// for (var i = 0; i < attachmentPointList; i++) {
+		
+	    if (ev.target.classList.contains("portfolioButtons")) {
+			//log what button pushed it -- so you know where to attach the thumbnails
+	        clicked_id = ev.target.text;
+	        clicked_id = clicked_id.split(" ").join("");
+	        clicked_id = clicked_id.toLowerCase();
+
+		} else if (ev.target.classList.contains("moreButtons")){
+			clicked_id = ev.target.id;
+			clicked_id = clicked_id.toLowerCase();
+			moreButtonPushed = true;
 		}
-	} else if (attachmentPointList[1].indexOf(clicked_id) > -1) {//if what is clicked has 'school' in it
-		attachmentPointList = [null, "schoolsShowMore", null];
-		if ($("#school").text() == "show more") {
-			makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
-			$("#school").text("show less");
-		} else {
-			$("#school").text('show more');
-			$("#schoolsShowMore").children().remove();
+
+		//make an array with the button name and two nulls to feed to makeThumbnail()
+		if (attachmentPointList[0].toLowerCase().indexOf(clicked_id) > -1) {//if what is clicked has 'publicWorks' in it
+			attachmentPointList = ["publicWorksShowMore", null, null];
+
+			//***IF the MORE button says MORE***
+			if ($("#publicWorks").text() == "show more") {
+				//re-direct to page and scroll to bookmark
+				window.location.assign("commercial.html#publicWorksHeader");
+				//load thumbnails
+					makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
+					$("#publicWorks").text("show less");
+
+				//if the actual MORE button wasn't physically pushed
+				if (!$("#publicWorksShowMore").hasClass("in") && moreButtonPushed === false){
+					//toggle bootstrap 'collapse' class so the thumbnails show up
+					$(".publicWorksCollapse").collapse("toggle");
+				}
+
+			//***ELSE the MORE button says LESS***
+			} else if ($("#publicWorks").text() == "show less"){
+				//change the button to say 'show more'
+				$("#publicWorks").text("show more");
+				//clear everything below
+				$("#publicWorksShowMore").children().remove();
+
+				//if the MORE button wasn't physically pushed
+				if (moreButtonPushed === false) {
+					//toggle bootstrap's collaspse manually
+					$(".publicWorksCollapse").collapse("toggle");
+				}
+			}
 		}
-	} else if (attachmentPointList[2].indexOf(clicked_id) > -1) {//if what is clicked has 'church' in it
-		attachmentPointList = [null, null, "churchesShowMore"];
-		if ($("#church").text() == "show more") {
-			makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
-			$("#church").text("show less");
-// doesn't work because it doesnt see that there is more window to traverse
-			// var curHeight = $(window).scrollTop();
-			// window.scroll(0, curHeight+15);
-		} else {
-			$("#church").text('show more');
-			$("#churchesShowMore").children().remove();
-		}
-	}
-};
+	// }
+});
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//if the page is generated and the href forces a page scroll (portfolio buttons from other pages cause this),
+//assume the user wants to see the whole section and un-collapse the thumbnails
+// $( document ).ready(function() {
+// 	portfolioButton();
+// });
+
+// var portfolioButton = function() {
+// 	if (document.body.scrollTop < 718 && document.body.scrollTop > 5) {
+// 		moreButton("publicWorks");
+// 		$('.publicWorksCollapse').collapse('toggle');
+// 	}else if (document.body.scrollTop == 718) {
+// 		moreButton("schools");
+// 		$('.schoolsCollapse').collapse('toggle');
+// 	} else {
+// 		moreButton("churches");
+// 		$('.churchesCollapse').collapse('toggle');
+// 	}
+// };
+
+// var moreButton = function(clicked_id) {//id of button (section heading) being sent from DOM when clicked
+// 	var attachmentPointList = ["publicWorksShowMore", "schoolsShowMore", "churchesShowMore"];
+// 	var numPerHeading = Math.min(mapMarkers.publicWorks.length, mapMarkers.schools.length, mapMarkers.churches.length);
+// 	var clickTrue = true;
+// 	var pw = $("#publicWorks");
+// 	var sc = $("#schools");
+// 	var ch = $("#churches");
+	
+// 	//force attachmentPointList to work like an array
+// 	if (attachmentPointList[0].indexOf(clicked_id) > -1) {//if what is clicked has 'publicWorks' in it
+// 		attachmentPointList = ["publicWorksShowMore", null, null];
+// 		if (pw.text() == "show more") {
+// 			makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
+
+// 			// Get the number of pixels scrolled
+// 			var  intElemScrollTop = $("#publicWorksShowMore").scrollTop;
+// 			// Set the number of pixels scrolled
+// 			$("#publicWorksShowMore").scrollTop = intElemScrollTop;
+
+// 			pw.text("show less");
+// 		} else {
+// 			pw.text('show more');
+// 			$("#publicWorksShowMore").children().remove();
+// 		}
+// 	} else if (attachmentPointList[1].indexOf(clicked_id) > -1) {//if what is clicked has 'school' in it
+// 		attachmentPointList = [null, "schoolsShowMore", null];
+// 		if (sc.text() == "show more") {
+// 			makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
+
+// 			// Get the number of pixels scrolled
+// 			var  intElemScrollTop = document.getElementById("schoolsShowMore").clientHeight;
+// 			console.log(intElemScrollTop);
+// 			// Set the number of pixels scrolled
+// 			$("#schoolsShowMore").scrollTop = intElemScrollTop;
+
+// 			sc.text("show less");
+// 		} else {
+// 			sc.text('show more');
+// 			$("#schoolsShowMore").children().remove();
+// 		}
+// 	} else if (attachmentPointList[2].indexOf(clicked_id) > -1) {//if what is clicked has 'church' in it
+// 		attachmentPointList = [null, null, "churchesShowMore"];
+// 		if (ch.text() == "show more") {
+// 			makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
+
+// 			// Get the number of pixels scrolled
+// 			var  intElemScrollTop = $("#churchesShowMore").scrollTop;
+// 			// Set the number of pixels scrolled
+// 			$("#churchesShowMore").scrollTop = intElemScrollTop;
+
+// 			ch.text("show less");
+// 		} else {
+// 			ch.text('show more');
+// 			$("#churchesShowMore").children().remove();
+// 		}
+// 	}
+// };
