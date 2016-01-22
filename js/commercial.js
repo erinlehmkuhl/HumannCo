@@ -231,50 +231,51 @@ addEventListener('click', function (ev) {
 		//log what button pushed it -- so you know where to attach the thumbnails
         clicked_id = ev.target.text;
         clicked_id = clicked_id.split(" ").join("");
-        clicked_id = clicked_id.toLowerCase();
+        clicked_id = clicked_id.charAt(0).toLowerCase() + clicked_id.slice(1);
 
 	} else if (ev.target.classList.contains("moreButtons")){
 		clicked_id = ev.target.id;
-		clicked_id = clicked_id.toLowerCase();
 		moreButtonPushed = true;
 	}
 
 	//cycle through each heading to find which one got clicked
-	//for (var i = 0; i < attachmentPointList; i++) {
+	for (var i = 0; i < attachmentPointList.length; i++) {
 		//if what is clicked has 'publicWorks' in it
-		if (attachmentPointList[0].toLowerCase().indexOf(clicked_id) > -1) {
+		if (attachmentPointList[i].indexOf(clicked_id) > -1) {
 			//make an array with the button name and two nulls to feed to makeThumbnail()
-			attachmentPointList = [attachmentPointList[0], null, null];
+			attachmentPointList = [attachmentPointList[i], null, null];
 			//re-direct to page and scroll to bookmark
-			window.location.assign("commercial.html#publicWorksHeader");
+			window.location.assign("commercial.html#"+clicked_id+"Header");
 
 			//***IF the MORE button says MORE***
-			if ($("#publicWorks").text() == "show more") {
+			if ($("#"+clicked_id+"").text() == "show more") {
 				//load thumbnails
 				makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
-				$("#publicWorks").text("show less");
+				$("#"+clicked_id+"").text("show less");
 
 				//if the actual MORE button wasn't physically pushed
-				if (!$("#publicWorksShowMore").hasClass("in") && moreButtonPushed === false){
+				if (!$("#"+attachmentPointList[i]).hasClass("in") && moreButtonPushed === false){
 					//toggle bootstrap 'collapse' class so the thumbnails show up
-					$(".publicWorksCollapse").collapse("toggle");
+					$("."+clicked_id+"Collapse").collapse("toggle");
 				}
 
 			//***ELSE the MORE button says LESS***
-			} else if ($("#publicWorks").text() == "show less"){
+			} else if ($("#"+clicked_id+"").text() == "show less"){
 				//change the button to say 'show more'
-				$("#publicWorks").text("show more");
+				$("#"+clicked_id+"").text("show more");
 				//clear everything below
-				$("#publicWorksShowMore").children().remove();
+				$("#"+attachmentPointList[i]).children().remove();
 
 				//if the MORE button wasn't physically pushed
 				if (moreButtonPushed === false) {
 					//toggle bootstrap's collaspse manually
-					$(".publicWorksCollapse").collapse("toggle");
+					$("."+clicked_id+"Collapse").collapse("toggle");
 				}
 			}
+		}else {
+			console.log("not a match. cycle through rest of the headings to see if what was clicked matches one of them");
 		}
-	//}
+	}
 });
 	
 
@@ -285,9 +286,7 @@ addEventListener('click', function (ev) {
 
 
 
-var sendAlert = function() {
-	alert("pageLoaded");
-};
+
 
 
 
