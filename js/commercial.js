@@ -227,7 +227,7 @@ addEventListener('click', function (ev) {
 	var moreButtonPushed = false;
 
 	// for (var i = 0; i < attachmentPointList; i++) {
-		
+
 	    if (ev.target.classList.contains("portfolioButtons")) {
 			//log what button pushed it -- so you know where to attach the thumbnails
 	        clicked_id = ev.target.text;
@@ -240,17 +240,19 @@ addEventListener('click', function (ev) {
 			moreButtonPushed = true;
 		}
 
-		//make an array with the button name and two nulls to feed to makeThumbnail()
-		if (attachmentPointList[0].toLowerCase().indexOf(clicked_id) > -1) {//if what is clicked has 'publicWorks' in it
+		//if what is clicked has 'publicWorks' in it
+		if (attachmentPointList[0].toLowerCase().indexOf(clicked_id) > -1) {
+			//make an array with the button name and two nulls to feed to makeThumbnail()
 			attachmentPointList = ["publicWorksShowMore", null, null];
+			//re-direct to page and scroll to bookmark
+			window.location.assign("commercial.html#publicWorksHeader");
 
 			//***IF the MORE button says MORE***
 			if ($("#publicWorks").text() == "show more") {
-				//re-direct to page and scroll to bookmark
-				window.location.assign("commercial.html#publicWorksHeader");
+				alert("button says show more");
 				//load thumbnails
-					makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
-					$("#publicWorks").text("show less");
+				makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
+				$("#publicWorks").text("show less");
 
 				//if the actual MORE button wasn't physically pushed
 				if (!$("#publicWorksShowMore").hasClass("in") && moreButtonPushed === false){
@@ -260,6 +262,7 @@ addEventListener('click', function (ev) {
 
 			//***ELSE the MORE button says LESS***
 			} else if ($("#publicWorks").text() == "show less"){
+				alert("button says show less");
 				//change the button to say 'show more'
 				$("#publicWorks").text("show more");
 				//clear everything below
@@ -283,7 +286,9 @@ addEventListener('click', function (ev) {
 
 
 
-
+var sendAlert = function() {
+	alert("pageLoaded");
+};
 
 
 
