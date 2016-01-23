@@ -1,5 +1,5 @@
 var quiz = {
-	"surveys": [
+	"answers": [
 		{"name": "ALTA Survey", 
 		"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
 		"parent": 1},
@@ -33,13 +33,13 @@ var quiz = {
 		"parent": "description of work done at this site"}
 	], 
 	"questions": [
-		{1: "Is this the first survey on this property?",
+		{"question": "Is this the first survey on this property?",
 		"parent": 0}, 
-		{2: "Is the purpose of your survey for compliance with FEMA or the ADA?",
+		{"question": "Is the purpose of your survey for compliance with FEMA or the ADA?",
 		"parent": 1},
-		{3: "Is this a project that will require an architect or a designer?",
+		{"question": "Is this a project that will require an architect or a designer?",
 		"parent": 2},
-		{4: "Will you need a photogrammetric or topographic survey?",
+		{"question": "Will you need a photogrammetric or topographic survey?",
 		"parent": 3}
 	]
 };
@@ -67,9 +67,9 @@ var makeResidentialThumbnail = function(attachmentPoint, totalNum) {
 		divTop.appendChild(divThumb);
 		
 		//specifics per thumbnail
-		img.src = quiz.surveys[j].img;
-		img.alt = quiz.surveys[j].name;
-		title.innerHTML = quiz.surveys[j].name;
+		img.src = quiz.answers[j].img;
+		img.alt = quiz.answers[j].name;
+		title.innerHTML = quiz.answers[j].name;
 
 
 		//append generic thumbnail
@@ -77,13 +77,16 @@ var makeResidentialThumbnail = function(attachmentPoint, totalNum) {
 	}
 };
 
-//click the yes, no or back buttons and navigate the quiz
-addEventListener('click', function (ev) {	
-	//format the incoming information so it can be compared to the attachmentPointList
-    if (ev.target.classList.contains("quizButtons")) {
-		//log what button pushed it -- so you know where to attach the thumbnails
-        var clicked_id = ev.target.text;
+var quizYesButton = function() {
+	var curQuestion = $("#residentialQuestion").text();	
+	var curQuestNum;
+	for (var i = 0; i < quiz.questions.length; i++) {
+		if (quiz.questions[i].question == curQuestion) {
+			curQuestNum = quiz.questions[i].parent + 1;
+			console.log(curQuestion, " ", curQuestNum);
+		}
 	}
+
 //log the question number that you are
 //if you click yes
 //	log that you are on question two
@@ -92,10 +95,11 @@ addEventListener('click', function (ev) {
 //if you log question 5 
 //	show final answer
 
-});
+};
 
 
 //initialize page
 $(document).ready(function() {
-	makeResidentialThumbnail('residentialThumbnailHeader', quiz.surveys.length);
+	$("#residentialQuestion").text(quiz.questions[0].question);
+	//makeResidentialThumbnail('residentialThumbnailHeader', quiz.surveys.length);
 });

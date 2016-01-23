@@ -273,7 +273,7 @@ addEventListener('click', function (ev) {
 				}
 			}
 		}else {
-			console.log("cycling through headings");
+			console.log("button pushed that is not on commercial page");
 		}
 	}
 });
