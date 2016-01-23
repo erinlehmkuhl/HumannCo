@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<link rel="import" href="navbar.html">
+	</head>
+	<body>
+		<!-- ###### navbar inserted here from navbar.js & navbar.html ###### -->
+		<div id="insertNavbarHere"></div>
+
+		<!-- ###### jumbotron ###### -->
+		<div id="mainPageStart" class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-5 cycler">
+					<img class="img-responsive" id="img-placeholder" src="img/mtD_sepia.jpg" alt="Mount Diablo">
+					<img class="rotating-item img-responsive" src="img/mtD_sepia.jpg" alt="Mount Diablo in sepia">
+					<img class="rotating-item img-responsive" src="img/mtD_bw.jpg" alt="Mount Diablo in black and white">
+					<img class="rotating-item img-responsive" src="img/mtD_color.jpg" alt="Mount Diablo in color">
+					
+				</div>
+				<div class="hidden-xs col-sm-7" id="jumbotron-text-box">
+					<h3>serving the bay area<br>for over<br>forty years</h3>
+				</div>
+			</div> 
+
+			<!-- ###### content ###### -->
+			<div id="contentArea" class="row">
+				<h3 id="contentHeader" class="add-padding-left">ENGINEERING & SURVEYING</h3>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<p id="contentText" class="add-padding-left">Humann Company has provided services to both homeowners and developers alike.  Such undertaking included simple boundary surveys for property line fences, additions and landscape improvements to the design of major subdivisions, grading and drainage plans for single family homes and processing various land use permits.</p>
+					
+					<hr>
+					<div class="row">
+						<div class="col-sm-3">
+							<a href="servicesSurveying.html">
+								<div class="thumbnail">
+									<img src="img/HumanCoImages/pastProjects/chabot.jpg" alt="Chabot Space and Science">
+									<div class="caption">
+										<h3>Surveying</h3>
+										<p class="thumb-description">description of surveying</p>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-sm-3">
+							<a href="servicesEngineering.html">
+								<div class="thumbnail">
+									<img src="img/HumanCoImages/pastProjects/navalWeapons.jpg" alt="Concord Naval Weapons Depot">
+									<div class="caption">
+										<h3>Civil Engineering</h3>
+										<p class="thumb-description">description of engineering</p>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-sm-3">
+							<a href="servicesPlans.html">
+								<div class="thumbnail">
+									<img src="img/HumanCoImages/pastProjects/alcatraz.jpg" alt="Alcatraz Island">
+									<div class="caption">
+										<h3>Construction Plans</h3>
+										<p class="thumb-description">description of planning</p>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-sm-3">
+							<a href="servicesStaking.html">
+								<div class="thumbnail">
+									<img src="img/HumanCoImages/pastProjects/alcatraz.jpg" alt="Alcatraz Island">
+									<div class="caption">
+										<h3>Construction Staking</h3>
+										<p class="thumb-description">description of staking</p>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- end of page content -->
+	</body>
+
+
+	<script type="text/javascript">
+      ['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/importNavbar.js', 'js/jumbotron.js', 'js/commercial.js'].forEach(function(src) {
+        var script = document.createElement('script');
+        script.src = src;
+        script.async = false;
+        document.head.appendChild(script);
+      });
+    </script>
+  </html>

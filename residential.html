@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<link rel="import" href="navbar.html">
+	</head>
+	<body>
+		<!-- ###### navbar inserted here from navbar.js & navbar.html ###### -->
+		<div id="insertNavbarHere"></div>
+
+			<!-- ###### content ###### -->
+		<div id="commercialPageStart" class="container-fluid"> 
+			<div id="contentArea" class="row">
+				<h3 id="contentHeader" class="add-padding-left">RESIDENTIAL WORK</h3>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-8">
+					<p id="contentText" class="add-padding-left">For simple projects like bumpout additions that require no grading or drainage, usually a House Location Survey is all that is required. If it is a larger project and you'll need a Full or Partial Survey, you should have your architect contact the Humann Company directly.
+					</p>
+				</div>
+
+				<!-- ###### SideBar Area ###### -->
+				<div class="col-sm-4">
+				<!-- <li>pre-design: land survey</li>
+					<li>design</li>
+					<li>construction staking</li> -->
+				</div>
+				
+				<!-- ###### Quiz Area ###### -->
+				<div class="col-sm-8">
+					<div id="quizArea">
+						<h1 class="add-padding-left"><br><br>Is this the first survey on this propery?</h1>
+						<button id="quizBack" type="button" class="quizButtons"> BACK</button>
+						<button id="quizNo"type="button" class="quizButtons"> NO</button>
+						<button id="quizYes" type="button" class="quizButtons"> YES</button>
+					</div>
+				</div>
+				<!-- ###### Thumbnail Area ###### -->
+				<div class="col-sm-4" id="residentialThumbnailHeader">
+					<!-- procedurally create all thumbnails here with residential.js -->
+				</div>
+			</div>
+		</div> <!-- end content container-fluid-->
+		<!-- end of page content -->
+		<script type="text/javascript">
+			['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/importNavbar.js', 'js/commercial.js', 'js/residential.js'].forEach(function(src) {
+			var script = document.createElement('script');
+			script.src = src;
+			script.async = false;
+			document.head.appendChild(script);
+			});
+		</script>
+	</body>
+</html>

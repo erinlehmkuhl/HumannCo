@@ -89,15 +89,15 @@ var initSettings = {
 }
 
 
-var initPage = function() {
+var initCommercialPage = function() {
 	//set three thumbnails per section heading
-	makeThumbnail(initSettings.headings, initSettings.numInShowcase);
+	makeCommercialThumbnail(initSettings.headings, initSettings.numInShowcase);
 	//set one map per section heading/with markers
-	initMap();
+	initCommercialMap();
 };
 
 
-var initMap = function() {
+var initCommercialMap = function() {
 	this.cat = getCategories();
 
 	//timeout for error handling
@@ -164,7 +164,7 @@ var getCategories = function() {
 //attachmentPointList: array of 3 jquery #id objects. use null to skip a section. order: publicWorks, School, Church
 //numPerHeading: integer will do (number of thumbnails per section)
 //clickInfo: send "true" if this function was called from a click (instead of initial page load)
-var makeThumbnail = function(attachmentPointList, numPerHeading, clickInfo) {
+var makeCommercialThumbnail = function(attachmentPointList, numPerHeading, clickInfo) {
 	for (var i = 0; i < attachmentPointList.length; i++) {//# of section headings
 		if (clickInfo) {
 			//if thumbnails are created through button pushing, don't re-create the first three thumbnails 
@@ -219,7 +219,7 @@ var makeThumbnail = function(attachmentPointList, numPerHeading, clickInfo) {
 };
 
 addEventListener('click', function (ev) {
-    //variables to pass to makeThumbnail()
+    //variables to pass to makeCommercialThumbnail()
 	var attachmentPointList = ["publicWorksShowMore", "schoolsShowMore", "churchesShowMore"];
 	var numPerHeading = Math.min(mapMarkers.publicWorks.length, mapMarkers.schools.length, mapMarkers.churches.length);
 	var clickTrue = true;
@@ -242,7 +242,7 @@ addEventListener('click', function (ev) {
 	for (var i = 0; i < attachmentPointList.length; i++) {
 		//if what is clicked has 'publicWorks' in it
 		if (attachmentPointList[i].indexOf(clicked_id) > -1) {
-			//make an array with the button name and two nulls to feed to makeThumbnail()
+			//make an array with the button name and two nulls to feed to makeCommericalThumbnail()
 			attachmentPointList = [attachmentPointList[i], null, null];
 			//re-direct to page and scroll to bookmark
 			window.location.assign("commercial.html#"+clicked_id+"Header");
@@ -250,7 +250,7 @@ addEventListener('click', function (ev) {
 			//***IF the MORE button says MORE***
 			if ($("#"+clicked_id+"").text() == "show more") {
 				//load thumbnails
-				makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
+				makeCommercialThumbnail(attachmentPointList, numPerHeading, clickTrue);
 				$("#"+clicked_id+"").text("show less");
 
 				//if the actual MORE button wasn't physically pushed
@@ -273,104 +273,8 @@ addEventListener('click', function (ev) {
 				}
 			}
 		}else {
-			console.log("not a match. cycle through rest of the headings to see if what was clicked matches one of them");
+			console.log("cycling through headings");
 		}
 	}
 });
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//if the page is generated and the href forces a page scroll (portfolio buttons from other pages cause this),
-//assume the user wants to see the whole section and un-collapse the thumbnails
-// $( document ).ready(function() {
-// 	portfolioButton();
-// });
-
-// var portfolioButton = function() {
-// 	if (document.body.scrollTop < 718 && document.body.scrollTop > 5) {
-// 		moreButton("publicWorks");
-// 		$('.publicWorksCollapse').collapse('toggle');
-// 	}else if (document.body.scrollTop == 718) {
-// 		moreButton("schools");
-// 		$('.schoolsCollapse').collapse('toggle');
-// 	} else {
-// 		moreButton("churches");
-// 		$('.churchesCollapse').collapse('toggle');
-// 	}
-// };
-
-// var moreButton = function(clicked_id) {//id of button (section heading) being sent from DOM when clicked
-// 	var attachmentPointList = ["publicWorksShowMore", "schoolsShowMore", "churchesShowMore"];
-// 	var numPerHeading = Math.min(mapMarkers.publicWorks.length, mapMarkers.schools.length, mapMarkers.churches.length);
-// 	var clickTrue = true;
-// 	var pw = $("#publicWorks");
-// 	var sc = $("#schools");
-// 	var ch = $("#churches");
-	
-// 	//force attachmentPointList to work like an array
-// 	if (attachmentPointList[0].indexOf(clicked_id) > -1) {//if what is clicked has 'publicWorks' in it
-// 		attachmentPointList = ["publicWorksShowMore", null, null];
-// 		if (pw.text() == "show more") {
-// 			makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
-
-// 			// Get the number of pixels scrolled
-// 			var  intElemScrollTop = $("#publicWorksShowMore").scrollTop;
-// 			// Set the number of pixels scrolled
-// 			$("#publicWorksShowMore").scrollTop = intElemScrollTop;
-
-// 			pw.text("show less");
-// 		} else {
-// 			pw.text('show more');
-// 			$("#publicWorksShowMore").children().remove();
-// 		}
-// 	} else if (attachmentPointList[1].indexOf(clicked_id) > -1) {//if what is clicked has 'school' in it
-// 		attachmentPointList = [null, "schoolsShowMore", null];
-// 		if (sc.text() == "show more") {
-// 			makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
-
-// 			// Get the number of pixels scrolled
-// 			var  intElemScrollTop = document.getElementById("schoolsShowMore").clientHeight;
-// 			console.log(intElemScrollTop);
-// 			// Set the number of pixels scrolled
-// 			$("#schoolsShowMore").scrollTop = intElemScrollTop;
-
-// 			sc.text("show less");
-// 		} else {
-// 			sc.text('show more');
-// 			$("#schoolsShowMore").children().remove();
-// 		}
-// 	} else if (attachmentPointList[2].indexOf(clicked_id) > -1) {//if what is clicked has 'church' in it
-// 		attachmentPointList = [null, null, "churchesShowMore"];
-// 		if (ch.text() == "show more") {
-// 			makeThumbnail(attachmentPointList, numPerHeading, clickTrue);
-
-// 			// Get the number of pixels scrolled
-// 			var  intElemScrollTop = $("#churchesShowMore").scrollTop;
-// 			// Set the number of pixels scrolled
-// 			$("#churchesShowMore").scrollTop = intElemScrollTop;
-
-// 			ch.text("show less");
-// 		} else {
-// 			ch.text('show more');
-// 			$("#churchesShowMore").children().remove();
-// 		}
-// 	}
-// };
