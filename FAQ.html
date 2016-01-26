@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<link rel="import" href="navbar.html">
+	</head>
+	<body>
+		<!-- ###### navbar inserted here from navbar.js & navbar.html ###### -->
+		<div id="insertNavbarHere"></div>
+
+		<!-- ###### jumbotron ###### -->
+		<div id="mainPageStart" class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-5 cycler">
+					<img class="img-responsive" id="img-placeholder" src="img/mtD_sepia.jpg" alt="Mount Diablo">
+					<img class="rotating-item img-responsive" src="img/mtD_sepia.jpg" alt="Mount Diablo in sepia">
+					<img class="rotating-item img-responsive" src="img/mtD_bw.jpg" alt="Mount Diablo in black and white">
+					<img class="rotating-item img-responsive" src="img/mtD_color.jpg" alt="Mount Diablo in color">
+					
+				</div>
+				<div class="hidden-xs col-sm-7" id="jumbotron-text-box">
+					<h3>serving the bay area<br>for over<br>forty years</h3>
+				</div>
+			</div> 
+
+			<!-- ###### content ###### -->
+			<div id="contentArea" class="row">
+				<h3 id="contentHeader" class="add-padding-left">FREQUENTLY ASKED QUESTIONS</h3>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-8">
+					<p id="contentText" class="add-padding-left">As Civil Engineers and Land Surveyors, we are diverse in many practices of land development including hydrology and hydraulic work, grading paving and drainage, street design and all other types of public works projects. From planning to municipal engineering, our firm is backed by a wealth of experience that ensures dedication to quality and service.</p>
+					
+					<hr>
+					<h4>RECENT PROJECTS</h4>
+					<!-- ###### thumbnails ###### -->
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="thumbnail">
+								<img src="img/HumanCoImages/pastProjects/chabot.jpg" alt="Chabot Space and Science">
+								<div class="caption">
+									<h3>Chabot Space and Science Center</h3>
+									<p class="thumb-description">Aerial survey and contruction staking</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="thumbnail">
+								<img src="img/HumanCoImages/pastProjects/navalWeapons.jpg" alt="Concord Naval Weapons Depot">
+								<div class="caption">
+									<h3>Naval Weapons Station</h3>
+									<p class="thumb-description">Aerial survey and contruction staking</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="thumbnail">
+								<img src="img/HumanCoImages/pastProjects/alcatraz.jpg" alt="Alcatraz Island">
+								<div class="caption">
+									<h3>Alcatraz Island</h3>
+									<p class="thumb-description">Aerial survey and contruction staking</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+				<!-- ###### sidebar navigation menu ###### -->
+				<div class="col-sm-4 kill-padding-right">
+						<a href="commercial.html"><button type="button" class="sidebar"> COMMERCIAL</button></a>
+						<button type="button" class="sidebar-nub"><span class="glyphicon glyphicon-chevron-right"></span></button>
+						<a href="residential.html"><button type="button" class="sidebar"> RESIDENTIAL</button>
+						<button type="button" class="sidebar-nub"><span class="glyphicon glyphicon-chevron-right"></span></button></a>
+						<a href="services.html"><button type="button" class="sidebar"> SERVICES</button>
+						<button type="button" class="sidebar-nub"><span class="glyphicon glyphicon-chevron-right"></span></button></a>
+				</div>
+			</div>
+		</div>
+	<!-- end of page content -->
+	</body>
+
+
+	<script type="text/javascript">
+      ['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/importNavbar.js', 'js/jumbotron.js', 'js/commercial.js'].forEach(function(src) {
+        var script = document.createElement('script');
+        script.src = src;
+        script.async = false;
+        document.head.appendChild(script);
+      });
+    </script>
+  </html>

@@ -1,58 +1,101 @@
-var hiddenList = [];
-
+var hiddenList = [];	
 
 var quiz = {
-	"answers": [
-		{"name": "ALTA Survey", 
-		"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
-		"parent": [1]},
-		
-		{"name": "Partial Survey", 
-		"img": "img/HumanCoImages/pastProjects/alcatraz.jpg",
-		"parent": [1,2]},
-		
-		{"name": "Lot Line Adjustment", 
-		"img": "img/HumanCoImages/pastProjects/chabot.jpg",
-		"parent": [1,2,3]},
-		
-		{"name": "Preliminary Grading and Drainage", 
-		"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
-		"parent": [1,2,3]},
-		
-		{"name": "Base Map", 
-		"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
-		"parent": [1,2,3,4]},
+	"initial": [{
+			"question": "Are you buying, selling or refinancing a house?",
+			"bigThumbnail": [{
+				"name": "Location Survey",
+				"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
+				"def": "shows the location of the improvements on the property in relation to the apparent boundary lines of the property. It generally involves a physical inspection of the property and is accurate to plus or minus a few feet."
+			}],
+			"smallThumbnails": [{
+				"name": "Improvement Location Certificate",
+				"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+			}]
 
-		{"name": "Elevation Certificate", 
-		"img": "img/HumanCoImages/pastProjects/stanley.jpg",
-		"parent": [1,2]},
-		
-		{"name": "Civil Site Conditions Report", 
-		"img": "img/HumanCoImages/pastProjects/santaClara.jpg",
-		"parent": [1,2]},
-		
-		{"name": "ADA Plans", 
-		"img": "img/HumanCoImages/pastProjects/stanley.jpg",
-		"parent": [1,2]}
-	], 
-	"questions": [
-		{"question": "Is this the first survey on this property?",
-		"num": 1}, 
-		{"question": "Is the purpose of your survey for compliance with FEMA or the ADA?",
-		"num": 2},
-		{"question": "Is this a project that will require an architect or a designer?",
-		"num": 3},
-		{"question": "Will you need a photogrammetric or topographic survey?",
-		"num": 4},
-		{"question": "You will need a Base Map Survey."}
+		}, 
+
+		{
+			"question": "Are you building a structure or a fence?",
+			"bigThumbnail": [{
+				"name": "Boundary Survey",
+				"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
+				"def": "to identify a property’s boundary lines. In this type of survey, the surveyor will set (or recover) the property corners and produce a detailed plat or map. This type of survey is what is necessary for construction and permit purposes"
+			}],
+			"smallThumbnails": [{
+					"name": "Improvement Survey Plat",
+					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+				},
+
+				{
+					"name": "Lot Line Adjustment",
+					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+				},
+
+				{
+					"name": "Partial or Full Aerial Topographic Survey",
+					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+				},
+
+				{
+					"name": "Site Plan",
+					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+				}]
+		},
+
+		{
+			"question": "Is your concern easements, encroachments or other parties that may have rights to your currently marked property?",
+			"bigThumbnail": [{
+				"name": "Land Survey",
+				"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
+				"def": ""
+			}],
+			"smallThumbnails": [{
+					"name": "Lot Line Adjustment",
+					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+				},
+
+				{
+					"name": "ADA Plans",
+					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+				}]
+		},
+
+		{
+			"question": "Does this site have unusual grades and elevations?",
+			"bigThumbnail": [{
+				"name": "Topographic Survey",
+				"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
+				"def": ""
+			}],
+			"smallThumbnails": [{
+					"name": "Partial Aerial Topographic Survey",
+					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+				},
+
+				{
+					"name": "Aerial Topographic Survey",
+					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+				},
+
+				{
+					"name": "Elevation Certificate",
+					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+				},
+
+				{
+					"name": "Preliminary Grading",
+					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+				}]
+		}
 	]
 };
 
 
-
 //attachmentPointList: array of 3 jquery #id objects. use null to skip a section. order: publicWorks, School, Church
 //numPerHeading: integer will do (number of thumbnails per section)
-var makeResidentialThumbnail = function(attachmentPoint, totalNum) {
+//whichSet: JSON array index for the set you want
+var makeResidentialThumbnail = function(attachmentPoint, totalNum, thumbnail) {
 	for (var j = 0; j < totalNum; j++) {//# of thumbnails per section
 		//create elements for generic thumbnail
 		var divTop = document.createElement("DIV");
@@ -71,12 +114,14 @@ var makeResidentialThumbnail = function(attachmentPoint, totalNum) {
 		divTop.appendChild(divThumb);
 		
 		//specifics per thumbnail
-		img.src = quiz.answers[j].img;
-		img.alt = quiz.answers[j].name;
-		title.innerHTML = quiz.answers[j].name;
-		//ids for each thumbnail
-		var domId = quiz.answers[j].name.replace(/\s+/g, '');
-		divTop.classList.add(domId);
+		for (var i = 0; i < quiz.initial[j][thumbnail].length; i++) {
+			img.src = quiz.initial[j][thumbnail][i].img;
+			img.alt = quiz.initial[j][thumbnail][i].name;
+			title.innerHTML = quiz.initial[j][thumbnail][i].name;
+			//ids for each thumbnail
+			var domId = quiz.initial[j][thumbnail][i].name.replace(/\s+/g, '');
+			divTop.classList.add(domId);
+		}
 
 
 
@@ -88,77 +133,40 @@ var makeResidentialThumbnail = function(attachmentPoint, totalNum) {
 var quizYesButton = function() {
 	var curQuestion = $("#residentialQuestion").text();
 
-	//loop through the available questions and remove the thumnails that don't apply
-	for (var i = 0; i < quiz.questions.length; i++) {
-		if (quiz.questions[i].question == curQuestion) {
+	//loop through the available questions to see which one we are currently on
+	for (var i = 0; i < quiz.initial.length; i++) {
+		if (quiz.initial[i].question == curQuestion) {
+			//show answer thumbnails
+			makeResidentialThumbnail('residentialSmallThumbnailHeader', quiz.initial[i].smallThumbnails.length, "smallThumbnails");
+		
+			//show explanation in jumbotron
+			$("#residentialQuestion").text(quiz.initial[i].bigThumbnail.def);
 
-			//cycle to the next question
-			$("#residentialQuestion").text(quiz.questions[i+1].question);
-			
-			for (var j = 0; j < quiz.answers.length; j++) {
-				if (quiz.answers[j].parent.length == quiz.questions[i].num) {
 
-					//erase the images that don't apply
-					var rmElem = quiz.answers[j].name.replace(/\s+/g, '');
-					hiddenList.push($('.'+rmElem));
-					$('.'+rmElem).hide();
-
+			//get rid of incorrect categories
+			var divList = $("#residentialLargeThumbnailHeader").children();
+			var divKeep = quiz.initial[i].bigThumbnail[0].name.replace(/\s+/g, '');
+			for (var j = 0; j < divList.length; j++) {
+				if (divList[j].classList.contains(divKeep)) {
+					$("#residentialLargeThumbnailHeader").children().hide();
+					$("."+divKeep).show();
 				}
+			
 			}
+			
 		}
 	}
 };
 
-// var quizNoButton = function() {
-// 	var curQuestion = $("#residentialQuestion").text();	
 
-// 	//loop through the available questions and remove the thumnails that don't apply
-// 	for (var i = 0; i < quiz.questions.length; i++) {
-// 		if (quiz.questions[i].question == curQuestion) {
+var quizNoButton = function() {
 
-// 			//show the written answer 
-// 			$("#residentialQuestion").text("You need a " + quiz.answers[i].name + ".");
-			
-// 			for (var j = 0; j < quiz.answers.length; j++) {
-// 				if (quiz.answers[j].parent.length != quiz.questions[i].num) {
-
-// 					//erase the images that don't apply
-// 					var rmElem = quiz.answers[j].name.replace(/\s+/g, '');
-// 					$('.' + rmElem).remove();
-// 				}
-// 			}
-// 		}
-// 	}
-// };
-
-
-var quizBackButton = function() {
-	var curQuestion = $("#residentialQuestion").text();	
-	var curQuestNum;
-
-	//loop through the available questions
-	for (var i = 0; i < quiz.questions.length; i++) {
-		if (quiz.questions[i].question == curQuestion) {
-			curQuestNum = quiz.questions[i].num;
-
-			//go back one question
-			$("#residentialQuestion").text(quiz.questions[i-1].question)
-
-			//add thumbnails back in
-			for (var j = 0; j < quiz.answers.length; j++) {
-				if (quiz.answers[j].parent.length == quiz.questions[i].num) {
-
-					//add the last batch of images to the DOM
-					var listItem = hiddenList.shift();
-					listItem.show();
-				}
-			}
-		}
-	}
 };
+
+
 
 //initialize page
 $(document).ready(function() {
-	$("#residentialQuestion").text(quiz.questions[0].question);
-	makeResidentialThumbnail('residentialThumbnailHeader', quiz.answers.length);
+	$("#residentialQuestion").text(quiz.initial[0].question);
+	makeResidentialThumbnail('residentialLargeThumbnailHeader', quiz.initial.length, "bigThumbnail");
 });
