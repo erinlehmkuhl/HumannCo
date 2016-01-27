@@ -6,7 +6,7 @@ var quiz = {
 			"bigThumbnail": [{
 				"name": "Location Survey",
 				"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
-				"def": "shows the location of the improvements on the property in relation to the apparent boundary lines of the property. It generally involves a physical inspection of the property and is accurate to plus or minus a few feet."
+				"p": "shows the location of the improvements on the property in relation to the apparent boundary lines of the property. It generally involves a physical inspection of the property and is accurate to plus or minus a few feet."
 			}],
 			"smallThumbnails": [{
 				"name": "Improvement Location Certificate",
@@ -20,7 +20,7 @@ var quiz = {
 			"bigThumbnail": [{
 				"name": "Boundary Survey",
 				"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
-				"def": "to identify a property’s boundary lines. In this type of survey, the surveyor will set (or recover) the property corners and produce a detailed plat or map. This type of survey is what is necessary for construction and permit purposes"
+				"p": "shows the location of the improvements on the property in relation to the apparent boundary lines of the property. It generally involves a physical inspection of the property and is accurate to plus or minus a few feet."
 			}],
 			"smallThumbnails": [{
 					"name": "Improvement Survey Plat",
@@ -48,7 +48,7 @@ var quiz = {
 			"bigThumbnail": [{
 				"name": "Land Survey",
 				"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
-				"def": ""
+				"p": "shows the location of the improvements on the property in relation to the apparent boundary lines of the property. It generally involves a physical inspection of the property and is accurate to plus or minus a few feet."
 			}],
 			"smallThumbnails": [{
 					"name": "Lot Line Adjustment",
@@ -66,7 +66,7 @@ var quiz = {
 			"bigThumbnail": [{
 				"name": "Topographic Survey",
 				"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
-				"def": ""
+				"p": "shows the location of the improvements on the property in relation to the apparent boundary lines of the property. It generally involves a physical inspection of the property and is accurate to plus or minus a few feet."
 			}],
 			"smallThumbnails": [{
 					"name": "Partial Aerial Topographic Survey",
@@ -130,6 +130,8 @@ var makeResidentialThumbnail = function(attachmentPoint, totalNum, thumbnail) {
 	}
 };
 
+var divList = [];
+
 var quizYesButton = function() {
 	var curQuestion = $("#residentialQuestion").text();
 
@@ -140,11 +142,12 @@ var quizYesButton = function() {
 			makeResidentialThumbnail('residentialSmallThumbnailHeader', quiz.initial[i].smallThumbnails.length, "smallThumbnails");
 		
 			//show explanation in jumbotron
-			$("#residentialQuestion").text(quiz.initial[i].bigThumbnail.def);
+			$("#residentialQuestion").text(quiz.initial[i].bigThumbnail[0].name);
+			$("#residentialExplanation").text(quiz.initial[i].bigThumbnail[0].p);
 
 
 			//get rid of incorrect categories
-			var divList = $("#residentialLargeThumbnailHeader").children();
+			divList = $("#residentialLargeThumbnailHeader").children();
 			var divKeep = quiz.initial[i].bigThumbnail[0].name.replace(/\s+/g, '');
 			for (var j = 0; j < divList.length; j++) {
 				if (divList[j].classList.contains(divKeep)) {
@@ -156,11 +159,45 @@ var quizYesButton = function() {
 			
 		}
 	}
+	return divList;
 };
 
 
 var quizNoButton = function() {
+	var curQuestion = $("#residentialQuestion").text();
 
+	//loop through the available questions to see which one we are currently on
+	for (var i = 0; i < quiz.initial.length; i++) {
+		if (quiz.initial[i].question == curQuestion) {
+			//proceed to next question
+			var nextQuestion = quiz.initial[i + 1].question;
+			$("#residentialQuestion").text(nextQuestion);
+
+			//take away thumbnails that don't belong
+		}
+	}
+
+};
+
+
+var quizBackButton = function() {
+	var curName = $("#residentialQuestion").text();
+
+	//reinstate the category thumbnails
+	for (var i = 0; i < divList.length; i++) {
+		divList[i].style.display = "inline";
+	}
+
+	//remove the options thumbnails
+	$("#residentialSmallThumbnailHeader").children().hide();
+
+	//reset jumbotron text
+	for (var i = 0; i < quiz.initial.length; i++) {
+		if (quiz.initial[i].bigThumbnail[0].name == curName) {
+			$("#residentialQuestion").text(quiz.initial[i].question);
+			$("#residentialExplanation").text("");
+		}
+	}
 };
 
 
