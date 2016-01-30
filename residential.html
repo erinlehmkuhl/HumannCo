@@ -10,40 +10,29 @@
 			<!-- ###### content ###### -->
 		<div id="residentialPageStart" class="container-fluid"> 
 			<div id="contentArea" class="row">
-				<h3 id="contentHeader" class="add-padding-left">RESIDENTIAL WORK</h3>
+				<h3 id="contentHeader" class="add-padding-left">Which kind of survey is right for you?</h3>
+				<hr>
+				<div class="vertical-spacer-21"></div>
 			</div>
 			
 			<div class="row">
-				<div class="col-sm-8">
-					<p id="contentText" class="add-padding-left">
-						A survey may be required by a title company to locate property boundaries, an insurance company to verify flood plain elevation, a contractor to place future construction or a homeowner may purchase one for the installation of a new fence or swimming pool. Depending on the parameters of your project, you might be able to save money and You may only need a portion of what a full survey entails.
-					</p>
-				</div>
-
-				<!-- ###### SideBar Area ###### -->
-				<div class="col-sm-4">
-				<!-- <li>pre-design: land survey</li>
-					<li>design</li>
-					<li>construction staking</li> -->
-				</div>
-				
 				<!-- ###### Quiz Area ###### -->
-				<div class="col-sm-8">
-					<div id="quizArea">
-						<h1 id="residentialQuestion" class="add-padding-left"></h1>
-						<p id="residentialExplanation"></p>
-						<button onClick="quizBackButton()" id="quizBack" class="quizButtons" type="button"> BACK</button>
-						<button onClick="quizNoButton()" id="quizNo" class="quizButtons" type="button"> NO</button>
-						<button onClick="quizYesButton()" id="quizYes" class="quizButtons" type="button"> YES</button>
-					</div>
+				<div class="col-sm-1"></div>
+				<div class="col-sm-3" id="quizArea">
+					<h3 id="residentialQuestion"></h3>
+					<p id="residentialExplanation"></p>
+					<button onClick="quizYesButton()" id="quizYes" class="quizButtons" type="button"> YES</button>
+					<button onClick="quizNoButton()" id="quizNo" class="quizButtons" type="button"> NO</button>
+					<button onClick="quizBackButton()" id="quizBack" class="quizButtons" type="button"> BACK</button>
 				</div>
-				<!-- ###### Thumbnail Area ###### -->
-				<div class="col-sm-4" id="residentialLargeThumbnailHeader">
-					<!-- procedurally create all  category thumbnails here with residential.js -->
-				</div>
+				<div class="col-sm-7" id="residentialMainBar">
+					<!-- ###### Thumbnail Area ###### -->
+					<h4> Survey Categories: </h4>
+					<div class="col-sm-12" id="residentialLargeThumbnailHeader"></div>
+					<h4> Survey Options: </h4>
+					<div class="col-sm-12" id="residentialSmallThumbnailHeader"></div>
 			</div>
-			<div class="row" id="residentialSmallThumbnailHeader">
-			</div>
+			<div class="col-sm-1"></div>
 		</div> <!-- end content container-fluid-->
 		<!-- end of page content -->
 		<script type="text/javascript">

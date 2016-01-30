@@ -19,8 +19,9 @@
 }
 
 .navbar-brand img {
-	height: 50px;
-	margin-top: -15px;
+	height: 38px;
+	margin-top: -10px;
+	margin-left: 5px;
 }
 
 #header-title {
@@ -65,33 +66,35 @@ p {
 	height: 5px;
 }
 
-.vertical-spacer-10 {
-	height: 10px;
+.vertical-spacer-7 {
+	height: 7px;
+}
+
+.vertical-spacer-21 {
+	height: 21px;
 }
 
 .vertical-spacer-50 {
 	height: 50px;
 }
 
-#quizArea {
-	position: relative;
-	background-color: #aba5a5;
-	border-radius: 15px;
-	height: 300px;
-}
-
 .quizButtons {
-	position: absolute;
-	bottom: 30px;
-	right: 0;
 	color: white;
 	background-color: #375773;
 	border-style: none;
-	width: 20%;
+	width: 80%;
 	font-size: 1.2em;
-	margin-right: 15px;
+	margin: 15px 0 15px 0;
+	padding: 7px 0 7px 0;
 }
 
+#quizArea {
+	border-radius: 15px;
+	border: solid #375773 1px;
+}
+
+
+/*
 #quizNo {
 	right: 9em;
 }
@@ -99,7 +102,7 @@ p {
 #quizBack {
 	left: 0px;
 	margin-left: 15px;
-}
+}*/
 
 #jumbotron-text-box h3 {
 	line-height: 1.5em;
