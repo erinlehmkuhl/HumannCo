@@ -89,8 +89,8 @@ p {
 }
 
 #quizArea {
-	border-radius: 15px;
-	border: solid #375773 1px;
+	margin-right: 40px;
+	margin-left: -20px;
 }
 
 
@@ -103,6 +103,63 @@ p {
 	left: 0px;
 	margin-left: 15px;
 }*/
+
+.bordered {
+	/*border-radius: 15px;*/
+	border: solid #aba5a5 4px;
+}
+
+#residentialSubheading{
+	/*background-color: #ccc;*/
+}
+
+#FAQform {
+	padding-left: 50px;
+}
+
+#attachFAQquestHere {
+	padding-right: 100px;
+}
+
+.FAQbuttons {
+	margin: 10px 0 0 0;
+}
+
+.jobIcon {
+	height: 60px;
+}
+
+.jobListings {
+	padding-left: 50px;
+}
+
+#contactMessage {
+	height: 100px;
+}
+
+#contactAddress {
+	padding-top: 90%;
+}
+
+.contactForm {
+	margin-left: 100px;
+}
+
+.contactForm input {
+	margin-top: 18px;
+	height: 40px;
+	width: 63%;
+}
+
+
+
+.email {
+
+}
+
+#contactSubHeader {
+	background-color: #aba5a5;
+}
 
 #jumbotron-text-box h3 {
 	line-height: 1.5em;

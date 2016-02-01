@@ -7,36 +7,57 @@
 		<!-- ###### navbar inserted here from navbar.js & navbar.html ###### -->
 		<div id="insertNavbarHere"></div>
 
-			<!-- ###### content ###### -->
-		<div id="residentialPageStart" class="container-fluid"> 
-			<div id="contentArea" class="row">
-				<h3 id="contentHeader" class="add-padding-left">Which kind of survey is right for you?</h3>
-				<hr>
-				<div class="vertical-spacer-21"></div>
-			</div>
-			
+		<!-- ###### jumbotron ###### -->
+		<div id="residentialPageStart" class="container-fluid">
 			<div class="row">
-				<!-- ###### Quiz Area ###### -->
-				<div class="col-sm-1"></div>
-				<div class="col-sm-3" id="quizArea">
-					<h3 id="residentialQuestion"></h3>
-					<p id="residentialExplanation"></p>
-					<button onClick="quizYesButton()" id="quizYes" class="quizButtons" type="button"> YES</button>
-					<button onClick="quizNoButton()" id="quizNo" class="quizButtons" type="button"> NO</button>
-					<button onClick="quizBackButton()" id="quizBack" class="quizButtons" type="button"> BACK</button>
+				<div class="col-xs-12 col-sm-5 cycler">
+					<img class="img-responsive" id="img-placeholder" src="img/mtD_sepia.jpg" alt="Mount Diablo">
+					<img class="rotating-item img-responsive" src="img/mtD_sepia.jpg" alt="Mount Diablo in sepia">
+					<img class="rotating-item img-responsive" src="img/mtD_bw.jpg" alt="Mount Diablo in black and white">
+					<img class="rotating-item img-responsive" src="img/mtD_color.jpg" alt="Mount Diablo in color">
+					
 				</div>
-				<div class="col-sm-7" id="residentialMainBar">
-					<!-- ###### Thumbnail Area ###### -->
-					<h4> Survey Categories: </h4>
-					<div class="col-sm-12" id="residentialLargeThumbnailHeader"></div>
-					<h4> Survey Options: </h4>
-					<div class="col-sm-12" id="residentialSmallThumbnailHeader"></div>
+				<div class="hidden-xs col-sm-7" id="jumbotron-text-box">
+					<h3>serving the bay area<br>for over<br>forty years</h3>
+				</div>
+			</div> 
+
+			<!-- ###### content ###### -->
+			<div class="row contentArea">
+				<div class="col-sm-12">
+					<div class="row vertical-spacer-7"></div>
+					<!-- <h2 id="contentHeader" class="add-padding-left">RESIDENTIAL SERVICES</h2> -->
+					<h2 id="residentialSubheading" class="add-padding-left">What kind of a survey is right for you?</h2>
+					<p class="add-padding-left">Answer a few questions and learn about your options.</p>
+					<div class="vertical-spacer-21"></div>
+				</div>
+						
+				<div>
+					<div class="row">
+						<!-- ###### Quiz Area ###### -->
+						<div class="col-sm-1"></div>
+						<div class="col-sm-3 bordered" id="quizArea">
+							<h3 id="residentialQuestion"></h3>
+							<p id="residentialExplanation"></p>
+							<button onClick="quizYesButton()" id="quizYes" class="quizButtons" type="button"> YES</button>
+							<button onClick="quizNoButton()" id="quizNo" class="quizButtons" type="button"> NO</button>
+							<button onClick="quizBackButton()" id="quizBack" class="quizButtons" type="button"> BACK</button>
+						</div>
+						<div class="col-sm-7 bordered" id="residentialMainBar">
+							<!-- ###### Thumbnail Area ###### -->
+							<h4> Survey Categories: </h4>
+							<div class="col-sm-12" id="residentialLargeThumbnailHeader"></div>
+							<h4> Survey Options: </h4>
+							<div class="col-sm-12" id="residentialSmallThumbnailHeader"></div>
+						</div>
+						<div class="col-sm-1"></div>
+					</div>
+				</div>
 			</div>
-			<div class="col-sm-1"></div>
 		</div> <!-- end content container-fluid-->
 		<!-- end of page content -->
 		<script type="text/javascript">
-			['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/importNavbar.js', 'js/commercial.js', 'js/residential.js'].forEach(function(src) {
+			['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/importNavbar.js', 'js/commercial.js', 'js/residential.js', 'js/jumbotron.js',].forEach(function(src) {
 			var script = document.createElement('script');
 			script.src = src;
 			script.async = false;

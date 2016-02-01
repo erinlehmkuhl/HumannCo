@@ -99,7 +99,7 @@ var makeResidentialThumbnail = function(attachmentPoint, totalNum, thumbnail) {
 	for (var j = 0; j < totalNum; j++) {//# of thumbnails per section
 		//create elements for generic thumbnail
 		var divTop = document.createElement("DIV");
-		divTop.classList.add("col-sm-6");
+		divTop.classList.add("col-sm-3");
 		var divThumb = document.createElement("DIV");
 		divThumb.classList.add("thumbnail");
 		var img = document.createElement("IMG");
@@ -204,6 +204,6 @@ var quizBackButton = function() {
 
 //initialize page
 $(document).ready(function() {
-	$("#residentialQuestion").text(quiz.initial[0].question);
+	$("#residentialQuestion").text("Would you like to use the residential survey wizard?");
 	makeResidentialThumbnail('residentialLargeThumbnailHeader', quiz.initial.length, "bigThumbnail");
 });
