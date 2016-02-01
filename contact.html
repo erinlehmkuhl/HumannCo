@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- You must run this on a server in order to get the html import to work
+		Author: Erin Lehmkuhl
+		Date: March 2016 -->
+		<link rel="import" href="navbar.html">
+	</head>
+	<body>
+		<!-- ###### navbar inserted here from navbar.js & navbar.html ###### -->
+		<div id="insertNavbarHere"></div>
+
+		<!-- ###### jumbotron ###### -->
+		<div id="mainPageStart" class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-5 cycler">
+					<img class="img-responsive" id="img-placeholder" src="img/mtD_sepia.jpg" alt="Mount Diablo">
+					<img class="rotating-item img-responsive" src="img/mtD_sepia.jpg" alt="Mount Diablo in sepia">
+					<img class="rotating-item img-responsive" src="img/mtD_bw.jpg" alt="Mount Diablo in black and white">
+					<img class="rotating-item img-responsive" src="img/mtD_color.jpg" alt="Mount Diablo in color">
+					
+				</div>
+				<div class="hidden-xs col-sm-7" id="jumbotron-text-box">
+					<h3>serving the bay area<br>for over<br>forty years</h3>
+				</div>
+			</div> 
+
+			<!-- ###### content ###### -->
+			<div class="row contentArea">
+				<div class="row vertical-spacer-7"></div>
+				<h2 id="contentHeader" class="add-padding-left">CONTACT US</h2>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-8">
+					<div class="row vertical-spacer-21"></div>
+
+					<form class="contactForm" action="MAILTO:erinlehmkuhl@gmail.com" method="post" enctype="text/plain">
+						<input type="text" name="name" value="name"><br>
+						<input type"text" name="phone" value="(xxx) xxx-xxxx"><br>
+						<input type="text" name="email" value="email@something.com"><br>
+						<input id="contactMessage" type="text" name="comment" value="please leave a message"><br><br>
+						<input type="submit" value="Send">
+						<input type="reset" value="Reset">
+					</form>
+					
+					<div class="row vertical-spacer-50"></div>
+					<div class="row vertical-spacer-50"></div>
+
+					<h3 id="contactSubHeader">CAREERS</h3>
+					<p>Humann Company is always looking for qualified people.  If you have experience in any of the following areas, please email your resume to <a class="email" href="may_humann@pacbell.net">may_humann@pacbell.net</a></p>
+					<div class="row vertical-spacer-21"></div>
+					<div class="row">
+						<div class="col-sm-6 jobListings" data-toggle="collapse" data-target="#jobCivil">
+							<img class="img-responsive jobIcon" src="img/listIcon.png">
+							<h4>Civil Engineer</h4>
+						</div>
+						<div class="col-sm-6">
+							<p class="collapse" id="jobCivil">Qualifications include 4+ years of hands-on design experience, AutoCAD and Land Development Desktop Civil Series literacy a must. Experience in areas of land development projects, roadway design, grading, utilities, drainage systems, and plans/specifications, computation of grades, earth quantities, cost estimates, and final maps. </p>
+						</div>
+					</div>
+					<br><br>
+					<div class="row">
+						<div class="col-sm-6 jobListings" data-toggle="collapse" data-target="#jobCADD">
+							<img class="img-responsive jobIcon" src="img/drafting.png">
+							<h4>CADD Drafter</h4>
+						</div>
+						<div class="col-sm-6">
+							<p class="collapse" id="jobCADD">Positions require CADD experience.  Applicant need to be able to work with a land development desktop, demonstrate an ability to draft civil engineering improvement plans. This position's primary responsibility will be creating improvement drawings under the direction of engineers.  Civil design software experience preferred</p>
+						</div>
+					</div>
+				</div>
+				<!-- ###### sidebar navigation menu ###### -->
+				<div class="col-sm-4 kill-padding-right">
+					<p id="contactAddress"> Humann Company Inc. <br>
+						1021 Brown Avenue<br>
+						Lafayette, CA 94549<br>
+						Phone: (925) 283-5000<br>
+						Fax: (925) 283-3578<br>
+						E-mail: <a class="email" href="humann@humannco.com">humann@humannco.com</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	<!-- end of page content -->
+	</body>
+
+
+	<script type="text/javascript">
+      ['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/importNavbar.js', 'js/jumbotron.js', 'js/commercial.js'].forEach(function(src) {
+        var script = document.createElement('script');
+        script.src = src;
+        script.async = false;
+        document.head.appendChild(script);
+      });
+    </script>
+  </html>
