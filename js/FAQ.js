@@ -1,4 +1,124 @@
-"easement": "An easement is an area of land owned by the property owner, but in which other parties, such as utility companies, may have limited rights granted for a specific purpose. If a utility company owns the rights, they may have a utility line running below the ground, across your property."
-"encroachment": "Encroachments are improvements, such as fences or buildings, which extend across the property line."
-"plat": "A legal document intended to take a large parcel of land and divide it into smaller parcels of land. A subdivision plat may also create public rights-of-way or easements, and is usually filed with the county clerk & recorder's office."
-"existing boundaries": "You should have a description of your property included in your deed when you bought the property."
+var FAQ = {
+	"sets": [
+		{
+			"question": "What is an easement?",
+			"answer": "An easement is an area of land owned by the property owner, but in which other parties, such as utility companies, may have limited rights granted for a specific purpose. If a utility company owns the rights, they may have a utility line running below the ground, across your property."
+		},
+
+		{
+			"question": "What is an encroachment?",
+			"answer": "Encroachments are improvements, such as fences or buildings, which extend across the property line."
+		},
+		{
+			"question": "What is a plat?",
+			"answer": "A legal document intended to take a large parcel of land and divide it into smaller parcels of land. A subdivision plat may also create public rights-of-way or easements, and is usually filed with the county clerk & recorder's office."
+		},
+		{
+			"question": "How do I find my existing boundaries?",
+			"answer": "You should have a description of your property included in your deed when you bought the property."
+		},
+		{
+			"question": "I just want to put in a fence, what do I need?",
+			"answer": "You need a boundary line survey"
+		},
+		{
+			"question": "How do I chose a land surveyor?",
+			"answer": "Only a Professional Land Surveyor (or Civil Engineer registered prior to 1982) licensed by the State Board for Professional Engineers and Land Surveyors is legally authorized to practice land surveying in the State of California. Most active Land Surveyors are listed in the yellow pages of the telephone directory, or a listing may be obtained from the California Land Surveyors Association. A Land Surveyor is an integral part of a professional team composed of attorneys, engineers, architects, planners, and landscape architects. <br><br> Some land surveying firms offer comprehensive services including some, or all, of the above. Professional expertise can have a significant impact upon the planned use of your property. Select a reputable Land Surveyor in whose skill and judgment you can put your trust. Your selection should be made when you are sure that the professional you have chosen has all of the facts, and is completely aware of your requirements and the requirements of the governmental agency having jurisdiction over the property."
+		}
+		]
+};
+
+var initFAQpage = function() {
+	for (var i = 0; i < FAQ.sets.length; i++) {
+		var parentCollapse = "#FAQdropdown" + i;
+		var parentID = "FAQparent" + i;
+		var child = "FAQdropdown" + i;
+		var question = FAQ.sets[i].question;
+		var answer = FAQ.sets[i].answer;
+
+		var p1 = document.createElement("P");
+		p1.setAttribute("id", parentID);
+		p1.setAttribute("class", "FAQquestions FAQset");
+		p1.setAttribute("data-toggle", "collapse");
+		p1.setAttribute("data-target", parentCollapse);
+		p1.setAttribute("style", "font-weight:600")
+		p1.innerHTML = question;
+
+		var p2 = document.createElement("P");
+		p2.setAttribute("class", "collapse");
+		p2.setAttribute("id", child);
+		p2.setAttribute("class", "FAQset");
+		p2.innerHTML = answer;
+
+
+
+		$("#attachFAQquestHere").append(p1);
+		$("#attachFAQquestHere").append(p2); 
+		$(parentCollapse).collapse('toggle');
+	}
+};
+
+var resetFAQ = function() {
+	//clear out previous search from searchBox
+	document.getElementById('searchBox').value = "";
+
+	//clear out all questions currently on the page
+	$("#attachFAQquestHere").children().remove();
+
+	//reload all questions
+	initFAQpage();
+
+	//TODO: close all accordions
+
+};
+
+var searchFAQ = function() {
+	var questInDom = document.getElementsByClassName("FAQquestions");
+	var searchTerm = $("#searchBox").val();
+	var regexInput = new RegExp(searchTerm, "i");//properly formats the regex from the userInput
+
+	//clear out previous search from searchBox
+	document.getElementById('searchBox').value = "";
+
+	//revert autofocus to text box
+	document.getElementById('searchBox').focus();
+
+	//cycle through the questions visible in the DOM
+	for (var i = 0; i < questInDom.length; i++) {
+		var curQuestOnPage = questInDom[i].innerHTML;
+		 //if the user input from the search bar matches something on the page...
+		if (regexInput.test(curQuestOnPage) == true) {
+			//cycle through the JSON questions to find entry of the curQuestOnPage
+			for (var j = 0; j < FAQ.sets.length; j++) {
+				//matching DOM question with JSON entry
+				if ($("#FAQparent"+[j]).text() == curQuestOnPage) {
+					//clear everything else
+					$("#attachFAQquestHere").children().hide();
+					//show curQuestOnPage
+					$("#FAQparent"+[j]).show();
+					$("#FAQdropdown"+[j]).show();
+					$("#FAQdropdown"+[j]).collapse('toggle');
+				}
+			}
+		} else if (regexInput.test(curQuestOnPage) == false){
+			//cycle through the JSON questions to find entry of the curQuestOnPage
+			for (var k = 0; k < FAQ.sets.length; k++) {
+
+				//matching DOM question with JSON entry
+				if ($("#FAQparent"+[k]).text() == curQuestOnPage) {
+					//show curQuestOnPage
+					$("#FAQparent"+[k]).hide();
+					$("#FAQdropdown"+[k]).hide();
+				}
+			}
+		}
+	}
+
+};
+
+
+
+
+initFAQpage();
+
+
