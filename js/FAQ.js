@@ -1,5 +1,24 @@
 var FAQ = {
 	"sets": [
+
+		{
+			"question": "How much does a survey cost?",
+			"answer": "The cost for most land surveying work is determined based on the following variables:<br><br>" +
+				"<dfn>Record Search</dfn><br>" +
+				"This varies by (a) the number of parcels involved; and (b) the number of past transactions. (This necessary step is complicated by the casual manner in which land transactions have been handled in the past, resulting in many vague, incomplete, and often contradictory legal descriptions and land records.)<br><br>" +
+
+				"<dfn>Size and Shape of Property</dfn><br>" +
+				"An irregularly shaped parcel has more corners to monument and a longer boundary than a rectangular parcel containing the same area.<br><br>" +
+
+				"<dfn>Sectionalized Survey Work</dfn><br>" +
+				"This could require the survey of the entire section (640 acres +) in which the land being surveyed lies, regardless of the area of the parcel. In some cases a survey of more than one section is required, depending on the location of the parcel in question in relation to the sections shown on the government plat map.<br><br>" +
+
+				"<dfn>Terrain & Vegetation</dfn><br>" +
+				"A level parcel of land is easier to survey than a mountainous parcel. Interference with lines of sight and accessibility complicate field work.<br><br>" +
+
+				"<dfn>Amount of Existing Evidence on the Property</dfn><br>" +
+				"Existing evidence such as iron, wood, or stone monuments, old fences, and occupation lines, witness trees, etc., aid the Surveyor. Their absence may compound difficulties involved in retracing boundaries."
+		},
 		{
 			"question": "What is an easement?",
 			"answer": "An easement is an area of land owned by the property owner, but in which other parties, such as utility companies, may have limited rights granted for a specific purpose. If a utility company owns the rights, they may have a utility line running below the ground, across your property."
@@ -19,7 +38,7 @@ var FAQ = {
 		},
 		{
 			"question": "I just want to put in a fence, what do I need?",
-			"answer": "You need a boundary line survey"
+			"answer": "This needs a proper answer. Erin doesn't know anything about surveys."
 		},
 		{
 			"question": "How do I chose a land surveyor?",
