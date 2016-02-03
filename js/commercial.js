@@ -186,11 +186,11 @@ var getCategories = function() {
 	return categories;	
 };
 
-//attachmentPointList: array of 3 jquery #id objects. use null to skip a section. order: publicWorks, School, Church
+//attachmentPoints: array of 3 jquery #id objects. use '' to skip a section. order: publicWorks, School, Church
 //numPerHeading: integer will do (number of thumbnails per section)
 //clickInfo: send "true" if this function was called from a click (instead of initial page load)
-var makeCommercialThumbnail = function(attachmentPointList, numPerHeading, clickInfo) {
-	for (var i = 0; i < attachmentPointList.length; i++) {//# of section headings
+var makeCommercialThumbnail = function(attachmentPoints, numPerHeading, clickInfo) {
+	for (var i = 0; i < attachmentPoints.length; i++) {//# of section headings
 		if (clickInfo) {
 			//if thumbnails are created through button pushing, don't re-create the first three thumbnails 
 			//because they already exist. start the cycle beyond 0. use numInShowcase
@@ -233,21 +233,21 @@ var makeCommercialThumbnail = function(attachmentPointList, numPerHeading, click
 			}
 
 			//append generic thumbnail
-			$("#"+attachmentPointList[i]).append(divTop);
+			$("#"+attachmentPoints[i]).append(divTop);
 		}
 	}
 };
 
 addEventListener('click', function (ev) {
     //variables to pass to makeCommercialThumbnail()
-	var attachmentPointList = ["publicWorksShowMore", "schoolsShowMore", "churchesShowMore"];
+	var attachmentPoints = ["publicWorksShowMore", "schoolsShowMore", "churchesShowMore"];
 	var numPerHeading = Math.min(mapMarkers.publicWorks.length, mapMarkers.schools.length, mapMarkers.churches.length);
 	var clickTrue = true;
 	var clicked_id;
 	var moreButtonPushed = false;
 	var arrayElem;
 
-	//format the incoming information so it can be compared to the attachmentPointList
+	//format the incoming information so it can be compared to the attachmentPoints
 	//this click is coming from the index.html page
     if (ev.target.classList.contains("portfolioButtons")) {
 		//log what button pushed it -- so you know where to attach the thumbnails
@@ -266,47 +266,47 @@ addEventListener('click', function (ev) {
 	}
 
 	//cycle through each heading to find which one got clicked
-	for (var i = 0; i < attachmentPointList.length; i++) {
+	for (var i = 0; i < attachmentPoints.length; i++) {
 		
 		//if what is clicked matches a attachPointList entry
-		if (attachmentPointList[i].indexOf(clicked_id) > -1) {
-			//make an array with the button name and two nulls to feed to makeCommericalThumbnail()
-			arrayElem = attachmentPointList[i];
-			attachmentPointList = [null, null, null];
-			attachmentPointList.splice(i, 1, arrayElem);
-
+		if (attachmentPoints[i].indexOf(clicked_id) > -1) {
+						
+			//make an array with the button name and two empty strings to feed to makeCommericalThumbnail()
+			arrayElem = attachmentPoints[i];
+			attachmentPoints = (['', '', '']);
+			attachmentPoints.splice(i, 1, arrayElem);
 			
 			//***IF the MORE button caret facing DOWN***
 			if ($("#"+clicked_id).hasClass("glyphicon-chevron-down") == true) {
 				//load or MAKE thumbnails
-				if ($("#"+attachmentPointList[i]).children().length == 0) {
-					makeCommercialThumbnail(attachmentPointList, numPerHeading, clickTrue);
+				if ($("#"+attachmentPoints[i]).children().length == 0) {
+					makeCommercialThumbnail(attachmentPoints, numPerHeading, clickTrue);
 				}
 				$("#"+clicked_id).addClass("glyphicon-chevron-up");
 				$("#"+clicked_id).removeClass("glyphicon-chevron-down");
 
 				//if the actual MORE button wasn't physically pushed
-				if (!$("#"+attachmentPointList[i]).hasClass("in") && moreButtonPushed === false){
+				if (!$("#"+attachmentPoints[i]).hasClass("collapsing") && moreButtonPushed === false){
 					//toggle bootstrap 'collapse' class so the thumbnails show up
+					console.log("pushed from toobar");
 					$("."+clicked_id+"Collapse").collapse("toggle");
 				}
 
 			//***ELSE the MORE button caret facing UP***
 			} else if ($("#"+clicked_id).hasClass("glyphicon-chevron-up") == true){
-				//change the button to say 'show more'
-				$("#"+clicked_id).addClass("glyphicon-chevron-down");
-				$("#"+clicked_id).removeClass("glyphicon-chevron-up");
-
-
-				//if the MORE button wasn't physically pushed
+				//if the MORE button wasn't physically pushed (was pushed by toolbar)
 				if (moreButtonPushed === false) {
-					//toggle bootstrap's collaspse manually
-					$("."+clicked_id+"Collapse").collapse("toggle");
+					//do nothing. keep the section open
+				}else {
+					//change the button to say 'show more'
+					$("#"+clicked_id).addClass("glyphicon-chevron-down");
+					$("#"+clicked_id).removeClass("glyphicon-chevron-up");
 				}
 			}
 		}else {
 			//console.log("button pushed that is not on commercial page");
 		}
 	}
+	$(window).resize();
 });
 	

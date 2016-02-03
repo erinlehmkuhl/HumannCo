@@ -98,12 +98,16 @@ var quiz = {
 };
 
 
-//attachmentPointList: array of 3 jquery #id objects. use null to skip a section. order: publicWorks, School, Church
+//attachmentPointList: array of 3 jquery #id objects. use '' to skip a section. order: publicWorks, School, Church
 //totalNum: integer. (number of thumbnails per section)
-//thumbnail: JSON array index for the set you want ("smallThumbnails" will )
-var makeResidentialThumbnail = function(attachmentPoint, totalNum, thumbnail) {
-
-	for (var j = 1; j < totalNum; j++) {//# of thumbnails per section
+//thumbnail: JSON array index for the set you want ("smallThumbnails" will loop through smallThumbnails)
+var makeResidentialThumbnail = function(attachmentPoint, totalNum, thumbnail, init) {
+	var j = 0;
+	//to skip the first non-entry in the JSON
+	if (init) {
+		j = 1;
+	}
+	for (j; j < totalNum; j++) {//# of thumbnails per section
 		//create elements for generic thumbnail
 		var divTop = document.createElement("DIV");
 		divTop.classList.add("col-sm-3");
@@ -122,6 +126,10 @@ var makeResidentialThumbnail = function(attachmentPoint, totalNum, thumbnail) {
 		
 		//specifics per thumbnail
 		for (var i = 0; i < quiz.initial[j][thumbnail].length; i++) {
+			//to skip the first intro enry in the JSON
+			if (quiz.initial[j][thumbnail][i].name == undefined) {
+				j++;
+			}
 			img.src = quiz.initial[j][thumbnail][i].img;
 			img.alt = quiz.initial[j][thumbnail][i].name;
 			title.innerHTML = quiz.initial[j][thumbnail][i].name;
@@ -137,46 +145,44 @@ var makeResidentialThumbnail = function(attachmentPoint, totalNum, thumbnail) {
 	}
 };
 
-var divList = [];
+var categoryThumbnails = [];
 
 var quizYesButton = function() {
 	var curQuestion = $("#residentialQuestion").text();
 
 	//loop through the available questions to see which one we are currently on
-	for (var i = 0; i < quiz.initial.length; i++) {
-		if (quiz.initial[i].question == curQuestion) {
-			if (quiz.initial[i].question == quiz.initial[0].question) {
+	for (var b = 0; b < quiz.initial.length; b++) {
+		if (quiz.initial[b].question == curQuestion) {
+			//FOR THE FIRST question only
+			if (quiz.initial[b].question == quiz.initial[0].question) {
 				//show next question in jumbotron
-				$("#residentialQuestion").text(quiz.initial[i+1].question);
-				//show some DOM stuff
+				$("#residentialQuestion").text(quiz.initial[b+1].question);
+				//show back button in DOM 
 				$("#quizBack").show();
 
+			//other than the first time, things to do when hitting YES button
 			} else {
-				//show answer thumbnails
+				//show small answer header and thumbnails
 				$("#surveyOptions").show();
-				makeResidentialThumbnail('residentialSmallThumbnailHeader', quiz.initial[i].smallThumbnails.length, "smallThumbnails");
+				makeResidentialThumbnail('residentialSmallThumbnailHeader', quiz.initial[b].smallThumbnails.length, "smallThumbnails");
 			
 
 				//show explanation in jumbotron
-				$("#residentialQuestion").text(quiz.initial[i].bigThumbnail[0].name);
-				$("#residentialExplanation").text(quiz.initial[i].bigThumbnail[0].p);
+				$("#residentialQuestion").text(quiz.initial[b].bigThumbnail[0].name);
+				$("#residentialExplanation").text(quiz.initial[b].bigThumbnail[0].p);
 
+				//get rid of incorrect big category thumbnails by hiding all of them
+				categoryThumbnails = $("#residentialLargeThumbnailHeader").children();
+				categoryThumbnails.hide();
 
-				//get rid of incorrect categories
-				divList = $("#residentialLargeThumbnailHeader").children();
-				var divKeep = quiz.initial[i].bigThumbnail[0].name.replace(/\s+/g, '');
-				for (var j = 0; j < divList.length; j++) {
-					if (divList[j].classList.contains(divKeep)) {
-						$("#residentialLargeThumbnailHeader").children().hide();
-						$("."+divKeep).show();
-					}
-				
-				}
+				//reinstate the current [i] big thumnail from JSON
+				var divKeep = quiz.initial[b].bigThumbnail[0].name.replace(/\s+/g, '');
+				$("."+divKeep).show();
 			}
 			
 		}
 	}
-	return divList;
+	return categoryThumbnails;
 };
 
 
@@ -184,25 +190,25 @@ var quizNoButton = function() {
 	var curQuestion = $("#residentialQuestion").text();
 
 	//loop through the available questions to see which one we are currently on
-	for (var i = 0; i < quiz.initial.length; i++) {
-		if (quiz.initial[i].question == curQuestion) {
+	for (var c = 0; c < quiz.initial.length; c++) {
+		if (quiz.initial[c].question == curQuestion) {
 			//proceed to next question
-			var nextQuestion = quiz.initial[i + 1].question;
+			var nextQuestion = quiz.initial[c + 1].question;
 			$("#residentialQuestion").text(nextQuestion);
-
-			//take away thumbnails that don't belong
 		}
 	}
-
+	//information for BACK button
+	categoryThumbnails = $("#residentialLargeThumbnailHeader").children();
+	return categoryThumbnails;
 };
 
 
 var quizBackButton = function() {
-	var curName = $("#residentialQuestion").text();
+	var curText = $("#residentialQuestion").text();
 
 	//reinstate the category thumbnails
-	for (var i = 0; i < divList.length; i++) {
-		divList[i].style.display = "inline";
+	for (var d = 0; d < categoryThumbnails.length; d++) {
+		categoryThumbnails[d].style.display = "inline";
 	}
 
 	//remove the options thumbnails
@@ -210,11 +216,20 @@ var quizBackButton = function() {
 	$("#residentialSmallThumbnailHeader").children().hide();
 
 	//reset jumbotron text
-	for (var i = 0; i < quiz.initial.length; i++) {
-		if (quiz.initial[i].bigThumbnail[0].name == curName) {
-			$("#residentialQuestion").text(quiz.initial[i].question);
-			$("#residentialExplanation").text("");
+	for (var e = 0; e < quiz.initial.length; e++) {
+		if (quiz.initial[e].question == curText) {
+			$("#residentialQuestion").text(quiz.initial[e-1].question);
+		} else if (quiz.initial[e].bigThumbnail[0].name == curText) {
+			$("#residentialQuestion").text(quiz.initial[e].question);
 		}
+
+		//if the back button goes beyond the start, reset it
+		if (e < 0) {
+			e = 0
+		}
+
+		//clear the explanation text in the jumbotron
+		$("#residentialExplanation").text("");
 	}
 };
 
@@ -223,7 +238,7 @@ var quizBackButton = function() {
 //initialize page
 $(document).ready(function() {
 	$("#residentialQuestion").text(quiz.initial[0].question);
-	makeResidentialThumbnail('residentialLargeThumbnailHeader', quiz.initial.length, "bigThumbnail");
+	makeResidentialThumbnail('residentialLargeThumbnailHeader', quiz.initial.length, "bigThumbnail", "init");
 	$("#quizBack").hide();
 	$("#surveyOptions").hide();
 });
