@@ -41,6 +41,21 @@ button {
 	font-family: Helvetica;
 }
 
+.moreButtons {
+	border: none;
+    color: #aba5a5;
+    background: none;
+    font-size: 27px;
+}
+
+.moreButtons:active {
+
+}
+
+.moreButtons:focus,.moreButtons:active, .sidebar:active, .sidebar:focus, .sidebar-nub:active, .sidebar-nub:focus {
+   outline: none !important;
+}
+
 p {
 	font-size: 1.2em;
 }

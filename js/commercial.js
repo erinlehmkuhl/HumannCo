@@ -7,12 +7,12 @@ var mapMarkers = {
 	"publicWorks": [
 		{"name": "Kensington Fire Station", 
 		"center": {"lat": 37.908644, "lng": -122.278051}, 
-		"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
+		"img": "img/HumanCoImages/pastProjects/kensington.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "Lafayette Chamber of Commerce", 
 		"center": {"lat": 37.890238, "lng": -122.121103}, 
-		"img": "img/HumanCoImages/pastProjects/alcatraz.jpg",
+		"img": "img/HumanCoImages/pastProjects/lafayette.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "Chabot Space and Science Center", 
@@ -27,6 +27,11 @@ var mapMarkers = {
 		
 		{"name": "Alcatraz Island", 
 		"center": {"lat": 37.827257, "lng": -122.422945}, 
+		"img": "img/HumanCoImages/pastProjects/alcatraz.jpg",
+		"blurb": "description of work done at this site"},
+
+		{"name": "Lafayette Reservoir", 
+		"center": {"lat": 37.881981, "lng": -122.142629}, 
 		"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
 		"blurb": "description of work done at this site"}
 
@@ -48,7 +53,17 @@ var mapMarkers = {
 		"blurb": "description of work done at this site"},
 
 		{"name": "Happy Valley School", 
-		"center": {"lat": 37.904952, "lng": -122.142410}, 
+		"center": {"lat": 37.904749, "lng": -122.142367}, 
+		"img": "img/HumanCoImages/pastProjects/happyValley.jpg",
+		"blurb": "description of work done at this site"},
+		
+		{"name": "Burton Valley School", 
+		"center": {"lat": 37.862528, "lng": -122.093597}, 
+		"img": "img/HumanCoImages/pastProjects/happyValley.jpg",
+		"blurb": "description of work done at this site"},
+		
+		{"name": "Dahl Elementary", 
+		"center": {"lat": 37.288519, "lng": -121.839535}, 
 		"img": "img/HumanCoImages/pastProjects/happyValley.jpg",
 		"blurb": "description of work done at this site"}
 	],
@@ -70,6 +85,16 @@ var mapMarkers = {
 
 		{"name": "St John Vianney Catholic Church", 
 		"center": {"lat": 37.919448, "lng": -122.043034}, 
+		"img": "img/HumanCoImages/pastProjects/stAndrews.jpg",
+		"blurb": "description of work done at this site"},
+
+		{"name": "Our Savior Lutheran Church", 
+		"center": {"lat": 37.671003, "lng": -121.752874}, 
+		"img": "img/HumanCoImages/pastProjects/stAndrews.jpg",
+		"blurb": "description of work done at this site"},
+
+		{"name": "St. Perpetua Catholic Church", 
+		"center": {"lat": 37.881331, "lng": -122.113344}, 
 		"img": "img/HumanCoImages/pastProjects/stAndrews.jpg",
 		"blurb": "description of work done at this site"}
 	]
@@ -182,14 +207,12 @@ var makeCommercialThumbnail = function(attachmentPointList, numPerHeading, click
 			var img = document.createElement("IMG");
 			var divCapt = document.createElement("DIV");
 			divCapt.classList.add("caption");
-			var title = document.createElement("H3");
-			var desc = document.createElement("P");
-			desc.classList.add("thumb-description");
+			var title = document.createElement("H4");
+
 			//construct generic thumbnail
 			divThumb.appendChild(img);
 			divThumb.appendChild(divCapt);
 			divCapt.appendChild(title);
-			divCapt.appendChild(desc);
 			divTop.appendChild(divThumb);
 			
 			//specifics per thumbnail
@@ -197,19 +220,16 @@ var makeCommercialThumbnail = function(attachmentPointList, numPerHeading, click
 				img.src = mapMarkers.publicWorks[j].img;
 				img.alt = mapMarkers.publicWorks[j].name;
 				title.innerHTML = mapMarkers.publicWorks[j].name;
-				desc.innerHTML = mapMarkers.publicWorks[j].blurb;
 
 			} else if (i == 1) {//schools
 				img.src = mapMarkers.schools[j].img;
 				img.alt = mapMarkers.publicWorks[j].name;
 				title.innerHTML = mapMarkers.schools[j].name;
-				desc.innerHTML = mapMarkers.schools[j].blurb;
 
 			} else if (i == 2) {//churches
 				img.src = mapMarkers.churches[j].img;
 				img.alt = mapMarkers.publicWorks[j].name;
 				title.innerHTML = mapMarkers.churches[j].name;
-				desc.innerHTML = mapMarkers.churches[j].blurb;
 			}
 
 			//append generic thumbnail
@@ -225,14 +245,21 @@ addEventListener('click', function (ev) {
 	var clickTrue = true;
 	var clicked_id;
 	var moreButtonPushed = false;
+	var arrayElem;
 
 	//format the incoming information so it can be compared to the attachmentPointList
+	//this click is coming from the index.html page
     if (ev.target.classList.contains("portfolioButtons")) {
 		//log what button pushed it -- so you know where to attach the thumbnails
         clicked_id = ev.target.text;
         clicked_id = clicked_id.split(" ").join("");
         clicked_id = clicked_id.charAt(0).toLowerCase() + clicked_id.slice(1);
 
+        //re-direct to page and scroll to bookmark
+		window.location.assign("commercial.html#"+clicked_id+"Header");
+
+
+    //this click is coming from the commercial.html page
 	} else if (ev.target.classList.contains("moreButtons")){
 		clicked_id = ev.target.id;
 		moreButtonPushed = true;
@@ -240,18 +267,23 @@ addEventListener('click', function (ev) {
 
 	//cycle through each heading to find which one got clicked
 	for (var i = 0; i < attachmentPointList.length; i++) {
-		//if what is clicked has 'publicWorks' in it
+		
+		//if what is clicked matches a attachPointList entry
 		if (attachmentPointList[i].indexOf(clicked_id) > -1) {
 			//make an array with the button name and two nulls to feed to makeCommericalThumbnail()
-			attachmentPointList = [attachmentPointList[i], null, null];
-			//re-direct to page and scroll to bookmark
-			window.location.assign("commercial.html#"+clicked_id+"Header");
+			arrayElem = attachmentPointList[i];
+			attachmentPointList = [null, null, null];
+			attachmentPointList.splice(i, 1, arrayElem);
 
-			//***IF the MORE button says MORE***
-			if ($("#"+clicked_id+"").text() == "show more") {
-				//load thumbnails
-				makeCommercialThumbnail(attachmentPointList, numPerHeading, clickTrue);
-				$("#"+clicked_id+"").text("show less");
+			
+			//***IF the MORE button caret facing DOWN***
+			if ($("#"+clicked_id).hasClass("glyphicon-chevron-down") == true) {
+				//load or MAKE thumbnails
+				if ($("#"+attachmentPointList[i]).children().length == 0) {
+					makeCommercialThumbnail(attachmentPointList, numPerHeading, clickTrue);
+				}
+				$("#"+clicked_id).addClass("glyphicon-chevron-up");
+				$("#"+clicked_id).removeClass("glyphicon-chevron-down");
 
 				//if the actual MORE button wasn't physically pushed
 				if (!$("#"+attachmentPointList[i]).hasClass("in") && moreButtonPushed === false){
@@ -259,12 +291,12 @@ addEventListener('click', function (ev) {
 					$("."+clicked_id+"Collapse").collapse("toggle");
 				}
 
-			//***ELSE the MORE button says LESS***
-			} else if ($("#"+clicked_id+"").text() == "show less"){
+			//***ELSE the MORE button caret facing UP***
+			} else if ($("#"+clicked_id).hasClass("glyphicon-chevron-up") == true){
 				//change the button to say 'show more'
-				$("#"+clicked_id+"").text("show more");
-				//clear everything below
-				$("#"+attachmentPointList[i]).children().remove();
+				$("#"+clicked_id).addClass("glyphicon-chevron-down");
+				$("#"+clicked_id).removeClass("glyphicon-chevron-up");
+
 
 				//if the MORE button wasn't physically pushed
 				if (moreButtonPushed === false) {

@@ -8,7 +8,7 @@
 		<div id="insertNavbarHere"></div>
 
 			<!-- ###### content ###### -->
-		<div id="commercialPageStart" class="container-fluid"> 
+		<div id="accordion" class="container-fluid"> 
 			<div class="row contentArea">
 				<h3 id="contentHeader" class="add-padding-left">COMMERCIAL WORK</h3>
 			</div>
@@ -24,42 +24,59 @@
 			
 			<!-- START PUBLIC WORKS -->
 			<div class="row">
-				<div class="col-sm-8" id="publicWorksHeader"> <!--append thumbnails here-->
-					<h4>PUBLIC WORKS</h4>
-				</div> 
+				<h4 class="col-sm-6">PUBLIC WORKS</h4>
+			</div>
+			<div class="row">
+				<div class="col-sm-8" id="publicWorksHeader"></div> <!--append thumbnails here-->
 				<map class="col-sm-4 mapThumbnails" id="mapPublicWorks"></map><!--append map here-->
 			</div>
 			<div class="row">
-				<div class="col-sm-7"></div>
-				<button  id="publicWorks" class="publicWorksCollapse moreButtons" type="button" data-toggle="collapse" data-target="#publicWorksShowMore">show more</button>
-				<div id="publicWorksShowMore" class="collapse publicWorksCollapse"></div> <!--toggles for page expansion-->
+				<button id="publicWorks" data-parent="#accordion" class="col-sm-8 publicWorksCollapse moreButtons glyphicon glyphicon-chevron-down" type="button" data-toggle="collapse" data-target="#publicWorksShowMore"></button>
+			</div>
+			<div class="row">
+				<div class="col-sm-8">
+					<div id="publicWorksShowMore" class="collapse publicWorksCollapse"></div> <!--toggles for page expansion-->
+				</div>
 			</div>
 			<!-- END OF PUBLIC WORKS -->
 			<hr>
+			<div class="row vertical-spacer-50"></div>
+			<div class="row vertical-spacer-50"></div>
 			<div class="row">
-				<div class="col-sm-8" id="schoolsHeader"><!--append thumbnails here-->
-					<h4>SCHOOLS</h4>
-				</div> 
+				<h4 class="col-sm-12">SCHOOLS</h4>
+			</div>
+			<div class="row">
+				<div class="col-sm-8" id="schoolsHeader"></div><!--append thumbnails here--> 
 				<map class="col-sm-4 mapThumbnails" id="mapSchools"></map><!--append map here-->
 			</div>
 			<div class="row">
 				<div class="col-sm-7"></div>
-				<button  id="schools" class="schoolsCollapse moreButtons" onClick="moreButton(this.id)" type="button" data-toggle="collapse" data-target="#schoolsShowMore">show more</button>
-				<div id="schoolsShowMore" class="collapse schoolsCollapse"></div> <!--toggles for page expansion-->
+				<button  id="schools" data-parent="#accordion" class="col-sm-8 publicWorksCollapse moreButtons glyphicon glyphicon-chevron-down" type="button" data-toggle="collapse" data-target="#schoolsShowMore"></button>
+			</div>
+			<div class="row">
+				<div class="col-sm-8">
+					<div id="schoolsShowMore" class="collapse schoolsCollapse"></div> <!--toggles for page expansion-->
+				</div>
 			</div>
 			<!-- END OF SCHOOLS -->
 			<hr>
+			<div class="row vertical-spacer-50"></div>
+			<div class="row vertical-spacer-50"></div>
 			<div class="row">
-				<div class="col-sm-8" id="churchesHeader"><!--append thumbnails here-->
-					<h4>CHURCHES</h4>
-				</div> 
+				<h4 class="col-sm-12">CHURCHES</h4>
+			</div>
+			<div class="row">
+				<div class="col-sm-8" id="churchesHeader"></div><!--append thumbnails here-->
 				<map class="col-sm-4 mapThumbnails" id="mapChurches"></map><!--append map here-->
 			</div>
 			<div class="row">
 				<div class="col-sm-7"></div>
-				<button id="churches" class="churchesCollapse" onClick="moreButton(this.id)" type="button" data-toggle="collapse" data-target="#churchesShowMore">show more</button>
-				<div id="churchesShowMore" class="collapse churchesCollapse">
-				</div> <!--toggles for page expansion-->
+				<button id="churches" ddata-parent="#accordion" class="col-sm-8 publicWorksCollapse moreButtons glyphicon glyphicon-chevron-down" type="button" data-toggle="collapse" data-target="#churchesShowMore"></button>
+				</div>
+			<div class="row">
+				<div class="col-sm-8">
+					<div id="churchesShowMore" class="collapse churchesCollapse"></div> <!--toggles for page expansion-->
+				</div>
 			</div>
 			<!-- END OF CHURCHES -->
 
