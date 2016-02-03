@@ -2,6 +2,12 @@ var hiddenList = [];
 
 var quiz = {
 	"initial": [{
+			"question": "Would you like to use the Residential Survey Wizard?",			
+			"bigThumbnail": [{}],			
+			"smallThumbnails": [{}]
+		}, 
+
+		{
 			"question": "Are you buying, selling or refinancing a house?",
 			"bigThumbnail": [{
 				"name": "Location Survey",
@@ -93,10 +99,11 @@ var quiz = {
 
 
 //attachmentPointList: array of 3 jquery #id objects. use null to skip a section. order: publicWorks, School, Church
-//numPerHeading: integer will do (number of thumbnails per section)
-//whichSet: JSON array index for the set you want
+//totalNum: integer. (number of thumbnails per section)
+//thumbnail: JSON array index for the set you want ("smallThumbnails" will )
 var makeResidentialThumbnail = function(attachmentPoint, totalNum, thumbnail) {
-	for (var j = 0; j < totalNum; j++) {//# of thumbnails per section
+
+	for (var j = 1; j < totalNum; j++) {//# of thumbnails per section
 		//create elements for generic thumbnail
 		var divTop = document.createElement("DIV");
 		divTop.classList.add("col-sm-3");
@@ -138,23 +145,33 @@ var quizYesButton = function() {
 	//loop through the available questions to see which one we are currently on
 	for (var i = 0; i < quiz.initial.length; i++) {
 		if (quiz.initial[i].question == curQuestion) {
-			//show answer thumbnails
-			makeResidentialThumbnail('residentialSmallThumbnailHeader', quiz.initial[i].smallThumbnails.length, "smallThumbnails");
-		
-			//show explanation in jumbotron
-			$("#residentialQuestion").text(quiz.initial[i].bigThumbnail[0].name);
-			$("#residentialExplanation").text(quiz.initial[i].bigThumbnail[0].p);
+			if (quiz.initial[i].question == quiz.initial[0].question) {
+				//show next question in jumbotron
+				$("#residentialQuestion").text(quiz.initial[i+1].question);
+				//show some DOM stuff
+				$("#quizBack").show();
 
-
-			//get rid of incorrect categories
-			divList = $("#residentialLargeThumbnailHeader").children();
-			var divKeep = quiz.initial[i].bigThumbnail[0].name.replace(/\s+/g, '');
-			for (var j = 0; j < divList.length; j++) {
-				if (divList[j].classList.contains(divKeep)) {
-					$("#residentialLargeThumbnailHeader").children().hide();
-					$("."+divKeep).show();
-				}
+			} else {
+				//show answer thumbnails
+				$("#surveyOptions").show();
+				makeResidentialThumbnail('residentialSmallThumbnailHeader', quiz.initial[i].smallThumbnails.length, "smallThumbnails");
 			
+
+				//show explanation in jumbotron
+				$("#residentialQuestion").text(quiz.initial[i].bigThumbnail[0].name);
+				$("#residentialExplanation").text(quiz.initial[i].bigThumbnail[0].p);
+
+
+				//get rid of incorrect categories
+				divList = $("#residentialLargeThumbnailHeader").children();
+				var divKeep = quiz.initial[i].bigThumbnail[0].name.replace(/\s+/g, '');
+				for (var j = 0; j < divList.length; j++) {
+					if (divList[j].classList.contains(divKeep)) {
+						$("#residentialLargeThumbnailHeader").children().hide();
+						$("."+divKeep).show();
+					}
+				
+				}
 			}
 			
 		}
@@ -189,6 +206,7 @@ var quizBackButton = function() {
 	}
 
 	//remove the options thumbnails
+	$("#surveyOptions").hide();
 	$("#residentialSmallThumbnailHeader").children().hide();
 
 	//reset jumbotron text
@@ -204,6 +222,8 @@ var quizBackButton = function() {
 
 //initialize page
 $(document).ready(function() {
-	$("#residentialQuestion").text("Would you like to use the residential survey wizard?");
+	$("#residentialQuestion").text(quiz.initial[0].question);
 	makeResidentialThumbnail('residentialLargeThumbnailHeader', quiz.initial.length, "bigThumbnail");
+	$("#quizBack").hide();
+	$("#surveyOptions").hide();
 });
