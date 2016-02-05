@@ -24,14 +24,14 @@
 			
 			<!-- START PUBLIC WORKS -->
 			<div class="row">
-				<h4 class="col-sm-6">PUBLIC WORKS</h4>
+				<h4 id="publicWorksHeader" class="col-sm-6">PUBLIC WORKS</h4>
 			</div>
 			<div class="row">
-				<div class="col-sm-8" id="publicWorksHeader"></div> <!--append thumbnails here-->
+				<div class="col-sm-8" id="publicWorksThumbs"></div> <!--append thumbnails here-->
 				<map class="col-sm-4 mapThumbnails" id="mapPublicWorks"></map><!--append map here-->
 			</div>
 			<div class="row">
-				<button id="publicWorks" data-parent="#accordion" class="col-sm-8 publicWorksCollapse moreButtons glyphicon glyphicon-chevron-down" type="button" data-toggle="collapse" data-target="#publicWorksShowMore"></button>
+				<button id="publicWorks" data-parent="#accordion" class="col-sm-8 publicWorksCollapse moreButtons glyphicon glyphicon-menu-down" type="button" data-toggle="collapse" data-target="#publicWorksShowMore"></button>
 			</div>
 			<div class="row">
 				<div class="col-sm-8">
@@ -43,15 +43,14 @@
 			<div class="row vertical-spacer-50"></div>
 			<div class="row vertical-spacer-50"></div>
 			<div class="row">
-				<h4 class="col-sm-12">SCHOOLS</h4>
+				<h4 id="schoolsHeader" class="col-sm-6">SCHOOLS</h4>
 			</div>
 			<div class="row">
-				<div class="col-sm-8" id="schoolsHeader"></div><!--append thumbnails here--> 
+				<div class="col-sm-8" id="schoolsThumbs"></div><!--append thumbnails here--> 
 				<map class="col-sm-4 mapThumbnails" id="mapSchools"></map><!--append map here-->
 			</div>
 			<div class="row">
-				<div class="col-sm-7"></div>
-				<button  id="schools" data-parent="#accordion" class="col-sm-8 publicWorksCollapse moreButtons glyphicon glyphicon-chevron-down" type="button" data-toggle="collapse" data-target="#schoolsShowMore"></button>
+				<button id="schools" data-parent="#accordion" class="col-sm-8 schoolsCollapse moreButtons glyphicon glyphicon-menu-down" type="button" data-toggle="collapse" data-target="#schoolsShowMore"></button>
 			</div>
 			<div class="row">
 				<div class="col-sm-8">
@@ -63,15 +62,14 @@
 			<div class="row vertical-spacer-50"></div>
 			<div class="row vertical-spacer-50"></div>
 			<div class="row">
-				<h4 class="col-sm-12">CHURCHES</h4>
+				<h4 id="churchesHeader"class="col-sm-6">CHURCHES</h4>
 			</div>
 			<div class="row">
-				<div class="col-sm-8" id="churchesHeader"></div><!--append thumbnails here-->
+				<div class="col-sm-8" id="churchesThumbs"></div><!--append thumbnails here-->
 				<map class="col-sm-4 mapThumbnails" id="mapChurches"></map><!--append map here-->
 			</div>
 			<div class="row">
-				<div class="col-sm-7"></div>
-				<button id="churches" data-parent="#accordion" class="col-sm-8 churchesCollapse moreButtons glyphicon glyphicon-chevron-down" type="button" data-toggle="collapse" data-target="#churchesShowMore"></button>
+				<button id="churches" data-parent="#accordion" class="col-sm-8 churchesCollapse moreButtons glyphicon glyphicon-menu-down" type="button" data-toggle="collapse" data-target="#churchesShowMore"></button>
 				</div>
 			<div class="row">
 				<div class="col-sm-8">
@@ -81,6 +79,7 @@
 			<!-- END OF CHURCHES -->
 
 		</div> <!-- end content container-fluid-->
+		<div id="endCommercialPage"></div>
 	
 
 		<!-- end of page content -->

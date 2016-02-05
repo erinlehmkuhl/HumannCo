@@ -109,7 +109,7 @@ var mapData = {
 };
 
 var initSettings = {
-	"headings": ["publicWorksHeader", "schoolsHeader", "churchesHeader"],//jquery object id names
+	"headings": ["publicWorksThumbs", "schoolsThumbs", "churchesThumbs"],//jquery object id names
 	"numInShowcase": 3
 }
 
@@ -153,6 +153,8 @@ var initCommercialMap = function() {
 			});
 
 			marker.addListener('click', function() {
+				var content = this.title;
+
 				//focus map to marker
     			map.setZoom(8);
     			map.setCenter(marker.getPosition());
@@ -163,7 +165,7 @@ var initCommercialMap = function() {
 				}
 
 				infowindow = new google.maps.InfoWindow({
-					content: this.title
+					content: content
 	  			});
 
 	  			infowindow.open(this.map, this);
@@ -177,6 +179,10 @@ var initCommercialMap = function() {
 	clearTimeout(googleMapTimeout);
 };
 
+//TODO: run on mapMarker click
+var highlightThumbnail = function(markerName) {
+	alert(markerName);
+};
 
 var getCategories = function() {
 	var categories = [];
@@ -238,7 +244,14 @@ var makeCommercialThumbnail = function(attachmentPoints, numPerHeading, clickInf
 	}
 };
 
+
+//Boostrap will toggle collapse these sections via the html if clicked on commercial.html
+//this function listens for any click and if the event contains
+//publicWorks, schools or churches it 
+//creates thumbnails (on first click)
+//swaps the caret
 addEventListener('click', function (ev) {
+
     //variables to pass to makeCommercialThumbnail()
 	var attachmentPoints = ["publicWorksShowMore", "schoolsShowMore", "churchesShowMore"];
 	var numPerHeading = Math.min(mapMarkers.publicWorks.length, mapMarkers.schools.length, mapMarkers.churches.length);
@@ -247,17 +260,22 @@ addEventListener('click', function (ev) {
 	var moreButtonPushed = false;
 	var arrayElem;
 
-	//format the incoming information so it can be compared to the attachmentPoints
-	//this click is coming from the index.html page
+	//this click is coming from the navbar.html insert on any page
     if (ev.target.classList.contains("portfolioButtons")) {
 		//log what button pushed it -- so you know where to attach the thumbnails
-        clicked_id = ev.target.text;
-        clicked_id = clicked_id.split(" ").join("");
-        clicked_id = clicked_id.charAt(0).toLowerCase() + clicked_id.slice(1);
+	    clicked_id = ev.target.text;
+	    clicked_id = clicked_id.split(" ").join("");
+	    clicked_id = clicked_id.charAt(0).toLowerCase() + clicked_id.slice(1);
+	    //clicked_id = clicked_id.toString();
 
-        //re-direct to page and scroll to bookmark
-		window.location.assign("commercial.html#"+clicked_id+"Header");
+	    //re-direct to page and scroll to bookmark
+		window.location.href = "commercial.html#"+clicked_id+"Header";
 
+		//manually open the section (since the button wasn't physically pushed)
+		if (moreButtonPushed == false) {
+    		$("#"+clicked_id+"ShowMore").addClass("in");
+    		moreButtonPushed = true;
+    	}
 
     //this click is coming from the commercial.html page
 	} else if (ev.target.classList.contains("moreButtons")){
@@ -267,46 +285,52 @@ addEventListener('click', function (ev) {
 
 	//cycle through each heading to find which one got clicked
 	for (var i = 0; i < attachmentPoints.length; i++) {
-		
 		//if what is clicked matches a attachPointList entry
 		if (attachmentPoints[i].indexOf(clicked_id) > -1) {
-						
-			//make an array with the button name and two empty strings to feed to makeCommericalThumbnail()
+			//log the name of the item pressed (publicWorks, schools or churches)						
 			arrayElem = attachmentPoints[i];
+			//clear out the array but keep placeholders so there are still three spots
 			attachmentPoints = (['', '', '']);
+			//put the element in its proper spot in the array, leaving the other spots empty
+			//we'll use this array to pipe into the makeThumbnails function
 			attachmentPoints.splice(i, 1, arrayElem);
 			
+
 			//***IF the MORE button caret facing DOWN***
-			if ($("#"+clicked_id).hasClass("glyphicon-chevron-down") == true) {
+			if ($("#"+clicked_id).hasClass("glyphicon-menu-down") == true) {
 				//load or MAKE thumbnails
 				if ($("#"+attachmentPoints[i]).children().length == 0) {
 					makeCommercialThumbnail(attachmentPoints, numPerHeading, clickTrue);
 				}
-				$("#"+clicked_id).addClass("glyphicon-chevron-up");
-				$("#"+clicked_id).removeClass("glyphicon-chevron-down");
+				$("#"+clicked_id).addClass("glyphicon-menu-up");
+				$("#"+clicked_id).removeClass("glyphicon-menu-down");
 
-				//if the actual MORE button wasn't physically pushed
-				if (!$("#"+attachmentPoints[i]).hasClass("collapsing") && moreButtonPushed === false){
-					//toggle bootstrap 'collapse' class so the thumbnails show up
-					console.log("pushed from toobar");
-					$("."+clicked_id+"Collapse").collapse("toggle");
-				}
 
 			//***ELSE the MORE button caret facing UP***
-			} else if ($("#"+clicked_id).hasClass("glyphicon-chevron-up") == true){
-				//if the MORE button wasn't physically pushed (was pushed by toolbar)
-				if (moreButtonPushed === false) {
-					//do nothing. keep the section open
-				}else {
-					//change the button to say 'show more'
-					$("#"+clicked_id).addClass("glyphicon-chevron-down");
-					$("#"+clicked_id).removeClass("glyphicon-chevron-up");
+			} else if ($("#"+clicked_id).hasClass("glyphicon-menu-up") == true) {
+				//and the button push wasn't from the navbar
+				if (!ev.target.classList.contains("portfolioButtons")) {
+					$("#"+clicked_id).addClass("glyphicon-menu-down");
+					$("#"+clicked_id).removeClass("glyphicon-menu-up");
 				}
+				moreButtonPushed = false;
 			}
-		}else {
-			//console.log("button pushed that is not on commercial page");
+
+			//inconsistent fix for the churches section
+			//the thumbnails dont always show up on the first click
+			//this doesn't seem to always fix it though....
+			// if (clicked_id == "churches") {
+			// 	$(document).ready(function() {
+			// 		var churchIcons = ($("#churchesShowMore").children());
+
+			// 		for (var m = 0; m < churchIcons.length; m++) {
+			// 			$(churchIcons[m]).collapse("show");
+			// 		}
+			// 	window.location.href = "commercial.html#endCommercialPage";//not functioning
+			// 	});
+			// }
 		}
 	}
-	$(window).resize();
+
 });
-	
+
