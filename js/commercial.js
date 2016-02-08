@@ -155,6 +155,9 @@ var initCommercialMap = function() {
 			marker.addListener('click', function() {
 				var content = this.title;
 
+				//connect marker to thumbnail
+				highlightThumbnail(content);
+
 				//focus map to marker
     			map.setZoom(8);
     			map.setCenter(marker.getPosition());
@@ -181,7 +184,32 @@ var initCommercialMap = function() {
 
 //TODO: run on mapMarker click
 var highlightThumbnail = function(markerName) {
-	alert(markerName);
+	var eventClick = document.createElement("div");//to placate toggleThumbnails function
+	var clicked_id;
+	var moreButtonPushed = false;
+
+	//clear any blue outlines
+	$("h4").parent().parent().parent().css( "border", "none" );
+
+
+	for (var i = 0; i < getCategories().length; i++) {
+		var category = getCategories()[i];
+		for (var j = 0; j < mapMarkers[category].length; j++) {
+			if (mapMarkers[category][j].name == markerName) {
+				var clicked_id = Object.keys(mapMarkers)[i];
+				//require: (clicked_id, moreButtonPushed, eventClick)
+				toggleThumbnails(clicked_id, moreButtonPushed, eventClick);
+
+				//manually open the section (since the button wasn't physically pushed)
+				if (moreButtonPushed == false) {
+					$("#"+clicked_id+"ShowMore").addClass("in");
+					moreButtonPushed = true;
+				}
+			}
+		}
+	}
+	$("h4:contains("+markerName+")").parent().parent().parent().css( "border", "solid blue 2px" );
+	return moreButtonPushed;
 };
 
 var getCategories = function() {
@@ -244,6 +272,48 @@ var makeCommercialThumbnail = function(attachmentPoints, numPerHeading, clickInf
 	}
 };
 
+//swap up caret for down caret and show/create thumbnails
+var toggleThumbnails = function(clicked_id, moreButtonPushed, eventClick) {
+    //variables to pass to makeCommercialThumbnail()
+	var attachmentPoints = ["publicWorksShowMore", "schoolsShowMore", "churchesShowMore"];
+	var arrayElem;
+	var clickTrue = true;
+	var numPerHeading = Math.min(mapMarkers.publicWorks.length, mapMarkers.schools.length, mapMarkers.churches.length);
+
+	//cycle through each heading to find which one got clicked
+	for (var i = 0; i < attachmentPoints.length; i++) {
+		//if what is clicked matches a attachPointList entry
+		if (attachmentPoints[i].indexOf(clicked_id) > -1) {
+			//log the name of the item pressed (publicWorks, schools or churches)						
+			arrayElem = attachmentPoints[i];
+			//clear out the array but keep placeholders so there are still three spots
+			attachmentPoints = (['', '', '']);
+			//put the element in its proper spot in the array, leaving the other spots empty
+			//we'll use this array to pipe into the makeThumbnails function
+			attachmentPoints.splice(i, 1, arrayElem);
+			
+			//***IF the MORE button caret facing DOWN***
+			if ($("#"+clicked_id).hasClass("glyphicon-menu-down") == true) {
+				//load or MAKE thumbnails
+				if ($("#"+attachmentPoints[i]).children().length == 0) {
+					makeCommercialThumbnail(attachmentPoints, numPerHeading, clickTrue);
+				}
+				$("#"+clicked_id).addClass("glyphicon-menu-up");
+				$("#"+clicked_id).removeClass("glyphicon-menu-down");
+
+
+			//***ELSE the MORE button caret facing UP***
+			} else if ($("#"+clicked_id).hasClass("glyphicon-menu-up") == true) {
+				//and the button push wasn't from the navbar
+				if (!eventClick.classList.contains("portfolioButtons")) {
+					$("#"+clicked_id).addClass("glyphicon-menu-down");
+					$("#"+clicked_id).removeClass("glyphicon-menu-up");
+				}
+				moreButtonPushed = false;
+			}
+		}
+	}
+};
 
 //Boostrap will toggle collapse these sections via the html if clicked on commercial.html
 //this function listens for any click and if the event contains
@@ -251,19 +321,14 @@ var makeCommercialThumbnail = function(attachmentPoints, numPerHeading, clickInf
 //creates thumbnails (on first click)
 //swaps the caret
 addEventListener('click', function (ev) {
-
-    //variables to pass to makeCommercialThumbnail()
-	var attachmentPoints = ["publicWorksShowMore", "schoolsShowMore", "churchesShowMore"];
-	var numPerHeading = Math.min(mapMarkers.publicWorks.length, mapMarkers.schools.length, mapMarkers.churches.length);
-	var clickTrue = true;
 	var clicked_id;
 	var moreButtonPushed = false;
-	var arrayElem;
+	var eventClick = ev.target;
 
 	//this click is coming from the navbar.html insert on any page
-    if (ev.target.classList.contains("portfolioButtons")) {
+    if (eventClick.classList.contains("portfolioButtons")) {
 		//log what button pushed it -- so you know where to attach the thumbnails
-	    clicked_id = ev.target.text;
+	    clicked_id = eventClick.text;
 	    clicked_id = clicked_id.split(" ").join("");
 	    clicked_id = clicked_id.charAt(0).toLowerCase() + clicked_id.slice(1);
 	    //clicked_id = clicked_id.toString();
@@ -278,59 +343,15 @@ addEventListener('click', function (ev) {
     	}
 
     //this click is coming from the commercial.html page
-	} else if (ev.target.classList.contains("moreButtons")){
-		clicked_id = ev.target.id;
+	} else if (eventClick.classList.contains("moreButtons")){
+		clicked_id = eventClick.id;
 		moreButtonPushed = true;
 	}
 
-	//cycle through each heading to find which one got clicked
-	for (var i = 0; i < attachmentPoints.length; i++) {
-		//if what is clicked matches a attachPointList entry
-		if (attachmentPoints[i].indexOf(clicked_id) > -1) {
-			//log the name of the item pressed (publicWorks, schools or churches)						
-			arrayElem = attachmentPoints[i];
-			//clear out the array but keep placeholders so there are still three spots
-			attachmentPoints = (['', '', '']);
-			//put the element in its proper spot in the array, leaving the other spots empty
-			//we'll use this array to pipe into the makeThumbnails function
-			attachmentPoints.splice(i, 1, arrayElem);
-			
 
-			//***IF the MORE button caret facing DOWN***
-			if ($("#"+clicked_id).hasClass("glyphicon-menu-down") == true) {
-				//load or MAKE thumbnails
-				if ($("#"+attachmentPoints[i]).children().length == 0) {
-					makeCommercialThumbnail(attachmentPoints, numPerHeading, clickTrue);
-				}
-				$("#"+clicked_id).addClass("glyphicon-menu-up");
-				$("#"+clicked_id).removeClass("glyphicon-menu-down");
-
-
-			//***ELSE the MORE button caret facing UP***
-			} else if ($("#"+clicked_id).hasClass("glyphicon-menu-up") == true) {
-				//and the button push wasn't from the navbar
-				if (!ev.target.classList.contains("portfolioButtons")) {
-					$("#"+clicked_id).addClass("glyphicon-menu-down");
-					$("#"+clicked_id).removeClass("glyphicon-menu-up");
-				}
-				moreButtonPushed = false;
-			}
-
-			//inconsistent fix for the churches section
-			//the thumbnails dont always show up on the first click
-			//this doesn't seem to always fix it though....
-			// if (clicked_id == "churches") {
-			// 	$(document).ready(function() {
-			// 		var churchIcons = ($("#churchesShowMore").children());
-
-			// 		for (var m = 0; m < churchIcons.length; m++) {
-			// 			$(churchIcons[m]).collapse("show");
-			// 		}
-			// 	window.location.href = "commercial.html#endCommercialPage";//not functioning
-			// 	});
-			// }
-		}
-	}
-
+	//swap up caret for down caret and show/create thumbnails
+	toggleThumbnails(clicked_id, moreButtonPushed, eventClick);
 });
+
+
 
