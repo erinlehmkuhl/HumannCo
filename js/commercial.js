@@ -189,7 +189,7 @@ var highlightThumbnail = function(markerName) {
 	var moreButtonPushed = false;
 
 	//clear any blue outlines
-	$("h4").parent().parent().parent().css( "border", "none" );
+	$("h4").parent().parent().parent().removeClass( "thumbnailHighlight" );
 
 
 	for (var i = 0; i < getCategories().length; i++) {
@@ -208,7 +208,7 @@ var highlightThumbnail = function(markerName) {
 			}
 		}
 	}
-	$("h4:contains("+markerName+")").parent().parent().parent().css( "border", "solid blue 2px" );
+	$("h4:contains("+markerName+")").parent().parent().parent().addClass( "thumbnailHighlight" );
 	return moreButtonPushed;
 };
 

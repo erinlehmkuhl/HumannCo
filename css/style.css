@@ -52,8 +52,19 @@ button {
 
 }
 
-.moreButtons:focus,.moreButtons:active, .sidebar:active, .sidebar:focus, .sidebar-nub:active, .sidebar-nub:focus {
+.moreButtons:focus,
+.moreButtons:active, 
+.sidebar:active, 
+.sidebar:focus, 
+.sidebar-nub:active, 
+.sidebar-nub:focus {
    outline: none !important;
+}
+
+.thumbnailHighlight {
+	outline: thin dotted;
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
 }
 
 p {
