@@ -3,7 +3,7 @@ var cycleImages = function(){
 		var initialFadeIn = 0;
 		
 		//interval between items (in milliseconds)
-		var itemInterval = 8000;
+		var itemInterval = 12000;
 		
 		//cross-fade time (in milliseconds)
 		var fadeTime = itemInterval/2;

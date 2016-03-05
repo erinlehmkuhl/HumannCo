@@ -182,7 +182,7 @@ var initCommercialMap = function() {
 	clearTimeout(googleMapTimeout);
 };
 
-//TODO: run on mapMarker click
+//if the mapMarker is clicked, make a blue outline around the corresponding thumbnail
 var highlightThumbnail = function(markerName) {
 	var eventClick = document.createElement("div");//to placate toggleThumbnails function
 	var clicked_id;
@@ -191,12 +191,13 @@ var highlightThumbnail = function(markerName) {
 	//clear any blue outlines
 	$("h4").parent().parent().parent().removeClass( "thumbnailHighlight" );
 
-
+	//traverse JSON
 	for (var i = 0; i < getCategories().length; i++) {
 		var category = getCategories()[i];
 		for (var j = 0; j < mapMarkers[category].length; j++) {
 			if (mapMarkers[category][j].name == markerName) {
 				var clicked_id = Object.keys(mapMarkers)[i];
+				//make or show the thumbnails
 				//require: (clicked_id, moreButtonPushed, eventClick)
 				toggleThumbnails(clicked_id, moreButtonPushed, eventClick);
 
@@ -208,10 +209,13 @@ var highlightThumbnail = function(markerName) {
 			}
 		}
 	}
+	//highlight the thumbnail blue
 	$("h4:contains("+markerName+")").parent().parent().parent().addClass( "thumbnailHighlight" );
 	return moreButtonPushed;
 };
 
+
+//helper function for traversing JSON
 var getCategories = function() {
 	var categories = [];
 	for (var i = 0; i < Object.keys(mapMarkers).length; i++){
@@ -220,10 +224,12 @@ var getCategories = function() {
 	return categories;	
 };
 
+
+var makeCommercialThumbnail = function(attachmentPoints, numPerHeading, clickInfo) {
 //attachmentPoints: array of 3 jquery #id objects. use '' to skip a section. order: publicWorks, School, Church
 //numPerHeading: integer will do (number of thumbnails per section)
 //clickInfo: send "true" if this function was called from a click (instead of initial page load)
-var makeCommercialThumbnail = function(attachmentPoints, numPerHeading, clickInfo) {
+
 	for (var i = 0; i < attachmentPoints.length; i++) {//# of section headings
 		if (clickInfo) {
 			//if thumbnails are created through button pushing, don't re-create the first three thumbnails 
@@ -232,6 +238,7 @@ var makeCommercialThumbnail = function(attachmentPoints, numPerHeading, clickInf
 		}else{
 			var j = 0;
 		}
+
 		for (j; j < numPerHeading; j++) {//# of thumbnails per section
 			//create elements for generic thumbnail
 			var divTop = document.createElement("DIV");
@@ -315,11 +322,8 @@ var toggleThumbnails = function(clicked_id, moreButtonPushed, eventClick) {
 	}
 };
 
-//Boostrap will toggle collapse these sections via the html if clicked on commercial.html
-//this function listens for any click and if the event contains
-//publicWorks, schools or churches it 
-//creates thumbnails (on first click)
-//swaps the caret
+//listens for any click and if the event contains: publicWorks, schools or churches 
+//figures out where it came from and toggles collapsed sections appropriately
 addEventListener('click', function (ev) {
 	var clicked_id;
 	var moreButtonPushed = false;
@@ -348,9 +352,12 @@ addEventListener('click', function (ev) {
 		moreButtonPushed = true;
 	}
 
-
 	//swap up caret for down caret and show/create thumbnails
 	toggleThumbnails(clicked_id, moreButtonPushed, eventClick);
+
+	//manually open the section (since the button wasn't physically pushed)
+	//window.location.href = "#endCommercialPage";
+
 });
 
 
