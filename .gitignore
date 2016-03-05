@@ -1,8 +1,11 @@
 # files #
 ###################
 *.psd
+*.jpg
+*.png
+*.ico
 
 # directories #
 ###################
-img/HumannCoImages/
-img/proposals/
+img/
+proposals/
