@@ -48,16 +48,15 @@ button {
     font-size: 27px;
 }
 
-.moreButtons:active {
-
-}
 
 .moreButtons:focus,
 .moreButtons:active, 
 .sidebar:active, 
 .sidebar:focus, 
 .sidebar-nub:active, 
-.sidebar-nub:focus {
+.sidebar-nub:focus, 
+input:active,
+input:focus {
    outline: none !important;
 }
 
@@ -143,6 +142,18 @@ p {
 	padding-left: 50px;
 }
 
+.FAQquestions {
+	background-color: #d9d9d9;
+	border-radius: 3px;
+	font-weight: bold;
+	padding-left: 18px;
+}
+
+.FAQquestions:hover {
+	background-color: #f2f2f2;
+
+}
+
 #attachFAQquestHere {
 	padding-right: 100px;
 }
@@ -176,8 +187,6 @@ p {
 	height: 40px;
 	width: 63%;
 }
-
-
 
 .email {
 

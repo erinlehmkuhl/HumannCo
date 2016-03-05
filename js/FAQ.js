@@ -60,20 +60,17 @@ var initFAQpage = function() {
 		p1.setAttribute("class", "FAQquestions FAQset");
 		p1.setAttribute("data-toggle", "collapse");
 		p1.setAttribute("data-target", parentCollapse);
-		p1.setAttribute("style", "font-weight:600")
 		p1.innerHTML = question;
 
 		var p2 = document.createElement("P");
-		p2.setAttribute("class", "collapse");
 		p2.setAttribute("id", child);
-		p2.setAttribute("class", "FAQset");
+		p2.setAttribute("class", "FAQset FAQanswers collapse");
 		p2.innerHTML = answer;
 
 
 
 		$("#attachFAQquestHere").append(p1);
 		$("#attachFAQquestHere").append(p2); 
-		$(parentCollapse).collapse('toggle');
 	}
 };
 
@@ -87,54 +84,38 @@ var resetFAQ = function() {
 	//reload all questions
 	initFAQpage();
 
-	//TODO: close all accordions
+	//revert autofocus to text box
+	document.getElementById('searchBox').focus();
 
 };
 
 var searchFAQ = function() {
-	var questInDom = document.getElementsByClassName("FAQquestions");
+	var topics = FAQ.sets.length;
 	var searchTerm = $("#searchBox").val();
 	var regexInput = new RegExp(searchTerm, "i");//properly formats the regex from the userInput
 
-	//clear out previous search from searchBox
-	document.getElementById('searchBox').value = "";
+	resetFAQ();
 
-	//revert autofocus to text box
-	document.getElementById('searchBox').focus();
-
-	//cycle through the questions visible in the DOM
-	for (var i = 0; i < questInDom.length; i++) {
-		var curQuestOnPage = questInDom[i].innerHTML;
-		 //if the user input from the search bar matches something on the page...
-		if (regexInput.test(curQuestOnPage) == true) {
-			//cycle through the JSON questions to find entry of the curQuestOnPage
-			for (var j = 0; j < FAQ.sets.length; j++) {
-				//matching DOM question with JSON entry
-				if ($("#FAQparent"+[j]).text() == curQuestOnPage) {
-					//clear everything else
-					$("#attachFAQquestHere").children().hide();
-					//show curQuestOnPage
-					$("#FAQparent"+[j]).show();
-					$("#FAQdropdown"+[j]).show();
-					$("#FAQdropdown"+[j]).collapse('toggle');
-				}
-			}
-		} else if (regexInput.test(curQuestOnPage) == false){
-			//cycle through the JSON questions to find entry of the curQuestOnPage
-			for (var k = 0; k < FAQ.sets.length; k++) {
-
-				//matching DOM question with JSON entry
-				if ($("#FAQparent"+[k]).text() == curQuestOnPage) {
-					//show curQuestOnPage
-					$("#FAQparent"+[k]).hide();
-					$("#FAQdropdown"+[k]).hide();
-				}
-			}
+	//cycle through the questions in JSON
+	for (var i = 0; i < topics; i++) {
+		var curQuest = FAQ.sets[i].question;
+		var curAnsw = FAQ.sets[i].answer;
+		 //if the user input from the search bar does not match the current item...
+		if (regexInput.test(curQuest) == false && regexInput.test(curAnsw) == false) {
+			//hide question and answer
+			$("#FAQparent"+[i]).hide();
+			$("#FAQdropdown"+[i]).hide();
 		}
 	}
 
 };
 
+//make enter button work like clicking ENTER
+$("#searchBox").keyup(function(event){
+	if(event.keyCode == 13){
+		searchFAQ();
+	}
+});
 
 
 
