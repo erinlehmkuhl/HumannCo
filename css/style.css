@@ -61,13 +61,12 @@ input:focus {
 }
 
 .thumbnailHighlight {
-	outline: thin dotted;
-	outline: 5px auto -webkit-focus-ring-color;
-	outline-offset: -2px;
+	background-color: #375773;
 }
 
 p {
-	font-size: 1.2em;
+  font-size: 1.3em;
+  line-height: 1.6em;
 }
 
 #contentTextAbout {
@@ -242,10 +241,45 @@ p {
  	font-size: 12px;
  }
 
- .mapThumbnails {
+.mapThumbnails {
  	height: 15em;
  	border-right: solid white 15px;
- }
+}
+
+.bordered {
+	border: solid lightgray 1px;
+	border-radius: 3px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.preferList {
+	margin: 15px;
+}
+
+.preferList h4 {
+	text-align: center;
+	font-family: arial;
+	color: lightgray;
+}
+
+.preferList a {
+	font-size: 1.3em;
+	text-decoration: none;
+	line-height: 41px;
+	color: black;
+	font-family: arial;
+}
+
+#listOfPDFs { 	
+ 	list-style: none;
+ 	padding: 20px;
+}
+
+.hide {
+	display: none;
+}
 
 @media (max-width: 1000px) {
 	body {

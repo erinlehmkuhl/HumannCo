@@ -211,6 +211,10 @@ var highlightThumbnail = function(markerName) {
 	}
 	//highlight the thumbnail blue
 	$("h4:contains("+markerName+")").parent().parent().parent().addClass( "thumbnailHighlight" );
+	setTimeout(function() { 
+		$("h4:contains("+markerName+")").parent().parent().parent().removeClass( "thumbnailHighlight" );
+	}, 
+	3000);
 	return moreButtonPushed;
 };
 
@@ -244,8 +248,8 @@ var makeCommercialThumbnail = function(attachmentPoints, numPerHeading, clickInf
 			var divTop = document.createElement("DIV");
 			divTop.classList.add("col-sm-4");
 			var divThumb = document.createElement("DIV");
-			divThumb.classList.add("thumbnail");
 			var img = document.createElement("IMG");
+			img.classList.add("img-thumbnail");
 			var divCapt = document.createElement("DIV");
 			divCapt.classList.add("caption");
 			var title = document.createElement("H4");
@@ -359,6 +363,12 @@ addEventListener('click', function (ev) {
 	//window.location.href = "#endCommercialPage";
 
 });
+
+var showPDFs = function() {
+	$("#listOfPDFs").toggleClass("hide");
+	$(".spacerGoAway").toggleClass("hide");
+}
+
 
 
 
