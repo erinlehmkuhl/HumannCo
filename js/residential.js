@@ -11,12 +11,12 @@ var quiz = {
 			"question": "Are you buying, selling or refinancing a house?",
 			"bigThumbnail": [{
 				"name": "Location Survey",
-				"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
+				"img": "img/thumbnails/navalWeapons.jpg",
 				"p": "shows the location of the improvements on the property in relation to the apparent boundary lines of the property. It generally involves a physical inspection of the property and is accurate to plus or minus a few feet."
 			}],
 			"smallThumbnails": [{
 				"name": "Improvement Location Certificate",
-				"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+				"img": "img/thumbnails/chabot.jpg"
 			}]
 
 		}, 
@@ -25,27 +25,27 @@ var quiz = {
 			"question": "Are you building a structure or a fence?",
 			"bigThumbnail": [{
 				"name": "Boundary Survey",
-				"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
+				"img": "img/thumbnails/navalWeapons.jpg",
 				"p": "shows the location of the improvements on the property in relation to the apparent boundary lines of the property. It generally involves a physical inspection of the property and is accurate to plus or minus a few feet."
 			}],
 			"smallThumbnails": [{
 					"name": "Improvement Survey Plat",
-					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+					"img": "img/thumbnails/chabot.jpg"
 				},
 
 				{
 					"name": "Lot Line Adjustment",
-					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+					"img": "img/thumbnails/chabot.jpg"
 				},
 
 				{
 					"name": "Partial or Full Aerial Topographic Survey",
-					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+					"img": "img/thumbnails/chabot.jpg"
 				},
 
 				{
 					"name": "Site Plan",
-					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+					"img": "img/thumbnails/chabot.jpg"
 				}]
 		},
 
@@ -53,17 +53,17 @@ var quiz = {
 			"question": "Is your concern easements, encroachments or other parties that may have rights to your currently marked property?",
 			"bigThumbnail": [{
 				"name": "Land Survey",
-				"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
+				"img": "img/thumbnails/navalWeapons.jpg",
 				"p": "shows the location of the improvements on the property in relation to the apparent boundary lines of the property. It generally involves a physical inspection of the property and is accurate to plus or minus a few feet."
 			}],
 			"smallThumbnails": [{
 					"name": "Lot Line Adjustment",
-					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+					"img": "img/thumbnails/chabot.jpg"
 				},
 
 				{
 					"name": "ADA Plans",
-					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+					"img": "img/thumbnails/chabot.jpg"
 				}]
 		},
 
@@ -71,27 +71,27 @@ var quiz = {
 			"question": "Does this site have unusual grades and elevations?",
 			"bigThumbnail": [{
 				"name": "Topographic Survey",
-				"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
+				"img": "img/thumbnails/navalWeapons.jpg",
 				"p": "shows the location of the improvements on the property in relation to the apparent boundary lines of the property. It generally involves a physical inspection of the property and is accurate to plus or minus a few feet."
 			}],
 			"smallThumbnails": [{
 					"name": "Partial Aerial Topographic Survey",
-					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+					"img": "img/thumbnails/chabot.jpg"
 				},
 
 				{
 					"name": "Aerial Topographic Survey",
-					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+					"img": "img/thumbnails/chabot.jpg"
 				},
 
 				{
 					"name": "Elevation Certificate",
-					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+					"img": "img/thumbnails/chabot.jpg"
 				},
 
 				{
 					"name": "Preliminary Grading",
-					"img": "img/HumanCoImages/pastProjects/chabot.jpg"
+					"img": "img/thumbnails/chabot.jpg"
 				}]
 		}
 	]

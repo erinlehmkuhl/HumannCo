@@ -7,95 +7,95 @@ var mapMarkers = {
 	"publicWorks": [
 		{"name": "Kensington Fire Station", 
 		"center": {"lat": 37.908644, "lng": -122.278051}, 
-		"img": "img/HumanCoImages/pastProjects/kensington.jpg",
+		"img": "img/thumbnails/kensington.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "Lafayette Chamber of Commerce", 
 		"center": {"lat": 37.890238, "lng": -122.121103}, 
-		"img": "img/HumanCoImages/pastProjects/lafayette.jpg",
+		"img": "img/thumbnails/lafayette.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "Chabot Space and Science Center", 
 		"center": {"lat": 37.818940, "lng": -122.180661}, 
-		"img": "img/HumanCoImages/pastProjects/chabot.jpg",
+		"img": "img/thumbnails/chabot.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "Concord Naval Weapon Station", 
 		"center": {"lat": 38.010403, "lng": -121.982449}, 
-		"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
+		"img": "img/thumbnails/navalWeapons.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "Alcatraz Island", 
 		"center": {"lat": 37.827257, "lng": -122.422945}, 
-		"img": "img/HumanCoImages/pastProjects/alcatraz.jpg",
+		"img": "img/thumbnails/alcatraz.jpg",
 		"blurb": "description of work done at this site"},
 
 		{"name": "Lafayette Reservoir", 
 		"center": {"lat": 37.881981, "lng": -122.142629}, 
-		"img": "img/HumanCoImages/pastProjects/navalWeapons.jpg",
+		"img": "img/thumbnails/navalWeapons.jpg",
 		"blurb": "description of work done at this site"}
 
 	],
 	"schools": [
 		{"name": "Contra Costa County Office of Education", 
 		"center": {"lat": 37.935035, "lng": -122.069851}, 
-		"img": "img/HumanCoImages/pastProjects/stanley.jpg",
+		"img": "img/thumbnails/stanley.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "Santa Clara Unified School District", 
 		"center": {"lat": 37.357310, "lng": -121.995466}, 
-		"img": "img/HumanCoImages/pastProjects/santaClara.jpg",
+		"img": "img/thumbnails/santaClara.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "Stanley Middle School", 
 		"center": {"lat": 37.887376, "lng": -122.113522}, 
-		"img": "img/HumanCoImages/pastProjects/stanley.jpg",
+		"img": "img/thumbnails/stanley.jpg",
 		"blurb": "description of work done at this site"},
 
 		{"name": "Happy Valley School", 
 		"center": {"lat": 37.904749, "lng": -122.142367}, 
-		"img": "img/HumanCoImages/pastProjects/happyValley.jpg",
+		"img": "img/thumbnails/happyValley.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "Burton Valley School", 
 		"center": {"lat": 37.862528, "lng": -122.093597}, 
-		"img": "img/HumanCoImages/pastProjects/happyValley.jpg",
+		"img": "img/thumbnails/happyValley.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "Dahl Elementary", 
 		"center": {"lat": 37.288519, "lng": -121.839535}, 
-		"img": "img/HumanCoImages/pastProjects/happyValley.jpg",
+		"img": "img/thumbnails/happyValley.jpg",
 		"blurb": "description of work done at this site"}
 	],
 	"churches": [
 		{"name": "St. Andrew Catholic Church", 
 		"center": {"lat": 37.676661, "lng": -122.473898}, 
-		"img": "img/HumanCoImages/pastProjects/stAndrews.jpg",
+		"img": "img/thumbnails/stAndrews.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "Guru Granth Sahib Foundation", 
 		"center": {"lat": 37.679680, "lng": -122.065493}, 
-		"img": "img/HumanCoImages/pastProjects/guruGranth.jpg",
+		"img": "img/thumbnails/guruGranth.jpg",
 		"blurb": "description of work done at this site"},
 		
 		{"name": "St. Mina Coptic Church", 
 		"center": {"lat": 37.970601, "lng": -122.012505}, 
-		"img": "img/HumanCoImages/pastProjects/LOPC.jpg",
+		"img": "img/thumbnails/LOPC.jpg",
 		"blurb": "description of work done at this site"},
 
 		{"name": "St John Vianney Catholic Church", 
 		"center": {"lat": 37.919448, "lng": -122.043034}, 
-		"img": "img/HumanCoImages/pastProjects/stAndrews.jpg",
+		"img": "img/thumbnails/stAndrews.jpg",
 		"blurb": "description of work done at this site"},
 
 		{"name": "Our Savior Lutheran Church", 
 		"center": {"lat": 37.671003, "lng": -121.752874}, 
-		"img": "img/HumanCoImages/pastProjects/stAndrews.jpg",
+		"img": "img/thumbnails/stAndrews.jpg",
 		"blurb": "description of work done at this site"},
 
 		{"name": "St. Perpetua Catholic Church", 
 		"center": {"lat": 37.881331, "lng": -122.113344}, 
-		"img": "img/HumanCoImages/pastProjects/stAndrews.jpg",
+		"img": "img/thumbnails/stAndrews.jpg",
 		"blurb": "description of work done at this site"}
 	]
 };
