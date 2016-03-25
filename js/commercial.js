@@ -110,7 +110,7 @@ var mapData = {
 
 var initSettings = {
 	"headings": ["publicWorksThumbs", "schoolsThumbs", "churchesThumbs"],//jquery object id names
-	"numInShowcase": 3
+	"numInShowcase": 4
 }
 
 
@@ -198,7 +198,7 @@ var highlightThumbnail = function(markerName) {
 			if (mapMarkers[category][j].name == markerName) {
 				var clicked_id = Object.keys(mapMarkers)[i];
 				//make or show the thumbnails
-				//require: (clicked_id, moreButtonPushed, eventClick)
+				//function requires: (clicked_id, moreButtonPushed, eventClick)
 				toggleThumbnails(clicked_id, moreButtonPushed, eventClick);
 
 				//manually open the section (since the button wasn't physically pushed)
@@ -214,7 +214,7 @@ var highlightThumbnail = function(markerName) {
 	setTimeout(function() { 
 		$("h4:contains("+markerName+")").parent().parent().parent().removeClass( "thumbnailHighlight" );
 	}, 
-	3000);
+	2000);
 	return moreButtonPushed;
 };
 
@@ -246,7 +246,7 @@ var makeCommercialThumbnail = function(attachmentPoints, numPerHeading, clickInf
 		for (j; j < numPerHeading; j++) {//# of thumbnails per section
 			//create elements for generic thumbnail
 			var divTop = document.createElement("DIV");
-			divTop.classList.add("col-sm-4");
+			divTop.classList.add("col-sm-3");
 			var divThumb = document.createElement("DIV");
 			var img = document.createElement("IMG");
 			img.classList.add("img-thumbnail");

@@ -111,18 +111,19 @@ var makeResidentialThumbnail = function(attachmentPoint, totalNum, thumbnail, in
 		//create elements for generic thumbnail
 		var divTop = document.createElement("DIV");
 		divTop.classList.add("col-sm-3");
-		var divThumb = document.createElement("DIV");
-		divThumb.classList.add("thumbnail");
+		// var divThumb = document.createElement("DIV");
+		// divThumb.classList.add("thumbnail");
 		var img = document.createElement("IMG");
-		var divCapt = document.createElement("DIV");
-		divCapt.classList.add("caption");
+		img.classList.add("img-thumbnail");
+		// var divCapt = document.createElement("DIV");
+		// divCapt.classList.add("caption");
 		var title = document.createElement("H4");
 
 		//construct generic thumbnail
-		divThumb.appendChild(img);
-		divThumb.appendChild(divCapt);
-		divCapt.appendChild(title);
-		divTop.appendChild(divThumb);
+		divTop.appendChild(img);
+		// divThumb.appendChild(divCapt);
+		divTop.appendChild(title);
+		// divTop.appendChild(divThumb);
 		
 		//specifics per thumbnail
 		for (var i = 0; i < quiz.initial[j][thumbnail].length; i++) {

@@ -31,8 +31,6 @@
 }
 
 body {
-	/*font-family: 'Brawler', serif;*/
-	/*font-family: Helvetica;*/
 	font-family: Georgia;
 	font-size: 16px;
 }
@@ -60,8 +58,24 @@ input:focus {
    outline: none !important;
 }
 
+#publicWorksHeader, #schoolsHeader, #churchesHeader {
+	margin-bottom: 20px;
+}
+
 .thumbnailHighlight {
-	background-color: #375773;
+	background-color: #b5c9dc;
+  -webkit-transform: rotateY(360deg); /* Safari */
+  transform: rotateY(360deg);
+  transition: 0.6s;
+	transform-style: preserve-3d;
+
+}
+
+.lower-border {
+	border-bottom: #aba5a5 1px solid;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding-bottom: 40px;
 }
 
 p {
