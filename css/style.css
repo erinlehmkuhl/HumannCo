@@ -31,10 +31,12 @@
 }
 
 body {
-	/*font-family: 'Brawler', serif;*/
-	/*font-family: Helvetica;*/
 	font-family: Georgia;
 	font-size: 16px;
+}
+
+.tiny-script {
+	font-size: .5em;
 }
 
 button {
@@ -60,8 +62,24 @@ input:focus {
    outline: none !important;
 }
 
+#publicWorksHeader, #schoolsHeader, #churchesHeader {
+	margin-bottom: 20px;
+}
+
 .thumbnailHighlight {
-	background-color: #375773;
+	background-color: #b5c9dc;
+  -webkit-transform: rotateY(360deg); /* Safari */
+  transform: rotateY(360deg);
+  transition: 0.6s;
+	transform-style: preserve-3d;
+
+}
+
+.lower-border {
+	border-bottom: #aba5a5 1px solid;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding-bottom: 40px;
 }
 
 p {
@@ -279,6 +297,33 @@ p {
 
 .hide {
 	display: none;
+}
+
+footer {
+	display: flex;
+  text-align: center;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.footer-icons {
+	width: 30px;
+	height: 30px;
+	margin-left: 10px;
+	margin-right: 10px;
+	-webkit-filter: grayscale(85%);
+	filter: grayscale(85%);
+}
+
+.footer-icons:hover {
+	-webkit-filter: grayscale(0%);
+	filter: grayscale(0%);
+}
+
+.inline {
+	display: inline;
 }
 
 @media (max-width: 1000px) {

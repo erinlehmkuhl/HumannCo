@@ -7,18 +7,32 @@
 		<!-- ###### navbar inserted here from navbar.js & navbar.html ###### -->
 		<div id="insertNavbarHere"></div>
 
+		<!-- ###### jumbotron ###### -->
+		<div id="commercialPageStart" class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-5 cycler">
+					<img class="rotating-item img-responsive" id="img-placeholder" src="img/featured/BobField_sepia.jpg" alt="Robert Humann in the field">
+					<img class="rotating-item img-responsive" src="img/featured/technology.jpg" alt="New surveying Equipment">
+					<img class="rotating-item img-responsive" src="img/featured/BobField_bw.jpg" alt="Robert Humann in the field">
+					
+				</div>
+				<div class="hidden-xs col-sm-7" id="jumbotron-text-box">
+					<h3>serving the bay area<br>for over<br>forty years</h3>
+				</div>
+			</div> 
+
 			<!-- ###### content ###### -->
 		<div id="accordion" class="container-fluid"> 
 			<div class="row contentArea">
 				<h3 id="contentHeader" class="add-padding-left">COMMERCIAL WORK</h3>
 			</div>
 			
-			<div class="row">
+			<div class="row lower-border">
 				<div class="col-sm-8">
 					<p id="contentText" class="add-padding-left">As Civil Engineers and Land Surveyors, we are diverse in many practices of land development including hydrology and hydraulic work, grading paving and drainage, street design and all other types of public works projects. From planning to municipal engineering, our firm is backed by a wealth of experience that ensures dedication to quality and service.</p>
 				</div>
 				<div class="col-sm-4">
-					<div class="col-sm-8 bordered preferList">
+					<div class="col-sm-10 bordered preferList">
 						<h4 onclick="showPDFs()">PREFER A PDF?</h4>
 						<div class="vertical-spacer-7"></div>
 						<ul id="listOfPDFs" class="hide">
@@ -46,13 +60,12 @@
 			<div class="row">
 				<button id="publicWorks" data-parent="#accordion" class="col-sm-8 publicWorksCollapse moreButtons glyphicon glyphicon-menu-down" type="button" data-toggle="collapse" data-target="#publicWorksShowMore"></button>
 			</div>
-			<div class="row">
+			<div class="row lower-border">
 				<div class="col-sm-8">
 					<div id="publicWorksShowMore" class="collapse publicWorksCollapse"></div> <!--toggles for page expansion-->
 				</div>
 			</div>
 			<!-- END OF PUBLIC WORKS -->
-			<hr>
 			<div class="row vertical-spacer-50"></div>
 			<div class="row vertical-spacer-50"></div>
 
@@ -66,13 +79,12 @@
 			<div class="row">
 				<button id="schools" data-parent="#accordion" class="col-sm-8 schoolsCollapse moreButtons glyphicon glyphicon-menu-down" type="button" data-toggle="collapse" data-target="#schoolsShowMore"></button>
 			</div>
-			<div class="row">
+			<div class="row lower-border">
 				<div class="col-sm-8">
 					<div id="schoolsShowMore" class="collapse schoolsCollapse"></div> <!--toggles for page expansion-->
 				</div>
 			</div>
 			<!-- END OF SCHOOLS -->
-			<hr>
 			<div class="row vertical-spacer-50"></div>
 			<div class="row vertical-spacer-50"></div>
 			<div class="row">
@@ -87,7 +99,7 @@
 				</div>
 			<div class="row">
 				<div class="col-sm-8">
-					<div id="churchesShowMore" class="collapse churchesCollapse"></div> <!--toggles for page expansion-->
+					<div id="churchesShowMore" class="collapse churchesCollapse clearfix"></div> <!--toggles for page expansion-->
 				</div>
 			</div>
 			<!-- END OF CHURCHES -->
@@ -98,7 +110,7 @@
 
 		<!-- end of page content -->
 		<script type="text/javascript">
-			['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/importNavbar.js', 'js/commercial.js', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAucewqqCJbfuv9rN-85riB-u0BgnFrjiM&callback=initCommercialPage'].forEach(function(src) {
+			['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/importNavbar.js', 'js/commercial.js', 'js/jumbotron.js', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAucewqqCJbfuv9rN-85riB-u0BgnFrjiM&callback=initCommercialPage'].forEach(function(src) {
 			var script = document.createElement('script');
 			script.src = src;
 			script.async = false;
