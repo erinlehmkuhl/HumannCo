@@ -35,6 +35,10 @@ body {
 	font-size: 16px;
 }
 
+.tiny-script {
+	font-size: .5em;
+}
+
 button {
 	font-family: Helvetica;
 }
@@ -293,6 +297,33 @@ p {
 
 .hide {
 	display: none;
+}
+
+footer {
+	display: flex;
+  text-align: center;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.footer-icons {
+	width: 30px;
+	height: 30px;
+	margin-left: 10px;
+	margin-right: 10px;
+	-webkit-filter: grayscale(85%);
+	filter: grayscale(85%);
+}
+
+.footer-icons:hover {
+	-webkit-filter: grayscale(0%);
+	filter: grayscale(0%);
+}
+
+.inline {
+	display: inline;
 }
 
 @media (max-width: 1000px) {
