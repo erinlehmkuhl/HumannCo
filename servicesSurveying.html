@@ -32,32 +32,34 @@
 					
 					<hr>
 					<h4>SURVEYING SERVICES</h4>
+					<!-- ###### modal ###### -->
+					<div id="surveyModal" class="modal fade" role="dialog">
+  					<div class="modal-dialog">
+  					</div>
+					</div>
 					<!-- ###### thumbnails ###### -->
 					<div class="row">
-						<div class="col-sm-4">
+						<div class="col-sm-4" data-toggle="modal" data-target="#surveyModal" onclick="showModal()">
 							<div class="thumbnail">
-								<img src="img/thumbnails/ALTA.jpg" alt="Chabot Space and Science">
+								<img src="img/thumbnails/ALTA.jpg">
 								<div class="caption">
 									<h3>Topographic</h3>
-									<p class="thumb-description">Description of Topographic Survey</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="thumbnail">
-								<img src="img/thumbnails/blueprintRoll.jpg" alt="Concord Naval Weapons Depot">
+								<img src="img/thumbnails/blueprintRoll.jpg">
 								<div class="caption">
 									<h3>Building Location</h3>
-									<p class="thumb-description">description of Building Location Survey</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="thumbnail">
-								<img src="img/thumbnails/floorPlan.jpg" alt="Alcatraz Island">
+								<img src="img/thumbnails/floorPlan.jpg">
 								<div class="caption">
 									<h3>ALTA</h3>
-									<p class="thumb-description">description of ALTA Survey</p>
 								</div>
 							</div>
 						</div>
@@ -67,28 +69,25 @@
 					<div class="row">
 						<div class="col-sm-4">
 							<div class="thumbnail">
-								<img src="img/thumbnails/ALTA.jpg" alt="Chabot Space and Science">
+								<img src="img/thumbnails/ALTA.jpg">
 								<div class="caption">
 									<h3>FEMA Elevation Certificates</h3>
-									<p class="thumb-description">Description of Topographic Survey</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="thumbnail">
-								<img src="img/thumbnails/blueprintRoll.jpg" alt="Concord Naval Weapons Depot">
+								<img src="img/thumbnails/blueprintRoll.jpg">
 								<div class="caption">
 									<h3>Setback and other building permit certificates</h3>
-									<p class="thumb-description">description of Building Location Survey</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="thumbnail">
-								<img src="img/thumbnails/floorPlan.jpg" alt="Alcatraz Island">
+								<img src="img/thumbnails/floorPlan.jpg">
 								<div class="caption">
 									<h3>Forensic and surveys relating disputes</h3>
-									<p class="thumb-description">description of ALTA Survey</p>
 								</div>
 							</div>
 						</div>
@@ -98,28 +97,25 @@
 					<div class="row">
 						<div class="col-sm-4">
 							<div class="thumbnail">
-								<img src="img/thumbnails/ALTA.jpg" alt="Chabot Space and Science">
+								<img src="img/thumbnails/ALTA.jpg">
 								<div class="caption">
 									<h3>Boundary staking</h3>
-									<p class="thumb-description">Description of Topographic Survey</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="thumbnail">
-								<img src="img/thumbnails/blueprintRoll.jpg" alt="Concord Naval Weapons Depot">
+								<img src="img/thumbnails/blueprintRoll.jpg">
 								<div class="caption">
 									<h3>Record of Surveys</h3>
-									<p class="thumb-description">description of Building Location Survey</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="thumbnail">
-								<img src="img/thumbnails/floorPlan.jpg" alt="Alcatraz Island">
+								<img src="img/thumbnails/floorPlan.jpg">
 								<div class="caption">
 									<h3>Corner Records</h3>
-									<p class="thumb-description">description of ALTA Survey</p>
 								</div>
 							</div>
 						</div>
@@ -129,28 +125,25 @@
 					<div class="row">
 						<div class="col-sm-4">
 							<div class="thumbnail">
-								<img src="img/thumbnails/ALTA.jpg" alt="Chabot Space and Science">
+								<img src="img/thumbnails/ALTA.jpg">
 								<div class="caption">
 									<h3>Lot Line Adjustments</h3>
-									<p class="thumb-description">Description of Topographic Survey</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="thumbnail">
-								<img src="img/thumbnails/blueprintRoll.jpg" alt="Concord Naval Weapons Depot">
+								<img src="img/thumbnails/blueprintRoll.jpg">
 								<div class="caption">
 									<h3>Lot mergers</h3>
-									<p class="thumb-description">description of Building Location Survey</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="thumbnail">
-								<img src="img/thumbnails/floorPlan.jpg" alt="Alcatraz Island">
+								<img src="img/thumbnails/floorPlan.jpg">
 								<div class="caption">
 									<h3>Easement and deed preparation</h3>
-									<p class="thumb-description">description of ALTA Survey</p>
 								</div>
 							</div>
 						</div>
@@ -172,7 +165,7 @@
 
 
 	<script type="text/javascript">
-      ['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/importNavbar.js', 'js/jumbotron.js', 'js/commercial.js'].forEach(function(src) {
+      ['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/importNavbar.js', 'js/jumbotron.js', 'js/commercialJSON.js', 'js/commercial.js', 'js/modalSurvey.js'].forEach(function(src) {
         var script = document.createElement('script');
         script.src = src;
         script.async = false;

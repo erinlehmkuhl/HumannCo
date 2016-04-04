@@ -13,7 +13,7 @@ var initCommercialPage = function() {
 
 
 var initCommercialMap = function() {
-	this.cat = getCategories();
+	this.cat = getCategories(mapMarkers);
 
 	//timeout for error handling
 	var googleMapTimeout = setTimeout(function(){
@@ -48,7 +48,7 @@ var initCommercialMap = function() {
 
 				//connect marker to thumbnail
 				highlightThumbnail(content);
-				
+
 				//focus map to marker
   			map.setZoom(8);
   			map.setCenter(marker.getPosition());
@@ -78,7 +78,7 @@ var initCommercialMap = function() {
 addEventListener('click', function (ev) {
 	var eventClick = ev.target;
 	var title = eventClick.alt;
-	var cats = getCategories();
+	var cats = getCategories(mapMarkers);
 
 	for (var i = 0; i < markers.length; i++) {
 		if (markers[i].title == title) {
@@ -104,8 +104,8 @@ var highlightThumbnail = function(markerName) {
 	$("h4").parent().parent().parent().removeClass( "thumbnailHighlight" );
 
 	//traverse JSON
-	for (var i = 0; i < getCategories().length; i++) {
-		var category = getCategories()[i];
+	for (var i = 0; i < getCategories(mapMarkers).length; i++) {
+		var category = getCategories(mapMarkers)[i];
 		for (var j = 0; j < mapMarkers[category].length; j++) {
 			if (mapMarkers[category][j].name == markerName) {
 				var clicked_id = Object.keys(mapMarkers)[i];
@@ -132,10 +132,10 @@ var highlightThumbnail = function(markerName) {
 
 
 //helper function for traversing JSON
-var getCategories = function() {
+var getCategories = function(JSON) {
 	var categories = [];
-	for (var i = 0; i < Object.keys(mapMarkers).length; i++){
-		categories.push(Object.keys(mapMarkers)[i]);
+	for (var i = 0; i < Object.keys(JSON).length; i++){
+		categories.push(Object.keys(JSON)[i]);
 	}
 	return categories;	
 };
