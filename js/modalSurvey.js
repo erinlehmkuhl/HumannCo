@@ -85,8 +85,8 @@ var modalData = {
     "paragraph": "something something"}
     ],
     "plans": [
-    {"title": "Storm Drainage and related services ",
-    "paragraph": "something something"},
+    {"title": "Storm Drainage and Related Rervices",
+    "paragraph": "including C.3 SWIPPP QSD QSP Hydrology, Bio retention systems."},
 
     {"title": "Grading",
     "paragraph": "something something"},
