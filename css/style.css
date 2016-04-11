@@ -181,7 +181,7 @@ p {
 
 .jobIcon:hover {
 	cursor: pointer;
-	opacity: .7;
+	opacity: .3;
 }
 
 .jobListings {
