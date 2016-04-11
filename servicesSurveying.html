@@ -33,13 +33,13 @@
 					<hr>
 					<h4>SURVEYING SERVICES</h4>
 					<!-- ###### modal ###### -->
-					<div id="surveyModal" class="modal fade" role="dialog">
+					<div id="modal" class="modal fade" role="dialog">
   					<div class="modal-dialog">
   					</div>
 					</div>
 					<!-- ###### thumbnails ###### -->
 					<div class="row">
-						<div class="col-sm-4" data-toggle="modal" data-target="#surveyModal" onclick="showModal()">
+						<div class="col-sm-4" data-toggle="modal" data-target="#modal" onclick="showModal('survey')">
 							<div class="thumbnail" id="topographic">
 								<img src="img/thumbnails/survey/topographic.jpg">
 								<div class="caption">
@@ -47,7 +47,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-4" data-toggle="modal" data-target="#surveyModal" onclick="showModal()">
+						<div class="col-sm-4" data-toggle="modal" data-target="#modal" onclick="showModal('survey')">
 							<div class="thumbnail" id="building location">
 								<img src="img/thumbnails/survey/buildingLocation.jpg">
 								<div class="caption">
@@ -55,7 +55,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-4" data-toggle="modal" data-target="#surveyModal" onclick="showModal()">
+						<div class="col-sm-4" data-toggle="modal" data-target="#modal" onclick="showModal('survey')">
 							<div class="thumbnail" id="alta">
 								<img src="img/thumbnails/survey/alta.jpg">
 								<div class="caption">
@@ -67,7 +67,7 @@
 
 				<!-- ###### second row ###### -->
 					<div class="row">
-						<div class="col-sm-4" data-toggle="modal" data-target="#surveyModal" onclick="showModal()">
+						<div class="col-sm-4" data-toggle="modal" data-target="#modal" onclick="showModal('survey')">
 							<div class="thumbnail" id="fema">
 								<img src="img/thumbnails/survey/fema.jpg">
 								<div class="caption">
@@ -75,7 +75,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-4" data-toggle="modal" data-target="#surveyModal" onclick="showModal()">
+						<div class="col-sm-4" data-toggle="modal" data-target="#modal" onclick="showModal('survey')">
 							<div class="thumbnail" id="setback">
 								<img src="img/thumbnails/survey/setback.jpg">
 								<div class="caption">
@@ -83,7 +83,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-4" data-toggle="modal" data-target="#surveyModal" onclick="showModal()">
+						<div class="col-sm-4" data-toggle="modal" data-target="#modal" onclick="showModal('survey')">
 							<div class="thumbnail" id="forensic">
 								<img src="img/thumbnails/survey/forensic.jpg">
 								<div class="caption">
@@ -95,7 +95,7 @@
 
 				<!-- ###### third row ###### -->
 					<div class="row">
-						<div class="col-sm-4" data-toggle="modal" data-target="#surveyModal" onclick="showModal()">
+						<div class="col-sm-4" data-toggle="modal" data-target="#modal" onclick="showModal('survey')">
 							<div class="thumbnail" id="boundary">
 								<img src="img/thumbnails/survey/staking.jpg">
 								<div class="caption">
@@ -103,7 +103,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-4" data-toggle="modal" data-target="#surveyModal" onclick="showModal()">
+						<div class="col-sm-4" data-toggle="modal" data-target="#modal" onclick="showModal('survey')">
 							<div class="thumbnail" id="record of surveys">
 								<img src="img/thumbnails/survey/record.jpg">
 								<div class="caption">
@@ -111,7 +111,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-4" data-toggle="modal" data-target="#surveyModal" onclick="showModal()">
+						<div class="col-sm-4" data-toggle="modal" data-target="#modal" onclick="showModal('survey')">
 							<div class="thumbnail" id="corner records">
 								<img src="img/thumbnails/survey/corner.jpg">
 								<div class="caption">
@@ -123,7 +123,7 @@
 
 				<!-- ###### fourth row ###### -->
 					<div class="row">
-						<div class="col-sm-4" data-toggle="modal" data-target="#surveyModal" onclick="showModal()">
+						<div class="col-sm-4" data-toggle="modal" data-target="#modal" onclick="showModal('survey')">
 							<div class="thumbnail" id="lot line">
 								<img src="img/thumbnails/survey/lotLine.jpg">
 								<div class="caption">
@@ -131,7 +131,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-4" data-toggle="modal" data-target="#surveyModal" onclick="showModal()">
+						<div class="col-sm-4" data-toggle="modal" data-target="#modal" onclick="showModal('survey')">
 							<div class="thumbnail" id="lot mergers">
 								<img src="img/thumbnails/survey/lotMergers.jpg">
 								<div class="caption">
@@ -139,7 +139,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-4" data-toggle="modal" data-target="#surveyModal" onclick="showModal()">
+						<div class="col-sm-4" data-toggle="modal" data-target="#modal" onclick="showModal('survey')">
 							<div class="thumbnail" id="easement">
 								<img src="img/thumbnails/survey/easement.jpg">
 								<div class="caption">
@@ -165,7 +165,7 @@
 
 
 	<script type="text/javascript">
-      ['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/importNavbar.js', 'js/jumbotron.js', 'js/commercialJSON.js', 'js/commercial.js', 'js/modalSurvey.js'].forEach(function(src) {
+      ['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/importNavbar.js', 'js/jumbotron.js', 'js/modalSurvey.js'].forEach(function(src) {
         var script = document.createElement('script');
         script.src = src;
         script.async = false;

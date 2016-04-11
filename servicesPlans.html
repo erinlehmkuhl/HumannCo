@@ -34,51 +34,51 @@
 					
 					<hr>
 					<h4>CONSTRUCTION PLANS SERVICES</h4>
+					<!-- ###### modal ###### -->
+					<div id="modal" class="modal fade" role="dialog">
+  					<div class="modal-dialog">
+  					</div>
+					</div>
 					<!-- ###### thumbnails ###### -->
 					<div class="row">
-						<div class="col-sm-3">
-							<div class="thumbnail">
-								<img src="img/thumbnails/ALTA.jpg" alt="Chabot Space and Science">
+						<div class="col-sm-3" data-toggle="modal" data-target="#modal" onclick="showModal('construction')">
+							<div class="thumbnail" id="drainage">
+								<img src="img/thumbnails/ALTA.jpg" alt="bio retention">
 								<div class="caption">
 									<h3>Storm Drainage and related services including C.3 SWIPPP QSD QSP Hydrology, Bio retention systems</h3>
-									<p class="thumb-description">Description of Topographic Survey</p>
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-3">
-							<div class="thumbnail">
-								<img src="img/thumbnails/blueprintRoll.jpg" alt="Concord Naval Weapons Depot">
+						<div class="col-sm-3" data-toggle="modal" data-target="#modal" onclick="showModal('construction')">
+							<div class="thumbnail" id="grading">
+								<img src="img/thumbnails/blueprintRoll.jpg" alt="grading">
 								<div class="caption">
 									<h3>Grading</h3>
-									<p class="thumb-description">description of Building Location Survey</p>
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-3">
-							<div class="thumbnail">
-								<img src="img/thumbnails/floorPlan.jpg" alt="Alcatraz Island">
+						<div class="col-sm-3" data-toggle="modal" data-target="#modal" onclick="showModal('construction')">
+							<div class="thumbnail" id="roadways">
+								<img src="img/thumbnails/floorPlan.jpg" alt="roadways">
 								<div class="caption">
 									<h3>Roadways</h3>
-									<p class="thumb-description">description of ALTA Survey</p>
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-3">
-							<div class="thumbnail">
-								<img src="img/thumbnails/ALTA.jpg" alt="Chabot Space and Science">
+						<div class="col-sm-3" data-toggle="modal" data-target="#modal" onclick="showModal('construction')">
+							<div class="thumbnail" id="utilities">
+								<img src="img/thumbnails/ALTA.jpg" alt="utilites">
 								<div class="caption">
 									<h3>Utilities</h3>
-									<p class="thumb-description">Description of Topographic Survey</p>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-3">
-							<div class="thumbnail">
-								<img src="img/thumbnails/floorPlan.jpg" alt="Alcatraz Island">
+					<div class="col-sm-3" data-toggle="modal" data-target="#modal" onclick="showModal('construction')">
+							<div class="thumbnail" id="subdivisions">
+								<img src="img/thumbnails/floorPlan.jpg" alt="subdivsions">
 								<div class="caption">
 									<h3>Subdivisions</h3>
-									<p class="thumb-description">description of ALTA Survey</p>
 								</div>
 							</div>
 						</div>
@@ -93,7 +93,7 @@
 
 
 	<script type="text/javascript">
-      ['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/importNavbar.js', 'js/jumbotron.js', 'js/commercial.js'].forEach(function(src) {
+      ['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/importNavbar.js', 'js/jumbotron.js', 'js/modalSurvey.js'].forEach(function(src) {
         var script = document.createElement('script');
         script.src = src;
         script.async = false;

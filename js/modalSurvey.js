@@ -1,4 +1,4 @@
-var modalSurveyData = {
+var modalData = {
   "survey": [
     {"title": "Topographic",
     "paragraph": "Topographic Surveys are used to identify and map the contours of the ground and existing features on the surface of the earth or slightly above or below the surface of the earth (i.e. trees, buildings, streets, walkways, manholes, utility poles, retaining walls, etc."},
@@ -19,7 +19,7 @@ var modalSurveyData = {
     "paragraph": "No opinions regarding the status of property lines or property corners are provided in a forensic survey, nor are property corners established or re-established as a result of a forensic survey.  A forensic survey may include boundary information as incidental to the focus of the survey, however, no opinions regarding boundaries are provided. A forensic survey is scientific in its methodology.  The final product of the forensic survey is a document that illustrates the evidence discovered during the survey to support and advance a scientific, engineering, and/or legal theory."},
 
     {"title": "Boundary Staking",
-    "paragraph": "Boundary surveying is performed to establish or reestablish a parcel’s boundary lines. Using the parcel’s deed description and/or other title documents, along with the boundary evidence found during field survey, a land surveyor will determine the boundary lines by applying boundary laws, rules, and principles to guide them to a parcel’s accurate boundaries. When the surveyor has determined the final boundaries of the parcel, the parcel’s boundary markers can be set. We use an iron rod set in the ground with a red cap imprinted with our name and license number. This type of survey is sometimes called a staked survey."},
+    "paragraph": "Boundary surveying is performed to establish or reestablish boundary lines for a parcel. Using the parcel’s deed description and/or other title documents, along with the boundary evidence found during field survey, a land surveyor will determine the boundary lines by applying boundary laws, rules, and principles to guide them to a parcel’s accurate boundaries. When the surveyor has determined the final boundaries of the parcel, the parcel’s boundary markers can be set. We use an iron rod set in the ground with a red cap imprinted with our name and license number. This type of survey is sometimes called a staked survey."},
 
     {"title": "Record of Surveys",
     "paragraph": "Record of Survey. A Record of Survey is an official map (18 x 26) that is reviewed by the County Surveyors Office and then recorded with the County Recorder. This map represents a survey made on the ground and delineates the deed described lines."},
@@ -35,6 +35,55 @@ var modalSurveyData = {
 
     {"title": "Easement and Deed Preparation",
     "paragraph": "something something"}  
+  ],
+  "engineering": [  
+    {"title": "SWPPP",
+    "paragraph": "something something"},
+
+    {"title": "C.3",
+    "paragraph": "something something"},
+
+    {"title": "QSD",
+    "paragraph": "something something"},
+
+    {"title": "QSP",
+    "paragraph": "something something"}
+  ],
+  "construction": [
+    {"title": "Storm Drainage and Related Services",
+    "paragraph": "something something"},
+
+    {"title": "Grading",
+    "paragraph": "something something"},
+
+    {"title": "Roadways",
+    "paragraph": "something something"},
+
+    {"title": "Utilities",
+    "paragraph": "something something"},
+
+    {"title": "Subdivisions",
+    "paragraph": "something something"}
+  ],
+    "staking": [
+    {"title": "Layout for Buildings, Parking Lots and Roadways",
+    "paragraph": "something something"},
+
+    {"title": "Pier, Grade Beam, Pilings, Columns and Podiums",
+    "paragraph": "something something"},
+
+    {"title": "Rough and Finished Grading",
+    "paragraph": "something something"},
+
+    {"title": "Utility Staking",
+    "paragraph": "something something"},
+
+    {"title": "Pipeline Layout",
+    "paragraph": "something something"},
+    
+    {"title": "As-built Construction Surveys",
+    "paragraph": "something something"}
+    ]
 };
 
 var clickedImage;
@@ -64,7 +113,7 @@ var createModal = function() {
   modalClose.classList.add("close");
   modalClose.innerHTML = "Close";
 
-  $('#surveyModal').append(modalContent);
+  $('#modal').append(modalContent);
   modalContent.appendChild(modalHeader);
   modalHeader.appendChild(modalCloseX);
   modalCloseX.appendChild(modalSpan);
@@ -76,21 +125,21 @@ var createModal = function() {
 };
 
 
-var showModal = function() {
+var showModal = function(page) {
   var clickedImage = event.path[1].id;
-  $("#surveyModal").toggle;
+  $("#modal").toggle;
 
   var survey = getCategories(modalData);
-    for (var i = 0; i < modalData[survey].length; i++) {
-      var jsonData = modalData[survey][i].title.toLowerCase();
+    for (var i = 0; i < modalData[page].length; i++) {
+      var jsonData = modalData[page][i].title.toLowerCase();
       if ( jsonData.indexOf(clickedImage) > -1 ) {
-        $('.modal-title').text(modalData[survey][i].title);
-        $('.modal-paragraph').text(modalData[survey][i].paragraph);
+        $('.modal-title').text(modalData[page][i].title);
+        $('.modal-paragraph').text(modalData[page][i].paragraph);
       }
     }
 };
 
 $(document).ready(function(){
   createModal();
-  $("#surveyModal").hide;
+  $("#modal").hide;
 });

@@ -9,3 +9,14 @@ var nav = content.querySelector('nav');
 var insertNavbarHere = document.getElementById("insertNavbarHere");
 
 insertNavbarHere.appendChild(nav.cloneNode(true));
+
+
+//________________________________________________________________
+//helper function for traversing JSON
+var getCategories = function(JSON) {
+	var categories = [];
+	for (var i = 0; i < Object.keys(JSON).length; i++){
+		categories.push(Object.keys(JSON)[i]);
+	}
+	return categories;	
+};

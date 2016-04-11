@@ -131,16 +131,6 @@ var highlightThumbnail = function(markerName) {
 };
 
 
-//helper function for traversing JSON
-var getCategories = function(JSON) {
-	var categories = [];
-	for (var i = 0; i < Object.keys(JSON).length; i++){
-		categories.push(Object.keys(JSON)[i]);
-	}
-	return categories;	
-};
-
-
 var makeCommercialThumbnail = function(attachmentPoints, numPerHeading, clickInfo) {
 //attachmentPoints: array of 3 jquery #id objects. use '' to skip a section. order: publicWorks, School, Church
 //numPerHeading: integer (number of thumbnails per section)
