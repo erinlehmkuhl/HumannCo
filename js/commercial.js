@@ -88,6 +88,7 @@ addEventListener('click', function (ev) {
 	}
 });
 
+//TODO: when thumbnail clicked, clear out old infowindow
 var markerBounce = function(marker) {
 	marker.setAnimation(google.maps.Animation.BOUNCE);
 	setTimeout(function(){ marker.setAnimation(null); }, 1750);

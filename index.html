@@ -67,7 +67,8 @@
 	<!-- end of page content -->
 	</body>
 
-
+<!-- http://www.html5rocks.com/en/tutorials/speed/script-loading/
+	This gives our scripts a mix of behaviour that can’t be achieved with plain HTML. By being explicitly not async, scripts are added to an execution queue, the same queue they’re added to in our first plain-HTML example. However, by being dynamically created, they’re executed outside of document parsing, so rendering isn’t blocked while they’re downloaded. -->
 	<script type="text/javascript">
       ['js/jquery-1.11.3.min.js', 'js/bootstrap.min.js', 'js/importNavbar.js', 'js/jumbotron.js'].forEach(function(src) {
         var script = document.createElement('script');

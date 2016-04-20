@@ -102,10 +102,6 @@ var mapMarkers = {
 		"center": {"lat": 37.695180, "lng": -122.025352}, 
 		"img": "img/thumbnails/schools/palomares.jpg"},
 
-		// {"name": "Parkside School", 
-		// "center": {"lat": 37.288519, "lng": -121.839535}, 
-		// "img": "img/thumbnails/schools/happyValley.jpg"},
-
 		{"name": "Green Valley Elementary School", 
 		"center": {"lat": 37.833208, "lng": -121.979520}, 
 		"img": "img/thumbnails/schools/greenValley.jpg"},
@@ -130,17 +126,9 @@ var mapMarkers = {
 		"center": {"lat": 37.890369, "lng": -122.056258}, 
 		"img": "img/thumbnails/schools/lasLomas.jpg"},
 
-		// {"name": "Neil Armstrong Middle School", 
-		// "center": {"lat": 37.288519, "lng": -121.839535}, 
-		// "img": "img/thumbnails/schools/happyValley.jpg"},
-
 		{"name": "Hillsdale High School", 
 		"center": {"lat": 37.532872, "lng": -122.309776}, 
 		"img": "img/thumbnails/schools/hillsdale.jpg"},
-
-		// {"name": "Twain Harte Elementary", 
-		// "center": {"lat": 37.288519, "lng": -121.839535}, 
-		// "img": "img/thumbnails/schools/happyValley.jpg"},
 
 		{"name": "Family Early Learning Center", 
 		"center": {"lat": 37.351011, "lng": -121.873100}, 
@@ -154,10 +142,6 @@ var mapMarkers = {
 		"center": {"lat": 37.920269, "lng": -121.681303}, 
 		"img": "img/thumbnails/schools/paloma.jpg"},
 
-		// {"name": "Powers Childcare", 
-		// "center": {"lat": 37.288519, "lng": -121.839535}, 
-		// "img": "img/thumbnails/schools/happyValley.jpg"},
-
 		{"name": "Diablo Valley College Footbridge",
 		"center": {"lat": 37.968297, "lng": -122.071860}, 
 		"img": "img/thumbnails/schools/dvcFootbridge.jpg"},
@@ -166,19 +150,15 @@ var mapMarkers = {
 		"center": {"lat": 37.671990, "lng": -121.918279}, 
 		"img": "img/thumbnails/schools/foothillHighSchool.jpg"},
 
-		// {"name": "Curtis Jr. High School", 
-		// "center": {"lat": 37.288519, "lng": -121.839535}, 
-		// "img": "img/thumbnails/schools/happyValley.jpg"},
-
 		{"name": "Ceasar Chavez Middle School", 
 		"center": {"lat": 37.641812, "lng": -122.023127}, 
 		"img": "img/thumbnails/schools/cesarChavez.jpg"}
 
 	],
 	"churches": [
-		// {"name": "St. Andrew Catholic Church", 
-		// "center": {"lat": 37.676661, "lng": -122.473898}, 
-		// "img": "img/thumbnails/churches/saintAndrews.jpg"},
+		{"name": "St. Andrew Catholic Church", 
+		"center": {"lat": 37.963317, "lng": -122.066613}, 
+		"img": "img/thumbnails/churches/saintAndrews.jpg"},
 		
 		{"name": "Guru Granth Sahib Foundation", 
 		"center": {"lat": 37.679255, "lng": -122.065643}, 
@@ -223,7 +203,8 @@ var mapMarkers = {
 };
 
 var mapData = {
-	"mapName": ["mapPublicWorks", "mapSchools", "mapChurches"],//jquery object div names
+	//jquery object div names
+	"mapName": ["mapPublicWorks", "mapSchools", "mapChurches"],
 	"options": {
 	    "center": {"lat": 37.75, "lng": -122.34},
 	    "zoom": 10,
@@ -231,6 +212,7 @@ var mapData = {
 };
 
 var initSettings = {
-	"headings": ["publicWorksThumbs", "schoolsThumbs", "churchesThumbs"],//jquery object id names
+	//jquery object id names
+	"headings": ["publicWorksThumbs", "schoolsThumbs", "churchesThumbs"],
 	"numInShowcase": 4
 }

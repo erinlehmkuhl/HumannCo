@@ -87,6 +87,15 @@ p {
   line-height: 1.6em;
 }
 
+.email {
+	color: #aba5a5;
+	font-size: 1em;
+}
+
+.email:hover {
+	color: lightgray;
+}
+
 #contentTextAbout {
 	font-size: 1.1em;
 }
@@ -188,7 +197,7 @@ p {
 }
 
 #contactAddress {
-	padding-top: 90%;
+	/*padding-top: 90%;*/
 }
 
 .contactForm {
@@ -199,10 +208,6 @@ p {
 	margin-top: 18px;
 	height: 40px;
 	width: 63%;
-}
-
-.email {
-
 }
 
 #contactSubHeader {
