@@ -146,11 +146,6 @@ p {
 	margin-left: 15px;
 }*/
 
-.bordered {
-	/*border-radius: 15px;*/
-	border: solid #aba5a5 4px;
-}
-
 #residentialSubheading{
 	/*background-color: #ccc;*/
 }
@@ -267,9 +262,6 @@ p {
 .bordered {
 	border: solid lightgray 1px;
 	border-radius: 3px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	text-align: center;
 }
 
 .preferList {
@@ -324,6 +316,10 @@ footer {
 
 .inline {
 	display: inline;
+}
+
+.quiz-column-left {
+	margin-left: 50px;
 }
 
 @media (max-width: 1000px) {
