@@ -1,0 +1,200 @@
+/*!
+ * Start Bootstrap - Full (https://startbootstrap.com/template-overviews/full)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-full/blob/master/LICENSE)
+
+  * BLUE          #002875; or rgba(0, 40, 117, 1)
+  * GRAY          gray
+  * WHITE         rgba(256, 256, 256, 0.8)
+ */
+
+body {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
+}
+
+h1 {
+	font-size: 65px;
+	font-weight: 600;
+	color: white;
+}
+
+h2 {
+	font-weight: 600;
+	color: #002875;
+	margin-top: 10px;
+}
+
+nav {
+	background-color: rgba(256, 256, 256, 0.8);
+}
+
+.navbar-nav {
+	float: right;
+}
+
+.navbar {
+	border-radius: 0px;
+}
+
+a {
+	text-decoration: none;
+    color: black;
+    font-size: large;
+}
+
+a:hover{
+    text-decoration: none;
+    color: gray;
+    font-size: large;
+}
+
+li {
+	list-style: none;
+}
+
+p {
+	font-size: large;
+}
+
+.backdrop {
+	background-color: rgba(256, 256, 256, 0.7);
+	padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: 7px;
+    border: 1px solid #002875;
+}
+
+.backdrop-darker {
+	background-color: rgba(256, 256, 256, 0.3);
+	padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: 7px;
+    border: 1px solid #002875;
+    margin-top: 7%;
+}
+
+.center-v {
+	text-align: center;
+}
+
+.headerTopMargin {
+	margin-top: 150px;
+}
+
+.icons {
+	width: 50px;
+}
+
+#homeBody {
+	background: url('../imgs/desk.jpg') no-repeat center center fixed;
+	background-size: cover;
+}
+
+#engBody {
+	background: url('../imgs/surveying.jpg') no-repeat center center fixed;
+	background-size: cover;
+}
+
+#surBody {
+	background: url('../imgs/engineerMaps.jpg') no-repeat center center fixed;
+	background-size: cover;
+}
+
+#graBody {
+	background: url('../imgs/staking.jpg') no-repeat center center fixed;
+	background-size: cover;
+}
+
+#aboutBody {
+	background: url('../imgs/engineer2.jpg') no-repeat center center fixed;
+	background-size: cover;
+}
+
+#faqBody {
+	background: url('../imgs/stake.jpg') no-repeat center center fixed;
+	background-size: cover;
+}
+
+#contactBody {
+	background: url('../imgs/surveyor2.jpg') no-repeat center center fixed;
+	background-size: cover;
+}
+
+
+
+/* -------------- collapse ----------------- */
+/* Credit: https://alligator.io/css/collapsible/ */
+
+input[type='checkbox'] {
+  display: none;
+}
+
+.lbl-toggle {
+  display: block;
+
+  font-weight: bold;
+  font-size: larger;
+  text-transform: uppercase;
+  text-align: center;
+
+  padding: 1rem;
+
+  color: #002875;
+  background: rgba(256, 256, 256, 0.8);
+
+  cursor: pointer;
+
+  border-radius: 7px;
+  transition: all 0.25s ease-out;
+}
+
+.lbl-toggle:hover {
+  color: gray;
+}
+
+.lbl-toggle::before {
+  content: ' ';
+  display: inline-block;
+
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid currentColor;
+
+  vertical-align: middle;
+  margin-right: .7rem;
+  transform: translateY(-2px);
+
+  transition: transform .2s ease-out;
+}
+
+.collapsible-content .content-inner {
+  background: rgba(256, 256, 256, 1);
+  border-bottom: 1px solid white;
+
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  padding: .5rem 1rem;
+}
+
+.collapsible-content {
+  max-height: 0px;
+  overflow: hidden;
+
+  transition: max-height .25s ease-in-out;
+}
+
+.toggle:checked + .lbl-toggle + .collapsible-content {
+  max-height: 1050px;
+}
+
+.toggle:checked + .lbl-toggle::before {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.toggle:checked + .lbl-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
